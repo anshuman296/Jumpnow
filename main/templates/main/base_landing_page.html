@@ -1,0 +1,219 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JumpNow</title>
+    <link rel="stylesheet" href="{%  static 'main/css/landing_2.css' %}">
+    
+    <link rel="icon" type="image/x-icon" href="{% static 'main/images/Group450@2x.png' %}">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body>
+    <style>
+        #navbar {
+  overflow: hidden;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky_two{
+    top: -39px;
+    z-index: 100000;
+
+}
+    </style>
+
+    <header id="navbar">
+        <div class="header_jn">
+            <div class="logo_jn">
+                <a href="{% url 'dashboard_main' %}"><img src="{% static 'dashboard/images/logo.png' %}" alt=""></a>
+            </div>
+
+            <div class="menu_jn">
+                <div class="center_menu">
+                    <a class="home_link" href="{% url 'dashboard_main' %}">
+                        Home
+                    </a> <span class="span_menu"></span>
+                </div>
+                <div class="center_menu">
+                    <a class="about_link" href="https://jumpnow.agency/about/">
+                        About
+                    </a> <span class="span_menu"></span>
+                </div>
+                <div class="center_menu">
+                    <a class="blog_link" href="">
+                        Blog
+                    </a> <span class="span_menu"></span>
+                </div>
+                <div class="center_menu">
+                    <a class="contact_link" href="https://jumpnow.agency/contact_us/">
+                        Contact
+                    </a>
+                </div>
+            </div>
+
+            <div class="login_jn">
+
+
+                <a href="https://app.jumpnow.agency/login/">
+
+                    <button>
+                        Login
+                    </button>
+                </a>
+
+                <i onclick="open_ham()" class="ham_menu" data-feather="menu"></i>
+            </div>
+
+
+            <div class="ham_menu_container">
+                <div class="menu_main" id="container_ham">
+                    <div class="close_menu">
+                        <i onclick="this.parentNode.parentNode.style.display = 'none'" data-feather="x" ></i>
+                    </div>
+                    <div class="main_menu_mobile">
+                       <div class="achor_menu">
+                            <a href="{% url 'dashboard_main' %}"> <i data-feather="home"></i>  Home</a>
+                        
+                        <a href="https://jumpnow.agency/about/"> <i data-feather="command"></i> About</a>
+                        <a href="" > <i data-feather="users" ></i> Team</a>
+                        <a href="https://jumpnow.agency/contact_us/"> <i data-feather="phone" ></i> Contact</a>
+                       </div>
+                    </div>
+                    <div class="login_btn_mobile">
+                        <a href="https://app.jumpnow.agency/login/">
+                                Login
+                        </a>
+                       </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock content %}
+    <footer class="footer_main">
+        <div class="jump_logo">
+            <a href="{% url 'dashboard_main' %}"><img src="{% static 'main/images/logo.png' %}" alt=""></a>
+        </div>
+
+        <div class="footer_para">
+            <p>
+                ©️ 2022 JumpNow Technologies Private Limited.
+            </p>
+        </div>
+
+        <div class="footer_menu">
+            <a href="">Campaigns</a>
+            <a href="">Creators</a>
+            <a href="https://jumpnow.agency/about/">About</a>
+            <a href="https://jumpnow.agency/contact_us/">Contact</a>
+            <a href="https://jumpnow.agency/privacy_notice/">Privacy</a>
+            <a href="https://jumpnow.agency/terms/">Terms</a>
+        </div>
+
+        <div class="footer_icons">
+            <div class="icons_">
+                <a class="insta_foot" target="blank_" href="https://www.instagram.com/jumpnow.agency/">
+                    <i data-feather="instagram"></i>
+                </a>
+                <a class="face_foot" target="blank_" href="https://www.facebook.com/jumpnow.agency/">
+                    <i data-feather="facebook"></i>
+                </a>
+                <a class="tweet_foot" target="blank_" href="https://twitter.com/jumpnowagency">
+                    <i data-feather="twitter"></i>
+                </a>
+            </div>
+        </div>
+
+    </footer>
+
+
+
+
+
+
+
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+        
+        function myFunction() {
+          if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+            navbar.classList.add("sticky_two")
+            
+          } else {
+            navbar.classList.remove("sticky");
+            navbar.classList.remove("sticky_two");
+          }
+        }
+        </script>
+
+
+
+
+    <script>
+        feather.replace()
+        function open_ham(){
+            document.getElementById("container_ham").style.display = "block"
+        }
+
+
+        const sliderElm = document.querySelector(".slider-container .slider");
+        const sliderElms = document.getElementById("slider_main");
+        const btnLeft = document.querySelector(".slider-container .btn-left");
+        const btnRight = document.querySelector(".slider-container .btn-right");
+        var buttonLeft = document.getElementById("btn_left_slider")
+        var buttonRight = document.getElementById("btn_right_slider")
+
+        const numberSliderBoxs = sliderElm.children.length;
+        const numberSliderBoxes = sliderElms.children.length;
+        let idxCurrentSlide = 0;
+
+        // Functions:
+        function moveSlider() {
+            let leftMargin = (sliderElm.clientWidth / numberSliderBoxs) * idxCurrentSlide;
+            let leftMarginTwo = (sliderElms.clientWidth / numberSliderBoxes) * idxCurrentSlide;
+            sliderElm.style.marginLeft = -leftMargin + "px";
+            sliderElms.style.marginLeft = -leftMarginTwo + "px";
+            console.log(sliderElm.clientWidth, leftMargin);
+        }
+
+        function moveLeft() {
+            if (idxCurrentSlide === 0) idxCurrentSlide = numberSliderBoxs - 1;
+            else idxCurrentSlide--;
+
+            moveSlider();
+        }
+
+        function moveRight() {
+            if (idxCurrentSlide === numberSliderBoxs - 1) idxCurrentSlide = 0;
+            else idxCurrentSlide++;
+
+            moveSlider();
+        }
+
+        // Event Listeners:
+        btnLeft.addEventListener("click", moveLeft);
+        btnRight.addEventListener("click", moveRight);
+        window.addEventListener("resize", moveSlider);
+        buttonLeft.addEventListener('click',moveLeft)
+        buttonRight.addEventListener('click',moveRight)
+    </script>
+</body>
+
+</html>

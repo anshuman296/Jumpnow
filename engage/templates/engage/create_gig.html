@@ -1,0 +1,150 @@
+{% extends 'engage/base.html' %}
+
+{% load static %}
+
+{% block my_css %}
+<link rel="stylesheet" href="{% static 'engage/css/main.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static "accounts/css/vendors/date-picker.css"%}">
+<link rel="stylesheet" type="text/css" href="{% static "accounts/css/vendors/timepicker.css"%}">
+{% endblock my_css %}
+
+
+{% block content %}
+    <!-- tap on top starts-->
+    
+    <!-- tap on tap ends-->
+    <!-- page-wrapper Start-->
+    
+      
+      <!-- Page Header Ends                              -->
+      <!-- Page Body Start-->
+      
+        <!-- Page Sidebar Start-->
+        {% include 'discovery/includes/_sidebar.html' %}
+        <!-- Page Sidebar Ends-->
+
+          <div class="page-body">
+        {% include 'accounts/includes/_messages.html' %}
+            <div class="spacer-small"></div>
+            <div class="row">
+              <div class="col-xl-6 col-sm-12">
+                <div class="card">
+                      <div class="card-header">
+                        <h5>New Gig</h5>
+                      </div>
+                      <div class="card-body">
+                        <form class="theme-form mega-form" method="post">
+                        {% csrf_token %}
+                          <h6>Basic Information</h6>
+                          <div class="form-group">
+                            <label class="col-form-label">Name of the gig</label>
+                            <input class="form-control" type="text" name="gigname" placeholder="Super Awesome Job!">
+                          </div>
+                          <div class="form-group">
+                            <label class="col-form-label">Description</label>
+                            <textarea name="description" class="form-control" cols="30" rows="10"></textarea>
+                          </div>
+                          <hr class="mt-4 mb-4">
+                          <h6>Bidding Information</h6>
+                          <div class="media mb-2">
+                            <label class="col-form-label m-r-10">Bidding On/Off</label>
+                            <div class="media-body text-right icon-state">
+                              <label class="switch">
+                                <input type="checkbox" checked="checked" id="bid-check" name="bid-check" data-bs-original-title="" title=""><span class="switch-state"></span>
+                              </label>
+                            </div>
+                          </div>
+
+                          <div class="bid-on" id="bid-on">
+                            <div class="mb-3 row g-3">
+                            <div class="col-xl-2">
+                              Bid Start
+                            </div>
+                              <div class="col-xl-5 col-sm-9">
+                              
+                                <div class="input-group">
+                                  <input class="datepicker-here form-control digits" placeholder="DD-MM-YYYY" id="bid-start-date" name="bid-start-date" type="text" data-language="en" data-bs-original-title="" title="">
+                                </div>
+                              </div>
+                              <div class="col-xl-5 col-sm-9">
+                                <div class="input-group clockpicker pull-center" data-placement="left" data-align="top" data-autoclose="true">
+                                  <input class="form-control" type="text" name="bid-start-time" value="13:14"><span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="mb-3 row g-3">
+                            <div class="col-xl-2">
+                              Bid End
+                            </div>
+                              <div class="col-xl-5 col-sm-9">
+                              
+                                <div class="input-group">
+                                  <input class="datepicker-here form-control digits" placeholder="DD-MM-YYYY" id="bid-end-date" name="bid-end-date" type="text" data-language="en" data-bs-original-title="" title="">
+                                </div>
+                              </div>
+                              <div class="col-xl-5 col-sm-9">
+                                <div class="input-group clockpicker pull-center" data-placement="left" data-align="top" data-autoclose="true">
+                                  <input class="form-control" type="text" name="bid-end-time" value="13:14"><span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <hr class="mt-4 mb-4">
+                        <h6 class="pb-4">Budget Information Information</h6>
+                          
+                          <div class="form-group m-form__group">
+                            <label>Gig Budget</label>
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend"><span class="input-group-text">$</span></div>
+                              <input class="form-control" name="budget" type="number" placeholder="USD">
+                            </div>
+                          </div>
+
+                          <hr class="mt-4 mb-4">
+                        <h6 class="pb-4">Budget Information Information</h6>
+
+                        <label for="">Platforms</label>
+
+                        <div class="row">
+                      <div class="col">
+                        <label class="d-block" for="chk-ani">
+                          <input class="checkbox_animated" id="chk-ani" name="platforms[]" value="Facebook" type="checkbox">Facebook
+                        </label>
+                        <label class="d-block" for="chk-ani1">
+                          <input class="checkbox_animated" id="chk-ani1" name="platforms[]" value="Youtube" type="checkbox">Youtube
+                        </label>
+                        <label class="d-block" for="chk-ani2">
+                          <input class="checkbox_animated" id="chk-ani2" name="platforms[]" value="Twitter" type="checkbox">Twitter
+                        </label>
+                        <label class="d-block" for="chk-ani3">
+                          <input class="checkbox_animated" id="chk-ani3" name="platforms[]" value="Instagram" type="checkbox">Instagram
+                        </label>
+                      </div>
+                    </div>
+                          
+                      <div class="card-footer">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <button class="btn btn-secondary">Cancel</button>
+                      </div>
+                        </form>
+
+                      </div>
+                    </div>
+              </div>
+            </div>
+        </div>
+        
+{% endblock content %}
+
+{% block my_js %}
+
+<script src="{% static "accounts/js/datepicker/date-picker/datepicker.js"%}"></script>
+<script src="{% static "accounts/js/datepicker/date-picker/datepicker.en.js"%}"></script>
+<script src="{% static "accounts/js/time-picker/jquery-clockpicker.min.js"%}"></script>
+<script src="{% static "accounts/js/time-picker/highlight.min.js"%}"></script>
+<script src="{% static "accounts/js/time-picker/clockpicker.js"%}"></script>
+<script src="{% static 'engage/js/bidnew.js' %}"></script>
+
+{% endblock my_js %}
+    

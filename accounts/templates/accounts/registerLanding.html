@@ -1,0 +1,60 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+{% block my_css %}
+
+<link rel="stylesheet" href="{% static "accounts/css/login.css" %}">
+
+{% endblock my_css %}
+
+{% block content %}
+
+<div class="accounts">
+<div class="ml-5">
+    <nav class="navbar navbar-light bg-transparent">
+      <a class="navbar-brand" href="/">
+        <img class="img-fluid for-light" src="{% static "accounts/images/JN_1.png"%}" style="width: 200px; height: auto;" alt="looginpage"><img class="img-fluid for-dark" src="{% static "accounts/images/JN_1.png"%}" alt="looginpage">
+      </a>
+    </nav>
+</div>
+  <div class="container">
+
+  <div class="row mt-2">
+    <div class="col-6" >
+      <img class="creator"  src="{% static "accounts/images/landing_register/creator_bg.png" %}" alt="" srcset="">
+      <div class="landing-info" id="creator-info">
+        I use the platform to create content for Jumpnow
+      </div>
+    </div>
+    <div class="col-6" >
+        <img class="marketer" src="{% static "accounts/images/landing_register/marketer_bg.png" %}" alt="" srcset="">
+      <div class="landing-info">
+        I use the platform to manage creator content
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-6">
+      <a href="{% url 'register_creator' %}" class="btn act-btn landing-btn btn-lg ct-btn ct-btn">I'm a Creator</a>
+    </div>
+    <div class="col-6 text-center">
+      <a href="{% url 'register' %}" class="btn act-btn landing-btn btn-lg mt-btn">I'm a Marketer</a>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12 text-center">
+      <div class="my-3">
+        <a href="{% url 'terms-and-conditions' %}" class="text-muted">Terms of Service</a> | <a href="{% url 'privacy_policy' %}" class="text-muted">Privacy Policy</a> <br>
+        <span class="text-muted" style="font-size: 12px;">Copyright 2021 © Jumpnow by OneStone</span>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+{% endblock %}

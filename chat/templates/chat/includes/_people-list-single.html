@@ -1,0 +1,11 @@
+{% load static %}
+
+<li class="clearfix single-chat-object" onclick="redirect('{{grp.get_absolute_url}}')"><img class="rounded-circle user-image" src="{{g.icon.url}}" alt="">
+    <div class="status-circle away"></div>
+    <div class="about">
+    <div class="name">{{g.name|title}}</div>
+    <div class="status" id="rsb-g{{grp.id}}">{{g.description|title}}  </div>
+    <span id="rsb-t{{grp.id}}" class="msg-time"></span>
+
+    </div>
+</li>

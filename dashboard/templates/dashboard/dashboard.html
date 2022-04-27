@@ -1,0 +1,469 @@
+{% extends 'dashboard/base_creator.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+
+{% load widget_tweaks %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% block content_creator %}
+
+<style>
+    .modal_plus{
+        position: fixed;
+        top: 40px;
+        left: 35%;
+        height: 350px;
+        width: 500px;
+        background: white;
+        border: 1px solid rgba(128, 128, 128, 0.158);
+        padding: 10px 15px;
+    }
+
+
+    .close_btn_{
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+    }
+
+    .close_btn_ svg{
+        cursor: pointer;
+    }
+
+    .icon_modal{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .icon_text span{
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 10px;
+        display: block;
+        margin-left: 10px;
+    }
+
+    .username_container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+
+    .enter_username{
+        width: 315px;
+        padding:10px 15px;
+        border: none;
+        background: rgba(128, 128, 128, 0.11);
+        border-radius: 5px;
+        outline: none;   
+    }
+
+    .form_modal{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form_modal label{
+        font-size: 14px;
+        font-weight: 300;
+    }
+
+    .username_label{
+        margin-bottom: 30px;
+    }
+
+    .save_modal_form{
+        width: 170.41px;
+        height: 44.54px;
+        background: #DA001B;
+        border-radius: 5.80563px;
+        border: none;
+        color: white;
+    }
+
+    @media screen and (max-width:950px) {
+        .modal_plus{
+            left: 25%;
+        }
+    }
+
+    @media screen and (max-width:850px) {
+        .modal_plus{
+            left: 15%;
+        }
+    }
+
+    @media screen and (max-width:648px) {
+        .modal_plus{
+            left: 10%;
+            width: 450px;
+            top: 80px;
+        }
+    }
+
+
+    @media screen and (max-width:528px) {
+        .modal_plus{
+            left: 15%;
+            width: 350px;
+        }
+    }
+
+
+    @media screen and (max-width:528px) {
+        .modal_plus{
+            left: 10%;
+            width: 338px;
+        }
+
+        .enter_username{
+            width: 290px;
+        }
+    }
+
+
+
+
+ 
+
+
+
+</style>
+
+
+
+<section class="section_dashboard">
+    <div class="social_icons_new" id="social_icons_new">
+        <div class="icon_set_1">
+            <!-- Icon 1 -->
+            <div class="icon_set_container">
+                <div class="icons_card card_1">
+                    <!-- <div class="icon_main"> -->
+                    <img class="img_social_fb" src="{% static 'dashboard/images/facebook_1.png' %}" alt="">
+                    <!-- </div> -->
+                    <div class="icon_desc">
+                     <a >
+                        Facebook
+                     </a>
+                       <!-- <a href="{% provider_login_url 'facebook' method= 'js_sdk' %}">Facebook</a> -->
+
+
+                    </div>
+                    <div class=" twitter">
+                        {% if 'facebook' in connected_accounts %}
+                        <button class="btn connect-btn success" disabled>
+                            <i style="color: black;" class="fas fa-check"></i>
+                        </button> {% else %}
+                        <!-- href="{% url 'social:begin' 'facebook' %}" -->
+                        <a  class="btn connect-btn" id="facebook-connect-button">
+                            <i class="fas fa-plus" id="plus_btn_inss"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <span class="icon_set_border set_1"></span>
+            </div>
+
+
+            <!-- Icon-2 -->
+            <div class="icon_set_container">
+                <div class="icons_card card_2">
+                    <!-- <div class="icon_main"> -->
+                    <img class="img_social_twt" src="{% static 'dashboard/images/blue_twitter.svg' %}" alt="">
+                    <!-- </div> -->
+                    <div class="icon_desc">
+                        <a>
+                        Twitter
+                        </a>
+                    </div>
+                    <div class=" twitter">
+                        {% if 'twitter' in connected_accounts %}
+                        <button class="btn connect-btn success" disabled>
+                            <i style="color: black;" class="fas fa-check"></i>
+                        </button> {% else %}
+                        <a href="{% url 'social:begin' 'twitter' %}" class="btn connect-btn" id="twitter-connect-button">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <span class="icon_set_border set_2"></span>
+            </div>
+        </div>
+        <div class="icon_set_2">
+            <!-- Icon-2 -->
+            <div class="icon_set_container">
+                <div class="icons_card card_3">
+                    <!-- <div class="icon_main"> -->
+                    <img class="img_social_ig" src="{% static 'dashboard/images/instagram.png' %}" alt="">
+                    <!-- </div> -->
+                    <div class="icon_desc">
+                        Instagram
+                    </div>
+                    <div class=" instagram">
+                        {% if 'instagram' in connected_accounts %}
+                        <button class="btn connect-btn success" disabled>
+                            <i style="color: black;" class="fas fa-check"></i>
+                        </button> {% else %}
+                        <a class="btn connect-btn" id="instagram-connect-button">
+                            <i class="fas fa-plus" id="plus_btn_ins"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <span class="icon_set_border set_3"></span>
+            </div>
+            <!-- Icon-4 -->
+            <div class="icon_set_container">
+                <div class="icons_card card_4">
+                    <!-- <div class="icon_main"> -->
+                    <img class="img_social_yt" src="{% static 'dashboard/images/youtube.png' %}" alt="">
+                    <!-- </div> -->
+                    <div class="icon_desc">
+                        Youtube
+                    </div>
+                    <div class="youtube">
+                        {% if 'youtube' in connected_accounts %}
+                        <button class="btn connect-btn success" disabled>
+                            <i style="color: black;" class="fas fa-check"></i>
+                        </button> {% else %}
+                        <a href="{% url 'youtube_connect' %}" style="color: black;">
+                            <a class="btn connect-btn" id="youtube-connect-button">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <span class="icon_set_border set_4"></span>
+            </div>
+        </div>
+    </div>
+
+    <section class="active" data-set-target id="dashboard">
+        <div class="dashboard_text_container">
+            <div class="text_dashboard_1">
+                <span>
+                    One Platform that connects
+                </span>
+            </div>
+            <div class="text_dashboard_mid">
+                <span>
+                    you to brands 
+                </span>
+            </div>
+            <div class="text_dashboard_2">
+
+                <span>
+                    and multiple Campaigns
+                </span>
+
+            </div>
+        </div>
+
+        <div class="chat_button">
+            <button>
+                <a href="">
+                    <i data-feather="message-circle"></i>
+                </a>
+            </button>
+        </div>
+
+
+
+    </section>
+</section>
+
+
+
+<div class="modal_plus" id="modal_plus">
+
+    <div class="close_btn_">
+        <i onclick="this.parentNode.parentNode.style.display = 'none'" data-feather="x" id="x_btn"></i>
+    </div>
+
+    <div class="icon_modal">
+        <div class="icon_">
+            <img class="img_social_ig" src="{% static 'dashboard/images/instagram.png' %}" alt="">
+        </div>
+        <div class="icon_text">
+            <span>Instagram</span>
+        </div>
+    </div>
+
+    <div class="username_container">
+        <form method="post" action="{% url 'insta_temp' %}" class="form_modal">
+            {% csrf_token %}
+            
+                    <div class="username_label">
+                        <label for="username">Enter Your Username</label> <br>
+                    <input class="enter_username" type="text" name="username" placeholder="@yourUsername" value="@">
+                    </div>
+
+                <button class="save_modal_form">Save</button>
+           
+        </form>
+    </div>
+
+
+
+
+
+
+</div>
+
+
+{#-------------Facebook Modal-------------#}
+    <div class="modal fade" id="facebook-connect-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Connect your Facebook Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'facebook_connect' %}" id="facebook-connect-form" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3 modal-padding">
+                                    <label class="form-label" for="facebook-username">Facebook Username</label>
+                                    <input class="form-control facebook_1" id="facebook-username" name="facebook-username" type="text" placeholder="Username" required="required" data-bs-original-title="" title="">
+                                </div>
+                                <button class="btn btn-square btn-light button_connect" id="facebook-connect-btn" type="submit" title="">Connect</button>
+                                <img src="{% static " accounts/images/loader/loader-contact.gif "%}" id="fb-loading" style="width: 20px; height: auto;" alt="">
+                                <span id="fb-warning" class="txt-warning" style="display:none;"><i
+                                        class="fa fa-warning"></i></span>
+                                <span id="fb-success" class="txt-success">
+                                    <p>facebook account connected successfully!</p>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#-------------Facebook Modal End-------------#} {#-------------Twitter Modal--------------#}
+    <div class="modal fade" id="twitter-connect-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Connect your Twitter Account</h5>
+                    <button type="button" data-dismiss="modal" aria-label="Close" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'twitter_connect' %}" id="twitter-connect-form" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3 modal-padding">
+                                    <label class="form-label" for="twitter-username">Twitter Username</label>
+                                    <input class="form-control twitter_1" id="twitter-username" name="twitter-username" type="text" placeholder="Username" required="required" data-bs-original-title="" title="">
+                                </div>
+                                <button class="btn btn-square btn-light button_connect" id="twitter-connect-btn" type="submit" title="">Connect</button>
+                                <img src="{% static " accounts/images/loader/loader-contact.gif "%}" id="it-loading" style="width: 20px; height: auto;" alt="">
+                                <span id="it-warning" class="txt-warning" style="display:none;"><i
+                                        class="fa fa-warning"></i></span>
+                                <span id="it-success" class="txt-success">
+                                    <p>twitter account connected successfully!</p>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#-------------Twitter Modal End--------------#} {#-------------Instagram Modal--------------#}
+    <div class="modal fade" id="instagram-connect-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Connect your Instagram Account</h5>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'instagram_connect' %}" id="instagram-connect-form" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3 modal-padding">
+                                    <label class="form-label" for="instagram-username">Enter your Instagram Username</label>
+                                    <input class="form-control instagram_1" id="instagram-username" name="instagram-username" type="text" placeholder="Username" required="required" data-bs-original-title="" title="">
+                                </div>
+                                <button class="btn btn-square btn-light button_connect" id="instagram-connect-btn" type="submit" title="">Connect</button>
+                                <img src="{% static " accounts/images/loader/loader-contact.gif "%}" id="ic-loading" style="width: 20px; height: auto;" alt="">
+                                <span id="ic-warning" class="txt-warning" style="display:none;"><i
+                                        class="fa fa-warning"></i></span>
+                                <span id="ic-success" class="txt-success">
+                                    <p>Instagram account connected successfully!</p>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#-------------Twitter Modal End--------------#} {#-------------Youtube Modal--------------#}
+    <div class="modal fade" id="youtube-connect-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Connect your Youtube Account</h5>
+                    <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'youtube_connect' %}" id="youtube-connect-form" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3 modal-padding">
+                                    <label class="form-label" for="youtube-username">Youtube Username</label>
+                                    <input class="form-control youtube_1" id="youtube-username" name="youtube-username" type="text" placeholder="Username" required="required" data-bs-original-title="" title="">
+                                </div>
+                                <button class="btn btn-square btn-light button_connect" id="youtube-connect-btn" type="submit" title="">Connect</button>
+                                <img src="{% static " accounts/images/loader/loader-contact.gif "%}" id="yt-loading" style="width: 20px; height: auto;" alt="">
+                                <span id="yt-warning" class="txt-warning" style="display:none;"><i
+                                        class="fa fa-warning"></i></span>
+                                <span id="yt-success" class="txt-success">
+                                    <p>Youtube account connected successfully!</p>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {#-------------Youtube Modal End--------------#}
+
+
+
+    <script>
+
+        let icon_open = document.getElementById('plus_btn_ins')
+        document.getElementById('modal_plus').style.display = 'none'
+        icon_open.addEventListener('click',function(){
+            document.getElementById('modal_plus').style.display = 'block'
+        })
+
+    </script>
+
+
+{% endblock content_creator %}

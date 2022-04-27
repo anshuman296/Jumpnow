@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>List</h3>
+<button><a href="{% url 'addcampaignlist' %}">Create List</a></button>
+<button><a href="{% url 'allinfluencerslist' %}">Search Results</a></button>
+<br>
+<table>
+    <tr>
+        <th>List Name</th>
+        <th>Platform</th>
+        <th>Total Influencers</th>
+    </tr>
+    {% for list in campaignlists %}
+    <tr>
+        <td>{{ list.list_name }}</td>
+        <td>{{ list.platform }}</td>
+        <td></td>
+        <td><button><a href="{% url 'viewinfluencerlist' list.id  %}">View List</a></button></td>
+        <!-- <td><button><a href="">Edit List</a></button></td> -->
+    </tr>
+    {% endfor %}
+</table>
+<!-- {% for list in campaignlists %}
+    {{ list.list_name }} -->
+{#    <form  method='post' action="{% url 'add-to-campaign-list' %}" >#}
+{#      <label for="fname">List:</label>#}
+{#      <select id="campaign_list" name="campaign_list">#}
+{#        <option value="volvo">Volvo</option>#}
+{##}
+{#      </select>#}
+{#      <input type="hidden" id="profiles" name="profiles" value="{{ list.id }}">#}
+{#      <input type="submit" value="Submit">#}
+{#    </form><br>#}
+
+<!-- {% endfor %} -->
+
+
+</body>
+</html>

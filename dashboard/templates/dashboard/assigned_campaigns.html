@@ -1,0 +1,115 @@
+{% extends 'dashboard/base_creator.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block content_creator %}
+
+<div class="top_list">
+    <div class="back_to_menu">
+        <a href="{% url 'dashboard_new' %}">
+            <i data-feather="chevron-left">
+            </i>
+        </a>
+        <span>
+        Campaign
+    </span>
+    </div>
+    <div class="search_and_create">
+        <input type="text" placeholder="search list name & platform" class="inputSearchList" id="myInput" onkeyup="searchFun()">
+        <span>
+            <i data-feather="search" ></i>
+        </span>
+    </div>
+</div>
+
+
+<div class="sort_by">
+    <!-- <select name="list" id="sort_list">
+    <option value="def">Sort By</option>
+    <option value="name">name</option>
+    <option value="date">date</option>
+</select> -->
+    <button onclick="sortTable(0)" style="cursor: pointer;color: white;background: red;padding: 6px 10px;border-radius: 5px;">
+    sort by name
+</button>
+</div>
+
+
+<div class="table_campaign_list">
+    <table id="customers" class="campaign_show">
+        <tr>
+            <th class="list_name">Name</th>
+            <th class="platform">Status</th>
+            <th class="total_influencers">Deliverable</th>
+            <th class="total_influencers">Cost</th>
+            <th class="total_influencers">Content</th>
+            <!-- <th>View</th> -->
+        </tr>
+        {% for campaign in campaigns%}
+        <div>
+            <tr>
+                <td class="td_name">
+                    <!-- <img src="{% static 'discovery/images/cards/logo_short@2x.png' %}" alt="" height="28px" width="28px"> {{ list.list_name }} -->
+                    <div class="table_list_content_left">
+                        <img src="{% static 'discovery/images/cards/logo_short@2x.png' %}" alt="" height="28px" width="28px">
+
+                        <span class="list_shown_name">
+                            {{ campaign.campaign_name }}
+                        </span>
+                    </div>
+                </td>
+                <td>
+                    <div class="table_list_content_right">
+                        <span style=" color:green">active</span>
+                    </div>
+
+                </td>
+
+                <td id="deliverables">
+                    <button>
+                        
+                            add +
+                        
+                    </button>
+                </td>
+
+                <td id="cost" class="cost">
+                    <div>
+                        <a href="{% url 'campaign_details' campaign.id %}"> 
+                        View
+                        </a>
+                    </div>
+                    <!-- <div>
+                        Status:
+                    </div> -->
+                </td>
+
+
+                <td id="Content" class="content">
+                    <div>
+                        <a href="{% url 'show_deliverables' 2 %}">View</a>
+                        
+                    </div>
+                </td>
+
+
+
+                <!-- <td>
+                    <button class="view_list_btn">
+                        
+                    </button>
+                </td> -->
+            </tr>
+        </div>
+        
+    </table>
+    {% endfor %}
+</div>
+
+
+<!-- <h5 style="color: blue">Assigned Campaigns</h5><br>
+{% for campaign in campaigns%}
+    <h5>Campaign Name: <span style="color: red">{{ campaign.campaign_name }}</span> &nbsp; <a href="{% url 'campaign_details' campaign.id %}"> View Details</a></h5><br>
+{% endfor %} -->
+
+{% endblock content_creator %}

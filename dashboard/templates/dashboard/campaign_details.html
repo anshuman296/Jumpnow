@@ -1,0 +1,275 @@
+{% extends 'dashboard/base_creator.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block content_creator %}
+
+
+<style>
+    .camp_main{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    .camp_details_container{
+        width: 933.12px;
+        height: 476.88px;
+        background: #FAF9F9;
+        box-shadow: -1px -2px 4px rgb(0 0 0 / 7%), 1px 2px 4px rgb(0 0 0 / 7%);
+        padding: 2%;
+            }
+
+
+    .upper_cost{
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    .offered_amnt{
+        height: 70px;
+        border-bottom: 1px solid red;
+        margin-top: 50px;
+    }
+
+    .req_amnt{
+        height: 90px;
+        border-bottom: 1px solid red;
+    }
+
+    .status_form{
+        display: flex;
+        align-items: center;
+        height: 80px;
+        justify-content: space-between;
+    }
+
+    .status_form_input{
+        width: 342.34px;
+        height: 49.33px;
+        background: #FFFFFF;
+        box-shadow: -1px -4px 4px rgba(230, 230, 230, 0.25), 1px 2px 4px rgba(169, 169, 169, 0.25);
+        border-radius: 9px;
+        display: flex;
+        justify-content: space-between;
+        padding-right: 10px;
+    }
+
+    .amount{
+        border: none;
+        outline: none;
+        padding-left: 10px;
+    }
+
+    .amount:active{
+        border: none !important;
+        outline: none;
+    }
+
+    .amount:hover{
+        border: none !important;
+        outline: none;
+    }
+    
+    .submit_form_input{
+        width: 70.63px;
+        height: 26.27px;
+        background: linear-gradient(0deg, #FEC4CC, #FEC4CC), #FFFFFF;
+        border-radius: 4px;
+        color: white;
+        border: none;
+        margin-top: 12px;
+    }
+
+    .settle_amount{
+        display: flex;
+        margin-top: 20px;
+
+    }
+
+    .settle_amnt_btn{
+        width: 170.41px;
+        height: 44.54px;
+        background: #DA001B;
+        border-radius: 5.80563px;
+        border: none;
+        color: white;
+    }
+
+
+
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+
+
+</style>
+<div class="campaign_status_container">
+    <div class="upper_camp">
+       <a href="{% url 'accepted_campaigns'  %}"> <i data-feather ="chevron-left"></i>  </a> Campaign Details
+    </div>
+    
+
+    </div>
+
+    <div class="camp_main">
+        
+    <div class="camp_details_container">
+
+
+        <div class="upper_cost">
+            <div>
+                <span>
+                    {{ campaign.campaign_name}}
+                </span>
+
+            </div>
+            <div>
+
+ 
+
+
+            {% if assigned.settled %} Name:{{ campaign.campaign_name}}<br>
+             Brief:{{ campaign.campaign_description }}<br> Deliverables:
+        <a href="{% url 'show_deliverables' assigned.id %}">Show deliverables</a><br><br>
+        <span style="color: blue">Settled Amount: {{ assigned.settled_amount }}</span><br>
+        <span style="color: blue"> Amount:</span> {% if assigned.payment %}
+        <span style="color: green">Paid</span> {% else %}
+        <span style="color: red"> Not paid</span> {% endif %}
+        
+        {% else %}
+        
+        
+        {% if assigned.accepted %} 
+        
+        <span>
+            <strong>
+                Status: 
+            </strong>
+        </span> <span style="color: forestgreen">Accepted</span>
+        
+        
+        
+    </div>
+</div>
+        
+<div style="display: none;">
+    <br>
+        
+    {% elif assigned.rejected%} Campaign Status: <span style="color: red">Rejected</span><br>{%
+    else %} Campaign Status: <span style="color: blue">Pending</span><br> {% endif %} Name:{{ campaign.campaign_name}}<br>
+    
+    Brief:{{ campaign.campaign_description }}<br> Deliverables:
+    <a href="{% url 'show_deliverables' assigned.id %}">Show deliverables</a>
+    
+</div>
+        
+        <div class="offered_amnt" >
+            Offered Amount:<span style="color: blue">{{ assigned.offered_budget }}</span>
+        </div>
+
+
+        <div class="req_amnt" >
+            Requested Amount:<span style="color: red">{{ assigned.request_budget }}<br></span>
+        </div>
+        
+        
+        <div>
+            <div class="status_form">
+                {% if assigned.requested_amount %} 
+        
+                <span>
+                    Negotiation Status: <span style="color: blue">Pending</span><br> {% else %}
+                </span>
+    
+            <span>Negotiation Status: Enter Amount to negotiate</span>
+
+                <form class="status_form_input" action="{% url 'negotiate' assigned.id %}" method="post">
+                    {% csrf_token %}
+                    <input class="amount" placeholder="New Requested Amount" id="amount" type="number" name="amount" value="">
+                    <input class="submit_form_input" type="submit" value="Send">
+                </form>
+            </div>
+            
+            <div class="settle_amount">
+                <form action="{% url 'settle_amount' assigned.id %}" method="post">
+                    {% csrf_token %}
+                        <input type="hidden" id="amount" name="amount" value="{{ assigned.request_budget }}">
+                        <input class="settle_amnt_btn" type="submit" value="Settle">
+                    </form>
+            </div>
+            {% endif %}
+        </div>
+
+
+            <!--  -->
+            {% endif %} 
+    </div>
+    </div>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="display: none;">
+    {# <span style="color: blue">Campaign Details:</span><br>#} {# {% if assigned.settled %}#} {# Name:{{ campaign.campaign_name}}<br>#} {# Brief:{{ campaign.campaign_description }}<br>#} {# Deliverables:<a href="{% url 'show_deliverables' assigned.id %}">Show deliverables</a><br><br>#}
+    {##} {# <span style="color: blue">Settled Amount: {{ creator.settled_amount }}</span>#} {# {% endif %}#} {##} {# {% if assigned.accepted %}#} {# Campaign Status: <span style="color: forestgreen">Accepted</span><br>#} {# {% elif assigned.rejected%}#}
+    {# Campaign Status: <span style="color: red">Rejected</span><br>#} {# {% else %}#} {# Campaign Status: <span style="color: blue">Pending</span><br>#} {# {% endif %}#} {# Name:{{ campaign.campaign_name}}<br>#} {# Brief:{{ campaign.campaign_description
+    }}
+    <br>#} {# Deliverables:<a href="{% url 'show_deliverables' assigned.id %}">Show deliverables</a><br>#} {# Offered Amount: <span style="color: red">{{ assigned.offered_budget }}<br></span>#} {# Requested Amount: <span style="color: blue">{{ assigned.request_budget }}<br></span>#}
+    {# {% if assigned.requested_amount %}#} {##} {# Requested Amount: <span style="color: blue">{{ assigned.request_budget }}</span><br>#} {# Negotiation Status: <span style="color: blue">Pending</span>#} {##} {# {% else %}#} {#
+    <form action="{% url 'negotiate' assigned.id %}" method="post">#} {# {% csrf_token %}#} {# <label for="amount">Request Amount: </label>#} {# <input id="amount" type="text" name="amount" value="">#} {# <input type="submit" value="Ok">#} {# </form>#} {# {% endif %}#} 
+    
+</div>
+    
+    {% endblock content_creator %}

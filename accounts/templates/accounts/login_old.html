@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <script src="https://kit.fontawesome.com/c92a8baa98.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container_main">
+        <div class="row_main">
+            <div class="img_left content_left" style="height: 100vh;">
+                <!-- <img  src="{% static "accounts/images/new/login_landing.png"%}" width="100%"  > -->
+                <img src="{% static 'accounts/images/login_left_main.png' %}" width="100%" height="100%">
+            </div>
+            <div class="content_right">
+                <div class="container-content">
+                    <!-- <img class="logo" src="{% static "accounts/images/new/jn_logo.svg"%}" > -->
+                    <div class="static_content">
+                        <img class="logo_right" src="{% static "accounts/images/JN_1.png"%}">
+
+                        <div class="welcome_text">
+                            <span class="welcome_head">Welcome Back !</span>
+                            <div class="jumpin_text">
+                                <h1><span style="color:#FF485E">Jump In Now !</span></h1>
+                            </div>
+                        </div>
+
+                        <hr style="border: 1.5px solid #FF485E; background-color: #FF485E; width: 35%;margin-left: 0;">
+                    </div>
+
+                    <div class="container-form ">
+                        {% include 'accounts/includes/_messages.html' %}
+                        {% comment %}
+
+                        {% endcomment %}
+                        <form class="w-100 theme-form" method="POST" action="{% url 'index' %}">
+                            {% csrf_token %}
+                            <div class="form-group" style="font-size: 1.1rem; ">
+                                <input required type="text" class="form-control" name="username" id="staticEmail"
+                                    placeholder="Enter email/username                        ">
+                                    
+                                    <!-- placeholder="Enter email/username                                       &#xf0e0" -->
+                            </div>
+
+                            <div  class="form-group" style="margin-top: 7%;font-size: 1.1rem;  ">
+                                <input required id="password-field" type="password" name="password" class="form-control"
+                                placeholder="Confirm Password" >
+                            </div>
+
+                            <div class="forget_pass">
+                                <a href="{% url 'reset_password' %}" >
+                                    <p style="font-size: 14px;font-weight: 400;">Forgot password?</p>
+                                </a>
+                            </div>
+
+
+                            <div class="form-check">
+                                <input  class="form-check-input" type="checkbox" value="" id="flexCheckChecked" 
+                                    style="color: #FF485E;">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    Keep me signed in
+                                </label>
+                            </div>
+
+                            <button id="next1" type="submit" class="submit"
+                                style="font-weight: light; margin-top: 5%;background-color: #FF485E;">Log In</button>
+                        </form>
+                        <p style="color: #FF485E; font-size: medium;margin-bottom: 14px; ">By joining I agree to receive emails from JumpNow
+                        </p>
+
+                            <div style="margin-top:25px">
+                                <p style="font-size: 16px;font-weight: 400;">Dont have an account?
+                                    <a href="{% url 'register_landing' %}" style="text-decoration: none;">
+                                        <span style="color: #FF485E;">Sign Up Now</span>
+                                    </a>
+                                </p>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

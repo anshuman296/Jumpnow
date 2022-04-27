@@ -1,0 +1,151 @@
+body{
+    padding: 0%;
+    margin: 0%;
+    overflow: hidden;
+}
+
+.container-fluid{
+    padding-left: 0 ;
+}
+
+.container-content{
+    padding: 60px 60px 90px 85px;
+}
+
+p{
+    font-size: 1.5rem;
+    font-weight: lighter;
+}
+
+h1{
+    font-size: 2.8rem;
+}
+
+.logo{
+    margin-bottom: 10%;
+}
+
+.bar{
+    color: #FF485E ;
+    width: 5%;
+    height: 1px;
+}
+
+.social{
+   
+    border-radius: 15%;
+    background-color: white;
+    border: thin;
+    box-shadow: 0 1px 1px 0 rgba(0,0 , 0, 0.2);
+    width: 50px;
+    margin : 5% 0% 4% 5%;
+}
+
+.container-form{
+    
+  text-align: center;
+  position: relative;
+  -webkit-transition: all 2s ease;
+  transition: all 2s ease;
+  
+}
+
+  form{
+      position: absolute;
+  }
+
+  .form-control{
+    box-shadow: rgba(0, 0, 0, 0.14) 0px 3.6px 7px;
+    border-radius: 0.3rem;
+    border: white;
+  }
+
+  #form1{
+      left: 0px;
+  }
+  #form2{
+      left : 600px;
+      width: 100%;
+    font-size: 1rem;
+    margin-top: 10%;
+    /* font-weight: 400; */
+    /* line-height: 1.5; */
+    color: #495057;
+    /* border: 1px solid #ced4da; */
+    /* border-radius: ; */
+    /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;; */
+  }
+
+  #next2{
+margin-top: 5%;
+  }
+
+  #phone{
+    margin-top: 0%;
+    
+    font-size: 1.3rem;
+    color: #ced4da;
+    border: white;
+  }
+ .number{
+     margin-bottom: 10rem;
+
+ }
+  .dob{
+      margin-top: 0%;
+        width: 21%;
+      font-size: 1.1rem;
+      color: #808080;
+      border-radius: 10%;
+      box-shadow: rgba(0, 0, 0, 0.14) 0px 3.6px 7px;
+      border-radius: 0.3rem;
+      border: white;
+  }
+  
+.fa-eye{
+    margin-right: 12px;
+    color: #ced4da;
+}
+
+.fa-eye-slash{
+    margin-right: 12px;
+    color: #FF485E;
+}
+
+
+
+.btn-lg{
+    background-color: #FF485E;
+    border: #FF485E;
+    margin : 5% 0;
+    width: 50%;
+    
+}
+
+.btn:hover{
+    background-color: rgb(243, 241, 241);
+    color: #FF485E;
+   
+}
+
+.submit{
+    cursor: pointer;
+    transition: .3s;
+    border: transparent;
+}
+
+.submit:focus{
+   color: #FF485E;
+   border: #FF485E;
+   animation: anim-shadow .3s forwards;
+}
+
+@keyframes anim-shadow{
+    100%{
+        box-shadow: 0px 0px 50px 20px rgba(0,0 , 0, #FF485E );
+    }
+}
+
+button.pressed{
+    background-color: aliceblue;
+}

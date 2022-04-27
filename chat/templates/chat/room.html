@@ -1,0 +1,407 @@
+{% extends 'chat/base.html' %}
+
+{% load static %}
+
+{% block my_css %}
+<link rel="stylesheet" href="{% static 'chat/css/main.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock my_css %}
+
+
+{% block content %}
+    <!-- tap on top starts-->
+    
+    <!-- tap on tap ends-->
+    <!-- page-wrapper Start-->
+    
+      
+      <!-- Page Header Ends                              -->
+      <!-- Page Body Start-->
+      
+        <!-- Page Sidebar Start-->
+        {% include 'discovery/includes/_sidebar.html' %}
+        <!-- Page Sidebar Ends-->
+
+          <div class="page-body">
+        {% include 'accounts/includes/_messages.html' %}
+            <div class="spacer-small"></div>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col call-chat-sidebar col-sm-12">
+                <div class="card"  data-mh="chat-body-mh">
+                  <div class="card-body chat-body">
+                    <div class="chat-box">
+                      <!-- Chat left side Start-->
+                      <div class="chat-left-aside">
+                        <div class="people-list" id="people-list">
+                          <div class="search">
+                            <form class="theme-form">
+                              <div class="form-group">
+                                <input class="form-control" type="text" placeholder="search"><i class="fa fa-search"></i>
+                              </div>
+                            </form>
+                          </div>
+                          <ul class="list">
+                            {% for grp in groups_participated %}
+                                {% include 'chat/includes/_people-list-single.html' with g=grp %}
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      </div>
+                      <!-- Chat left side Ends-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col call-chat-body">
+                <div class="card"  data-mh="chat-body-mh">
+                  <div class="card-body p-0">
+                    <div class="row chat-box">
+                      <!-- Chat right side start-->
+                      <div class="col pr-0 chat-right-aside">
+                        <!-- chat start-->
+                        <div class="chat">
+                          <!-- chat-header start-->
+                          <div class="chat-header clearfix"><img class="rounded-circle" src="{{chatgroup.icon.url}}"  alt="">
+                            <div class="about">
+                              <div class="name">{{chatgroup.name|title}}<span class="font-primary f-12"></span></div>
+                              <div class="status">{{participants}}</div>
+                            </div>
+                            <ul class="list-inline header-icon-list float-left float-sm-right chat-menu-icons">
+                              {% comment %} <li class="list-inline-item"><a href="#"><i class="icon-clip"></i></a></li> {% endcomment %}
+                              <li class="list-inline-item">
+                                  <label for="fileupload" id="fileuploader">
+                                      <span class="txt-primary" style="font-size: 24px;">
+                                        <i class="fa fa-cloud-upload"></i>
+                                      </span>
+                                  <input id="fileupload" type="file" name="files[]" data-url="{% url 'save-file' chatgroup.id %}" multiple >
+                                  </label>
+
+                              </li>
+                              <li class="list-inline-item">
+                                <button class="btn btn-info" id="up_btn" disabled="disabled">Upload</button>
+                              </li>
+                              <li class="list-inline-item toogle-bar"><a href="#"><i class="icon-menu"></i></a></li>
+                            </ul>
+                          </div>
+                          <!-- chat-header end-->
+                          <div class="chat-history chat-msg-box msg-box custom-scrollbar">
+                            <ul id="new-message-chat">
+                              
+                            <li class="clearfix">
+                              <div id="progress">
+    <div class="bar" style="width: 0%;"></div>
+</div>
+                            </li>
+                            </ul>
+                          </div>
+                          <!-- end chat-history-->
+                          <div class="chat-message clearfix">
+                            <div class="row">
+                              <div class="col-xl-12 d-flex">
+                                <div class="input-group text-box">
+                                  <input class="form-control input-txt-bx" id="chat-message-input" type="text" name="message-to-send" placeholder="Type a message......">
+                                  <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">SEND</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end chat-message-->
+                          <!-- chat end-->
+                          <!-- Chat right side ends-->
+                        </div>
+                      </div>
+                      <div class="col pl-0 chat-menu">
+                        <ul class="nav nav-tabs border-tab nav-primary" id="info-tab" role="tablist">
+                          <li class="nav-item"><a class="nav-link active" id="contact-info-tab" data-toggle="tab" href="#info-contact" role="tab" aria-selected="false">PROFILE</a>
+                            <div class="material-border"></div>
+                          </li>
+                        </ul>
+                        <div class="tab-content" id="info-tabContent">
+
+
+                          <div class="tab-pane fade show active" id="info-contact" role="tabpanel" aria-labelledby="contact-info-tab">
+                            <div class="user-profile">
+                              <div class="image">
+                                <div class="avatar text-center">
+                                
+                                {% if other_user.profile.profile_image %}
+                                  <img src="{{other_user.profile.profile_image.url}}" style="width: 100px; height: auto;" alt="" srcset="">
+                                {% else %}
+                                    <img src="https://ui-avatars.com/api/?name={{other_user.first_name}}+{{other_user.last_name}}"  alt="" srcset="">
+                                {% endif %}
+                                </div>
+                              </div>
+                              <div class="user-content text-center">
+                                <h5 class="text-uppercase">{{other_user.first_name}} {{other_user.last_name}}  </h5>
+                                <div class="social-media">
+                                  <ul class="list-inline">
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-rss"></i></a></li>
+                                  </ul>
+                                </div>
+                                <hr>
+                                <div class="follow text-center">
+                                  <div class="row">
+                                    <div class="col border-right"><span>Following</span>
+                                      <div class="follow-num">236k</div>
+                                    </div>
+                                    <div class="col"><span>Follower</span>
+                                      <div class="follow-num">3691k</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <hr>
+                                <div class="text-center">
+                                  <p class="mb-0"> {{other_user.username}} </p>
+                                  <p class="mb-0"> {{other_user.profile.mobile_number}} </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+        </div>
+        
+        
+{% endblock content %}
+
+{% block my_js %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/10.31.0/js/jquery.fileupload.min.js" integrity="sha512-qPkNWpUqYz8bhO5bGNPBvlCB9hPZBil2ez5Mo8yVmpCKI315UDDPQeg/TE7KwZ+U/wdSO8JguwVxYY/Ha7U+vQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  $( document ).ready(function() {
+    window.file_count = 0;
+    $(function () {
+      $("#up_btn").on('click', function (e) {
+          e.preventDefault();
+          console.log("EVENT TRIGGERED")
+          $("#up_btn").trigger("uppity");
+      });
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        limitMultiFileUploads: 5,
+        add: function (e, data) {
+          window.file_count += 1  
+          $("#up_btn").prop('disabled', false);
+          var count_icon = `<span class="badge rounded-pill badge-light text-dark">${window.file_count}</span>`;
+          $("#up_btn").html(`Upload ${count_icon}`);
+          console.log("ADDED")
+        $("#up_btn").on('uppity', function (e) {
+                data.submit();
+            });
+        },
+        done: function (e, data) {
+          window.file_count = 0 
+          $("#up_btn").html(`Upload`);
+          $("#up_btn").prop('disabled', true);
+            $.each(data.result.files, function (index, file) {
+              var link = `<a href="${file.url}" target="_blank">View Attachment</a>`
+                broadcastMessage(link, "{{request.user.username|title}}")
+            });
+        }
+    });
+});
+});
+</script>
+<script>
+        
+        const roomId = '{{chatgroup.id}}'
+        var tempDaysWeekdays = [];
+
+        const chatSocket = new WebSocket(
+            `ws://${window.location.host}/ws/chat/${roomId}/`
+        );
+
+        function save_chat_message(message, room) {
+          $.ajax({
+            type: "POST",
+            url: "{% url 'save_message' %}",
+            data: {"message": message, "room_id": room},
+            success: console.log('success'),
+          });
+        }
+        
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            broadcastMessage(data.message, data.username)
+            scrollBottom()
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+            console.error(e);
+        };
+
+        document.querySelector('#chat-message-input').focus();
+        document.querySelector('#chat-message-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                const messageInputDom = document.querySelector('#chat-message-input');
+                const message = messageInputDom.value;
+                chatSocket.send(JSON.stringify({
+                    'message': message,
+                    'message_type': 'text',
+                    'image_caption': null
+                }));
+                save_chat_message(message, roomId);
+                messageInputDom.value = '';
+            }
+        };
+
+
+        
+
+
+        function scrollBottom() {
+            let msgbox = document.querySelector(".msg-box")
+            msgbox.scrollTop = msgbox.scrollHeight
+        }
+
+        function getTime(msg_time) {
+            if (msg_time) {
+                // define as Date so we can convert to acceptable date time format (with out letter T, ex. 2020-10-10T06:50:14.751 )
+                console.log(msg_time);
+                temp = new Date(msg_time); 
+
+                // suffix UTC so it will render as local time when it use toLocalString
+                var today = new Date(`${temp}`); 
+            } else {
+                var today = new Date();
+            }
+
+            // format & render to local time
+            let time = today.toLocaleString([], { hour: '2-digit', minute: '2-digit' });
+            return time
+
+        }
+    
+        function broadcastMessage(msg, user, msg_time) { 
+            // create a new div element 
+            let newDiv = document.createElement("li"); 
+            newDiv.classList.add("clearfix");
+            // and give it some content 
+            //if (msg_type == 'image') {
+            //    msg = `<img src="${msg}"> <br/> ${img_caption}`;
+            //}
+
+            if (user == '{{request.user.username|title}}' || user == '{{request.user.username}}') {
+                var msg1 = `<div class="message other-message pull-right">
+                                <div class="message-data"><span class="message-data-time">${getTime(msg_time)}</span></div>${msg}
+                            </div>`
+            } else {
+                var msg1 = `<div class="message my-message">
+                                <div class="message-data text-right"><span class="message-data-time">${getTime(msg_time)}</span></div>${msg}
+                            </div>`
+            }
+            
+            if (msg_time) {
+                showDatesWeekDays(msg_time)
+            } else {
+                showDatesWeekDays(new Date())
+            }
+
+            newDiv.innerHTML = msg1;  
+
+            // add the newly created element and its content into the DOM 
+            let currentDiv = document.getElementById("new-message-chat"); 
+            $(currentDiv).append(newDiv);
+
+            setSidebarMessage(user, msg);
+
+        }
+
+
+        function redirect(url) {
+            window.location = url;
+        }
+
+        function goRoomMsg() {
+            document.querySelector('#chat-message-input').focus();
+            document.querySelector('#room-message').style.display = 'grid';
+            document.querySelector('#room-preview-img').style.display = 'none';
+            document.getElementById("snipped-big-img").src = '';
+            document.getElementById("snipped-small-img").src = '';
+            document.querySelector('#add-caption-input').value = '';
+        }
+
+        function setSidebarMessage(user, msg) {
+            // side bar message
+            //if (msg_type == 'image') {
+            //    document.getElementById('rsb-g{{chatgroup.id}}').innerHTML = 'Photo';
+            //} else {
+            //}
+            document.getElementById('rsb-g{{chatgroup.id}}').innerHTML = `${msg}`;
+            document.getElementById('rsb-t{{chatgroup.id}}').innerHTML = getTime();
+        }
+
+
+
+
+
+        function showDatesWeekDays(date_created) {
+            // add the newly created element and its content into the DOM 
+            
+            dt = new Date(date_created)
+            if (!tempDaysWeekdays.includes(dt.toLocaleDateString())) {
+                let newDiv = document.createElement("div"); 
+                let currentDiv = document.getElementById("new-message-chat"); 
+                let parentDiv = currentDiv.parentNode;
+                let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']; 
+
+                if (dt.toDateString() == new Date().toDateString()) {
+                    // display TODAY in message
+                    date_weekday = 'TODAY';
+                } else if(dt > getDateBefore()) {
+                    // display week day in message
+                    date_weekday = days[dt.getDay()].toUpperCase()
+                } else {
+                    // display date in message
+                    date_weekday = dt.toLocaleDateString();
+                }
+
+                newDiv.style.display = "grid";
+                newDiv.innerHTML = `<div class="date_weekday"><span>${date_weekday}</span></div>`
+                parentDiv.insertBefore(newDiv, currentDiv); 
+
+                tempDaysWeekdays.push(dt.toLocaleDateString())
+            }
+
+        }
+        
+        function getDateBefore(days=7) {
+            // calculate the last 7 days date
+            // 7 (days) * 24 (hours) * 60 (minutes) * 60 (seconds) * 1000 (milliseconds ) = 604800000 or 7 days in milliseconds.                
+            daysInMs= days * 24 * 60 * 60 * 1000
+            return new Date(Date.now() - daysInMs)
+        }
+
+        function loadMessage() {
+            fetch("{% url 'history' chatgroup.id %}")
+                .then( response => response.json() )
+                .then( data => {
+                    for (let msg of data) {
+                        broadcastMessage(msg.message, msg.username__username, msg.date_created)
+                    }
+                    scrollBottom()
+                })
+        }
+        loadMessage()
+        
+
+    </script>
+{% endblock my_js %}
+    

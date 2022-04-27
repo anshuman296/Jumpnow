@@ -1,0 +1,134 @@
+{% extends 'discovery/search_base.html' %} {% load static %} {% block content_one %}
+
+<section class="right " id="right_lists" data-set-targets>
+    <div class="top_list">
+        <div class="back_to_menu">
+            <a href="/discovery/">
+                <i data-feather="chevron-left">
+                </i>
+            </a>
+            <span>
+            List
+        </span>
+        </div>
+        <div class="search_and_create">
+            <input type="text" placeholder="search list name & platform" class="inputSearchList" id="myInput" onkeyup="searchFun()">
+            <span>
+                <i data-feather="search" ></i>
+            </span>
+            <button onClick="modalOpenCreate()" class="button_create_list">
+
+                Create List
+            </button>
+        </div>
+    </div>
+
+    <div class="sort_by">
+        <!-- <select name="list" id="sort_list">
+        <option value="def">Sort By</option>
+        <option value="name">name</option>
+        <option value="date">date</option>
+    </select> -->
+        <button onclick="sortTable(0)" style="cursor: pointer;color: white;background: red;padding: 6px 10px;border-radius: 5px;">
+        sort by name
+    </button>
+    </div>
+
+    <div class="table_campaign_list">
+        <table id="customers">
+            <tr>
+                <th class="list_name">List Name</th>
+                <th class="platform">Platform</th>
+                <th class="total_influencers">Total Influencers</th>
+            </tr>
+            {% for list in campaignlists %}
+            <div>
+                <tr>
+                    <td class="td_name">
+                        <!-- <img src="{% static 'discovery/images/cards/logo_short@2x.png' %}" alt="" height="28px" width="28px"> {{ list.list_name }} -->
+                        <div class="table_list_content_left">
+                            <img src="{% static 'discovery/images/cards/logo_short@2x.png' %}" alt="" height="28px" width="28px">
+
+                            <span class="list_shown_name">
+                                {{ list.list_name }}
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table_list_content_mid">
+                            <img src="../../static/discovery/images/{{list.platform }}.svg" alt="" height="17px" width="30px">
+                            <!-- "../../static/discovery/images/{{ list.platform }}.svg"  -->
+                            <span>
+                                
+                                {{ list.platform }}
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table_list_content_right">
+                            <span>63</span>
+                            <button class="view_list_btn">
+                                <a target="_blank" href="{% url 'viewinfluencerlist' list.id  %}">View List</a>
+                            </button>
+                            <i data-feather="edit-2"></i>
+                        </div>
+
+                    </td>
+                </tr>
+            </div>
+            {% endfor %}
+        </table>
+    </div>
+
+
+    <div class='modal-wrapper'>
+        <div class='modal'>
+            <div class="modal_close_container">
+                <button class='modal-close'>
+                        <i data-feather="x"></i>
+                    </button>
+            </div>
+
+            <div>
+                <form method='post' class="form_add_to_list_create" action=" {% url 'addcampaignlist'  %} ">
+                    <div class="create_list_heading ">
+                        <span class="heading_create_list">
+                                Create List
+                            </span>
+                    </div>
+                    {% csrf_token %}
+                    <!--  -->
+
+                    <div class="list_name">
+                        List Name: <input type="text" name="list_name">
+
+                        <!-- List Name:{{form.list_name}} -->
+                    </div>
+
+                    <!--  -->
+                    <div class="select_platform">
+                        <label for="">Select Platform</label>
+                        <select name="platform" id="">
+                                <option value="Instagram">Instagram</option>
+                                <option value="Facebook">Facebook</option>
+                                <option value="Twitter">Twitter</option>
+                                <option value="Youtube">Youtube</option>
+                              </select>
+                    </div>
+
+                    <!-- profiles:{{form.profiles}} -->
+
+                    <div class="btn_container_create">
+
+                        <button type="submit" class="create_list_btn">
+                            Create
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content_one %}

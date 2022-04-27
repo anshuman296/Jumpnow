@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,500&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+}
+
+a{
+    text-decoration: none !important;
+}
+
+a:active{
+    text-decoration: none;
+}
+
+.form-control{
+    border: none;
+    outline: none;
+}
+
+button{
+    outline: none;
+    border: none;
+}
+
+button:active{
+    outline: none;
+    border: none;
+}
+
+ .main_register{
+    display: flex;
+    height: 100vh;
+}
+
+
+.register_left,
+.register_right{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+} 
+
+.register_right{
+    align-items: flex-start;
+    flex: 2;
+}
+
+.register_left{
+    margin-top: -30px;
+    flex: 1.7;
+    align-items: center;
+}
+
+
+/* Left Side */
+
+
+.left_contents_all{
+    height: 110px;
+}
+    .text_left_im{
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 23px;
+        letter-spacing: 2px;
+    }
+
+    .text_left_im strong{
+        color: #DA001B;
+    }
+
+    .logo img{
+        width: 280px;
+    }
+
+    .logo_2 img{
+        display: none;
+    }
+
+    .logo{
+        margin-bottom: 25px;
+    }
+
+    .registration_text{
+        margin-bottom: 200px;
+        border-left: 3px solid #DA001B;
+        padding: 0 0 0 10px;
+        width: 363px !important;
+    }
+
+    .sign_in_txt_2{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        display: none;
+        
+    }
+
+
+
+
+
+    /* Right */
+.form-control,
+input{
+    width: 491px ;
+    height: 53px ;
+    border-radius: 12px ;
+    border: 1px solid #FFC2C9 ;
+    box-sizing: border-box;
+    border-radius: 12px;
+    /*margin-bottom: 18px ;*/
+    padding: 10px 20px ;
+}
+
+.registration_text{
+    width: 334px;
+}
+
+.sign_in_txt{
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.sign_in_txt strong a{
+    color: #DA001B;
+    margin-left: 6px;
+}
+
+.heading_form span {
+    font-size: 33px;
+}
+
+.heading_form{
+    margin-bottom: 2%;
+}
+
+.submit_register{
+    width: 170px;
+    height: 44px;
+    background: #DA001B;
+    border-radius: 5.80563px;
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+
+}
+
+.submit_btn{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.footer_text{
+    display: flex;
+    justify-content: center;
+}
+
+.footer_text p{
+    font-size: 12px;
+    color: #DA001B;
+    line-height: 20.96px;
+
+}
+
+
+@media screen and (max-width:945px) {
+    .logo img{
+        width: 220px;
+    }   
+    .form-control{
+        width: 391px;
+    }
+    .form-control{
+        width: 400px;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .text_left_im{
+        font-size: 16px;
+    }
+
+    .form-control{
+        width: 321px;
+    }
+
+    .register_left{
+        padding: 0 0px 0 10px;
+    }
+
+    .heading_form span {
+        font-size: 26px ;
+    }
+
+    .heading_form{
+        margin-bottom: 1%;
+    }
+
+}
+
+@media screen and (max-width:676px) {
+    .text_left_im{
+        font-size: 14px;
+    }
+    .register_left{
+        padding: 0 0px 0 10px;
+        flex: 1;
+    }
+    .register_right{
+        flex: 2;
+    }
+
+    .registration_text{
+        width: 290px;
+    }
+
+    .form-control, .form-control{
+        width: 310px;
+        height: 45px;
+    }
+
+}
+
+
+@media screen and (max-width:626px) {
+    .register_left{
+        display: none;
+    }
+    .register_right{
+        flex: 1;
+        align-items: center;
+        /* justify-content: center; */
+    }
+
+    .logo_2 img{
+        display: block;
+    }
+
+    .logo_2{
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 20px;
+    }
+    .footer_text {
+        width: 310px;
+    }
+    .sign_in_txt_2{
+        display: block;
+        text-align: center;
+    }
+}
+
+
+
+@media screen and (max-width:350px) {
+    .form-control,
+    .footer_text{
+        width: 250px;
+    }
+
+    .footer_text{
+        text-align: center;
+    }
+
+    .heading_form span {
+        font-size: 20px ;
+    }
+
+    .heading_form{
+        margin-bottom: 1%;
+    }
+
+}
+
+
+

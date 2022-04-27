@@ -1,0 +1,236 @@
+<title>Campaigns</title>
+
+
+
+{% extends 'dashboard/base_creator.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block content_creator %}
+
+<style>
+    .view_btn_ {
+        padding: 5px 32px;
+        border: 1px solid rgba(255, 0, 0, 0.527);
+        color: black;
+        text-decoration: none !important;
+    }
+
+    .view_btn_:hover {
+        color: red;
+        border: 1px solid rgba(255, 0, 0, 0.315);
+    }
+
+    .text_inside{
+        width: 600px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    
+    }
+
+
+    .main_menu_text{
+        font-size: 24px;
+        font-weight: 300;
+    }
+
+
+    .connect_whatsapp{
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    /*  */
+    @media screen and (max-width: 966px) {
+        .top_list {
+            margin-top: -13px;
+        }
+    }
+
+
+
+
+
+
+
+    @media only screen and (min-width: 600px) and (max-width: 800px){
+        .main_static {
+            padding: 15px 3%;
+        }
+    }
+
+    @media screen and (max-width: 748px) {
+        .view_btn_ {
+            padding: 0px 13px;
+        }
+
+        .main_static {
+            padding: 15px 3% !important;
+        }
+    }
+
+    @media screen and (max-width: 648px) {
+        .view_btn_ {
+            padding: 0px 0px;
+            border: none;
+        }
+
+        #customers td {
+            border-bottom: 1px solid #21212130;
+            padding: 14px 1px;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .main_menu_text{
+            font-size: 15px;
+            font-weight: 400;
+        }
+    }
+
+
+
+
+</style>
+
+<div class="top_list">
+    <div class="back_to_menu">
+        <a href="{% url 'dashboard_new' %}">
+            <i data-feather="chevron-left">
+            </i>
+        </a>
+        <span>
+            Campaign
+        </span>
+    </div>
+    <div class="search_and_create">
+        <input type="text" placeholder="search list name & platform" class="inputSearchList" id="myInput"
+            onkeyup="searchFun()">
+        <span>
+            <i data-feather="search"></i>
+        </span>
+    </div>
+</div>
+
+
+<div class="sort_by">
+    <!-- <select name="list" id="sort_list">
+    <option value="def">Sort By</option>
+    <option value="name">name</option>
+    <option value="date">date</option>
+</select> -->
+    <button onclick="sortTable(0)"
+        style="cursor: pointer;color: white;background: red;padding: 6px 10px;border-radius: 5px;">
+        sort by name
+    </button>
+
+    <button style="cursor: pointer;color: white;background: red;padding: 6px 10px;border-radius: 5px;">
+        <a href="{% url 'campaign_requests' %}" style="cursor: pointer;color: white;text-decoration: none;">
+            Campaign Requests
+        </a>
+    </button>
+</div>
+
+
+<div style="display: flex;justify-content: center;align-items: center;height: 48vh;">
+    <div class="text_inside">
+        <img src="{% static 'discovery/images/cards/logo_short@2x.png' %}" alt="" height="80px" style="margin-bottom: 10px;">
+
+        <span class="main_menu_text">
+
+            
+            We're working to bring your campaigns in here. <br>
+            <div class="connect_whatsapp">
+                Until then connect with us on &nbsp; <a href="https://wa.me/message/YJIX6T23RH3SL1">
+                    Whatsapp    <img src="{% static 'discovery/images/cards/whatsapp.png' %}" alt="" height="24px">
+                    
+                    </a>
+            </div>
+            
+             <div style="text-align: center;margin-top: 10px;">
+                to get the Campaign details. 
+            </div>
+        </span class="main_menu_text">
+    </div>
+
+</div>
+
+<div style="display: none;" class="table_campaign_list">
+    <table id="customers" class="campaign_show">
+        <tr>
+            <th class="list_name">Name</th>
+            <th class="platform">Status</th>
+            <!-- <th class="total_influencers">Deliverable</th> -->
+            <th class="total_influencers">Cost</th>
+            <th class="total_influencers">Deliverable</th>
+            <!-- <th>View</th> -->
+        </tr>
+        {% for campaign in campaigns%}
+        <div>
+            <tr>
+                <td class="td_name">
+                    <!-- <img src="{% static 'discovery/images/cards/logo_short@2x.png' %}" alt="" height="28px" width="28px"> {{ list.list_name }} -->
+                    <div class="table_list_content_left">
+                        <img src="{% static 'discovery/images/cards/logo_short@2x.png' %}" alt="" height="28px"
+                            width="28px">
+
+                        <span class="list_shown_name">
+                            {{ campaign.campaign_name }}
+                        </span>
+                    </div>
+                </td>
+                <td>
+                    <div class="table_list_content_right">
+                        <span style=" color:green">active</span>
+                    </div>
+
+                    <!-- </td>
+
+                <td id="deliverables">
+                    <button>
+                        
+                            add +
+                        
+                    </button>
+                </td> -->
+
+                <td id="cost" class="cost">
+                    <div>
+                        <a class="view_btn_" href="{% url 'campaign_details' campaign.id %}">
+                            View
+                        </a>
+                    </div>
+                    <!-- <div>
+                        Status:
+                    </div> -->
+                </td>
+
+
+                <td id="Content" class="content">
+                    <div>
+                        <a class="view_btn_" href="{% url 'show_deliverables' 20  %}">View</a>
+
+                    </div>
+                </td>
+                <!-- <td>
+                    <button class="view_list_btn">
+                        
+                    </button>
+                </td> -->
+            </tr>
+        </div>
+        {% endfor %}
+    </table>
+
+</div>
+
+
+<!-- <h5 style="color: blue">Assigned Campaigns</h5><br>
+{% for campaign in campaigns%}
+    <h5>Campaign Name: <span style="color: red">{{ campaign.campaign_name }}</span> &nbsp; <a href="{% url 'campaign_details' campaign.id %}"> View Details</a></h5><br>
+{% endfor %} -->
+
+{% endblock content_creator %}

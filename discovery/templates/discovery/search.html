@@ -1,0 +1,102 @@
+{% extends 'discovery/search_base.html' %}
+
+<!--  -->
+{% load static %}
+<!--  -->
+{% block content_one %}
+
+
+<section class="right active" id="right_dashboards" data-set-targets>
+    <div class="top" id="top">
+        <span class="refer">
+            <a href="">
+                <i class="fas fa-user"></i>
+                Refer a team Member
+            </a>
+
+        </span>
+    </div>
+
+    <div class="heading">
+        <div class="heading_content" id="heading_content">
+            <div class="top_left_heading">
+                <span class="top_heading">
+                    One Platform that
+                </span>
+                <span class="mid_heading">
+                    <strong>connects you with</strong>
+                </span>
+            </div>
+            <div class="bottom_right_heading">
+                <span class="bottom_heading">
+                    millions of influencers
+                </span>
+            </div>
+        </div>
+
+
+
+
+        <div class="search_bar instagram" id="search_bar">
+            <select id="social_select" style="width: 60px;outline: none;border: none;" onChange="update()">
+                <option value="Youtube" data-img_src="{% static 'discovery/images/cards/youtube.svg' %}" >Youtube</option>
+                <option value="Instagram" data-img_src="{% static 'discovery/images/cards/instagram.svg' %}" >Instagram</option>
+                <option value="facebook_1" data-img_src="{% static 'discovery/images/cards/Facebook.svg' %}" >Facebook</option>
+                <option value="twitter" data-img_src="{% static 'discovery/images/cards/twitter.svg' %}" >Twitter</option>
+            </select>
+
+
+            <form class="search_social " id="search_social">
+
+                <div data-search-main id="input-container" class="search_social ">
+                </div>
+            </form>
+            <div style="flex: .13;">
+                <div id="searchbox_two">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="filter_sort hide" id="filter_sort">
+            <div class="sort_left_main mb-2">
+                <span style="margin-right: 20px;">
+                        Sort Elements 
+                    </span>
+                <div id="followers_count_main">
+
+                </div>
+
+                <div id="name" style="margin-left: 20px;">
+
+                </div>
+
+            </div>
+
+            <div>
+                <button class="filter" id="filter">
+                    Filter
+                </button>
+            </div>
+        </div>
+        <!---------------------------------- Social Cards ---------------------------------->
+        <div id="card_container" class="hide social_card_container">
+            <div class="card_row_1 card_row" id="userlist">
+                <div id="hits">
+
+                </div>
+
+                <div id="pagination">
+
+                </div>
+            </div>
+            <!-- Card 1 page -->
+
+
+
+
+        </div>
+    </div>
+</section>
+
+{% endblock content_one %}

@@ -1,0 +1,117 @@
+
+<title>Campaign Requests</title>
+<link rel="icon" type="image/x-icon" href="../../static/dashboard/images/Group450@2x.png">
+
+{% extends 'dashboard/base_creator.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block content_creator %}
+
+
+<style>
+    .class_anchor{
+        display: flex;
+        align-items: center;
+        color: black;
+        text-decoration: none !important;
+        font-size: 18px;
+    }
+
+    .camp_req_container{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 0 3%;
+    }
+
+    .camp_req_card{
+        flex: 1 0 21%;
+        margin: 25px;
+        max-width: 310.77px !important;
+        height: 249.02px;  
+        background: #FFFFFF;
+        box-shadow: -1px -2px 4px rgba(0, 0, 0, 0.07), 1px 2px 4px rgba(0, 0, 0, 0.267); 
+        border: none !important;
+    }
+
+    .brand,
+    .camp_name{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .brand_name_main{
+        color: gray;
+    }
+
+    .campaign_name_main{
+        color: red;
+    }
+
+    .camp_name{
+        margin: 20px 0;
+    }
+
+    .camp_accept_button{
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .camp_accept_button a{
+        width: 101.7px;
+        height: 31.98px;
+        background: #FDEEF0;
+        color: black;
+        text-decoration: none !important;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+
+
+
+
+</style>
+
+<div class="req_campaigns">
+<a href="" class="class_anchor">
+    
+        <i data-feather="chevron-left"></i> Request
+    
+</a>
+    
+</div>
+
+
+<div class="camp_req_container">
+    {%  for campaign in campaigns %}
+
+<div class="camp_req_card" style="border: 1px solid gray;padding: 20px 30px;max-width: 45%;">
+    <div class="brand">
+       <span> Brand Name:  </span>       
+        <span class="brand_name_main">Brand </span>
+    </div>
+    <div class="camp_name">
+        <span>
+            Campaign Name: 
+        </span>     
+        <span class="campaign_name_main">
+            {{ campaign.campaign_name }}  
+        </span>
+    </div>
+        
+    <div class="camp_accept_button">
+        <a href="{% url 'accept_campaign' campaign.id %}">Accept</a> 
+    </div>
+    <!-- <h3 style="color: red">{% include 'discovery/includes/_messages.html' %}</h3> -->
+</div>
+
+{% endfor %}
+</div>
+
+{% endblock content_creator %}

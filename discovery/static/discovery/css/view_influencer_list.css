@@ -1,0 +1,19 @@
+.social_card_container {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#hits {
+    flex: 1 0 19%;
+    height: 249px !important;
+    width: 290px !important;
+    margin-right: 27.25px;
+    margin-bottom: 27.25px;
+    padding: 15px 10px;
+    box-shadow: 0px 0px 6px #00000061;
+    list-style: none;
+}
+
+#userlist {
+    padding: 30px 60px;
+}

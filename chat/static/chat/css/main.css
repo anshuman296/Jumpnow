@@ -1,0 +1,30 @@
+.single-chat-object {
+    cursor: pointer;
+}
+
+.date_weekday {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.date_weekday span {
+    padding: 5px 15px;
+    border-radius: 10px;
+    background-color: #f1e7ea;
+    color: #e1507e;
+    font-weight: bold;
+}
+
+.bar {
+    height: 18px;
+    background: green;
+}
+
+#fileupload
+{
+    display: none;
+}
+
+.list-inline-item label {
+    cursor: pointer;
+}

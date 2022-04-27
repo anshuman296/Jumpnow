@@ -1,0 +1,297 @@
+
+.about_us_back{
+    margin-bottom: 23px;
+}
+
+.red{
+    color: #DA001B !important;
+}
+.about_us_back a {
+    display: flex;
+    color: #DA001B;
+    align-items: center;
+    text-decoration: none;
+}
+
+.heading_team{
+    /* margin-bottom: 46px; */
+    margin-bottom: 121px !important;
+    margin-top: 46px;
+}
+
+.heading_about span{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 36px;
+    color: #313131;
+
+}
+
+.button_get_started{
+    cursor: pointer;
+}
+
+.about_container{
+    display: flex;
+}
+
+.about_content,
+.about_cards{
+   flex: 1;
+}
+
+.about_sub_content{
+    margin: 23px 0 46px 0;
+}
+
+
+.cards_div{
+    margin-top: -50px;
+}
+
+.about_cards{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#counters_1 span{
+    display: inline-block;
+    margin-left: -6px;
+}
+
+.card_1,
+.card_2,
+.card_3{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 130px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 32px;
+    color: #000000;
+    background: #FCEDEF;
+    border-radius: 8px;
+    margin-bottom: 23px;
+    
+}
+
+.btn_connect_{
+    padding: 12.5px 22px;
+}
+
+
+.head_card{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 36px;
+    text-align: justify;
+
+    color: #000000;
+} 
+
+.body_card,
+.name_img_card{
+    background: -webkit-linear-gradient(104.35deg, #EC001D -5.92%, #FC03B6 90.33%);
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 66px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/*  */
+.heading_team{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.cards_customers{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card_1_cc,
+.card_2_cc,
+.card_3_cc{
+    background: #FEF4F5;
+    background-color: #f7f8fd;
+    border-radius: 8px;
+    height: 260.49px;
+    flex: 1 0 27%;
+    margin: 0 2% 90px 0%;
+    margin-bottom: 90px;
+    max-width: 31% ;
+    box-shadow: 1px 2px 9px 1px #8080807a;
+    transition: .2s ease-in-out;
+}
+
+/* s */
+
+/* Basundhara Raj – Influencer Marketing Manager
+Ritosree Ghosh – Influencer Marketing Manager
+Prerona Chatterjee – Influencer Marketing Manager
+Priyanka Sen – UI / UX Designer
+Aiswariya Sinha – Influencer Marketing Intern
+Rajasree Mitra – Influencer Marketing Intern
+Jyotiraditya Sanyal – Influencer Marketing Intern
+Koushiki Bhattacharjee – Influencer Marketing Intern
+Dharanidharan – Finance Executive
+Sujith Ilamurugu – Co-Founder 
+Anshuman Vyas – Software Developer */
+
+
+
+.img_card img{
+    /* border-radius: 50%; */
+    position: relative;
+    left: 50%;
+    top: -0px;
+    transform: translate(-50%,-50%);
+    width: 150px;
+    height: 150px;
+}
+ 
+.img_card .img_girl{
+    width: 96px;
+    height: 100px;
+    margin-bottom: 40px;
+}
+
+
+.info_card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -80px;
+}
+
+.icons_card{
+    display: flex;
+    justify-content: center;
+    margin-top: 23px;
+
+}
+
+.icons_card svg{
+    margin: 0 2%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+}
+
+
+
+
+
+
+
+@media screen and (max-width:1050px) {
+        .about_container{
+            flex-direction: column;
+        }
+
+        .about_cards{
+            justify-content: center;
+            margin-top: 100px;
+        }
+        .heading_about span{
+            line-height: 48px;
+        }
+
+        .name_img_card{
+            font-size: 20px;
+        }
+        .form_about{
+            display: flex;
+            justify-content: center;
+        }
+}
+
+@media screen and (max-width:850px) {
+    .card_1_cc,
+    .card_2_cc,
+    .card_3_cc{
+        max-width: 48%;
+        flex: 1 0 43%;
+    }
+
+
+
+
+}
+
+
+
+@media screen and (max-width:550px) {
+    .card_1_cc,
+.card_2_cc,
+.card_3_cc{
+    flex: 1 0 33%;
+    max-width: 48%;
+    height: 235px;
+}
+
+.form_about{
+    display: flex;
+    justify-content: center;
+}
+
+.img_card img{
+    width: 140px;
+    height: 140px;
+}
+
+.heading_about span{
+    line-height: 42px;
+}
+
+.heading_about span{
+    font-size: 30px;
+}
+
+.card_1,
+.card_2,
+.card_3{
+    width: 320px;
+}
+
+.designation_card{
+    font-size: 13px;
+}
+
+.name_img_card{
+    font-size: 17px;
+}
+
+.btn_connect_{
+    padding: 12.5px 13px;
+}
+
+
+
+}
+
+@media screen and (max-width:550px) {
+    .card_1_cc,
+    .card_2_cc,
+    .card_3_cc{
+        flex: 1 0 50%;
+        max-width: 100%;
+    }    
+
+}
+
+
+

@@ -1,0 +1,153 @@
+ {% extends 'discovery/search_base.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+
+{% block content_one %}
+<div class="top_list">
+    <div class="back_to_menu">
+        <a href="{% url 'showcampaigns' %}">
+            <i data-feather="chevron-left">
+            </i>
+        </a>
+        <span>
+        Campaign
+    </span>
+    </div>
+    <div class="search_and_create">
+        <input type="text" placeholder="search list name & platform" class="inputSearchList" id="myInput" onkeyup="searchFun()">
+        <span>
+            <i data-feather="search" ></i>
+        </span>
+    </div>
+</div>
+
+
+
+<div class="sort_by">
+    <!-- <select name="list" id="sort_list">
+    <option value="def">Sort By</option>
+    <option value="name">name</option>
+    <option value="date">date</option>
+</select> -->
+    <button onclick="sortTable(0)" style="cursor: pointer;color: white;background: red;padding: 6px 10px;border-radius: 5px;">
+    sort by name
+</button>
+</div>
+
+
+<div class="table_campaign_list">
+    <table id="customers" class="campaign_show">
+        <tr>
+            <th class="list_name">Name</th>
+            <th class="platform">Status</th>
+            <th class="total_influencers">Deliverable</th>
+            <th class="total_influencers">Cost</th>
+            <th class="total_influencers">Content</th>
+            <!-- <th>View</th> -->
+        </tr>
+        {% for creator in creators %}
+        <div>
+            <tr>
+                <td class="td_name">
+                    <!-- <img src="{% static 'discovery/images/cards/logo_short@2x.png' %}" alt="" height="28px" width="28px"> {{ list.list_name }} -->
+                    <div class="table_list_content_left">
+                        <img src="{% static 'discovery/images/cards/logo_short@2x.png' %}" alt="" height="28px" width="28px">
+
+                        <span class="list_shown_name">
+                            <!-- {{ creator.user_profile}} -->
+                            {{request.user.first_name}}
+                        </span>
+                    </div>
+                </td>
+                <td>
+                    <div class="table_list_content_right">
+                        <span style=" color:green">active</span>
+                    </div>
+
+                </td>
+
+                <td id="deliverables">
+                    <button>
+                        <a href="{% url 'add_deliverable' creator.id %}">
+                            add +
+                        </a>
+                    </button>
+                </td>
+
+                <td id="cost" class="cost">
+                    <div>
+                        <a href="{% url 'assgined_details' creator.id %}">View</a>
+                    </div>
+                    <!-- <div>
+                        Status:
+                    </div> -->
+                </td>
+
+
+                <td id="Content" class="content">
+                    <div>
+                        <a style="padding: 5px;" class="view_deliverables" href="{% url 'view_deliverables' creator.id %}">View</a> 
+                    </div>
+                </td>
+
+
+
+                <!-- <td>
+                    <button class="view_list_btn">
+                        
+                    </button>
+                </td> -->
+            </tr>
+        </div>
+        {% endfor %}
+    </table>
+ 
+</div>
+
+
+
+{#<<<<<<< Updated upstream#}
+{#=======#}
+{#        </div>#}
+{#        <div class="icons_social_deliver tooltip">#}
+{#            <img src="{% static 'discovery/images/cards/twitter.svg' %}" alt="">#}
+{#            <span class="tooltiptext tooltiptext_twitter">2+</span>#}
+{#        </div>#}
+{#    </div>#}
+{#{% for creator in creators %}#}
+{#    <div class="deliverables_footer">#}
+{#        <button>#}
+{#            <a href="{% url 'add_deliverable' creator.id %}" style="color: white;">#}
+{#                add More#}
+{#            </a>#}
+{#        </button>#}
+{#    </div>#}
+{#</div>#}
+{#{% endfor %}#}
+{#>>>>>>> Stashed changes#}
+
+
+<script>
+    document.getElementById('view_deliverables').addEventListener('click', function() {
+        document.getElementById('modal_devilerables').style.display = "block"
+    })
+</script>
+<!-- {% for creator in creators %}
+
+
+
+<h3>Profile: {{ creator.user_profile}}&nbsp;
+
+
+
+    <a href="{% url 'assgined_details' creator.id %}">View</a><br></h3> -->
+{# can get all the assigned campaign details here #}
+<!-- {% endfor %} -->
+
+
+
+
+
+
+{% endblock content_one %}

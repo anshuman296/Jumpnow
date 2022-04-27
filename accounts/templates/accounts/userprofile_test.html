@@ -1,0 +1,367 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- new -->
+
+
+
+
+
+
+<title>User Form</title>
+{% extends 'dashboard/base_creator.html' %}
+<!--  -->
+{% load static %}
+{% load widget_tweaks %}
+<!--  -->
+{% block content_creator %}
+
+<style>
+  body {
+      overflow: hidden;
+  }
+
+  .user_form {
+      width: 100%;
+      display: flex;
+  }
+
+  input {
+      width: 326.75px;
+      height: 55.55px;
+      left: 261.51px;
+      background: #FAFAFA;
+      border-radius: 5.80563px;
+      border: none;
+      margin: 10px 0px;
+      border: 1px solid rgba(128, 128, 128, 0.151);
+      padding-left: 10px;
+  }
+
+  .form_main_profile {
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+      padding-left: 12%;
+      margin-top: 3%;
+  }
+
+  .left_form,
+  .right_form {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+  }
+
+  .right_form {
+      margin-left: 100px;
+  }
+
+  .upper_form {
+      display: flex;
+      align-items: center;
+  }
+
+  a {
+      color: black;
+  }
+
+  a:hover {
+      color: black;
+  }
+
+  .dp_pic {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+  }
+
+  .dp_pic div img {
+      border-radius: 50%;
+  }
+
+  .pp_edit {
+      margin-left: 10px;
+      cursor: pointer;
+  }
+
+  .mt-10 {
+      margin-top: 10px;
+  }
+
+
+
+  #id_gender {
+      width: 326.75px;
+      height: 55.55px;
+      background: #FAFAFA;
+      border-radius: 5.80563px;
+      border: 1px solid rgba(128, 128, 128, 0.151);
+      margin: 10px 0px;
+  }
+
+  .margin_bottom_18 {
+      margin-bottom: 18px;
+  }
+
+
+  .form_input {
+      margin-top: -10px;
+  }
+
+  .btn_update {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+  }
+
+  .btn_update button {
+      width: 170.41px;
+      height: 44.54px;
+      background: #DA001B;
+      border-radius: 5.80563px;
+      color: white;
+      border: none;
+  }
+
+
+  .custom_font {
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 20px;
+      color: #313131;
+  }
+
+  input[type=checkbox] {
+      height: 10px;
+  }
+
+  .rad_input {
+      display: flex;
+      align-items: center;
+  }
+
+  .input_rad {
+      width: 326.75px;
+      height: 155.55px;
+      margin-top: 6px;
+      background: #FAFAFA;
+      border-radius: 5.80563px;
+      border: 1px solid rgba(128, 128, 128, 0.151);
+  }
+
+
+  @media screen and (max-width:1254px) {
+      .form_main_profile {
+          padding-left: 8%;
+      }
+  }
+
+  @media screen and (max-width:1100px) {
+      .form_main_profile {
+          padding-left: 6%;
+      }
+  }
+
+  @media screen and (max-width:1033px) {
+      .form_main_profile {
+          padding-left: 2%;
+      }
+  }
+
+
+  @media screen and (max-width:964px) {
+      .form_main_profile {
+          padding-left: 1%;
+      }
+
+      form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+
+  }
+
+
+  @media screen and (max-width:884px) {
+
+
+      form {
+          align-items: flex-start;
+          padding-left: 20px;
+      }
+
+
+  }
+
+
+  @media screen and (max-width:884px) {
+
+
+      form {
+          padding-left: 20px;
+      }
+
+
+  }
+
+
+  @media screen and (max-width:884px) {
+
+
+      form {
+          padding-left: 0px;
+          align-items: center;
+      }
+
+
+      input,
+      #id_gender {
+          width: 250px;
+      }
+  }
+
+  @media screen and (max-width:784px) {
+
+
+      form {
+          padding-left: 20px;
+          align-items: flex-start;
+      }
+
+
+
+  }
+
+  @media screen and (max-width: 745px) {
+      .form_main_profile {
+          flex-direction: column;
+          align-items: center;
+      }
+
+      form {
+          padding-left: 20px;
+          align-items: center;
+      }
+
+      .right_form {
+          margin-left: 0px;
+      }
+
+      input,
+      #id_gender {
+          width: 350px;
+      }
+  }
+
+  @media screen and (max-width: 505px) {
+      input,
+      #id_gender {
+          width: 300px;
+      }
+
+      .form_main_profile{
+          width: 100%;
+      }
+
+      form{
+          padding-left: 0px;
+      }
+
+  }
+
+
+  @media screen and (max-width: 475px) {
+      input,
+      #id_gender {
+          width: 300px;
+
+      }
+
+
+
+  }
+
+  @media screen and (max-width: 405px) {
+      input,
+      #id_gender {
+          width: 250px;
+
+      }
+
+
+
+  }
+
+
+</style>
+
+
+
+<div class="upper_form">
+  <a href="{% url 'dashboard_new' %}"><i data-feather="chevron-left"></i></a> <span>User Profile</span>
+</div>
+
+<form method="post" action="{% url 'userprofile' %}">
+  {% csrf_token %}
+
+
+  <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname" value="{{ user.first_name }}">
+
+
+
+
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname" value="{{ user.last_name }}"><br>
+
+
+
+
+
+    <label for="gender">Gender:</label><br>
+      <select  name="gender" id="gender" >
+          <option value="{{ userprofile.gender }}" >{{ userprofile.gender }}</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Non Binary">Non Binary</option>
+      </select>
+      
+      <br><br>
+
+    <label for="dob">DOB:</label><br>
+    <input type="date" id="dob" name="dob" value="{{ userprofile.dob }}">
+    
+    <br>
+
+    <label for="location">Location:</label><br>
+    <input type="text" id="location" name="location" value="{{ userprofile.location }}"><br>
+
+    <label for="phone">Phone no.:</label><br>
+    <input type="text" id="phone" name="phone" value="{{ userprofile.mobile_number }}">
+    
+    <br>
+
+    <label for="Email">Email:</label><br>
+    <input type="text" id="email" name="email" value="{{ user.email }}">
+    
+    <br>
+
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock content_creator %}

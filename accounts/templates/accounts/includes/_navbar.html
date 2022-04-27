@@ -1,0 +1,22 @@
+{% load static %}
+<div class="container-fluid">
+
+<nav class="navbar navbar-expand-lg navbar-light sticky-top bg-white">
+  <a class="navbar-brand" href="/">
+    <img src="{% static 'accounts/images/logo/logo.png' %}" style="width: 180px; height: auto;" alt="" loading="lazy">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      {% if user.is_authenticated %}
+        <li class="nav-item m-l-10"> <a href="{% url 'logout' %}" class="btn btn-square btn-outline-primary" type="button" >Logout</a></li>
+      {% else %}
+        <a href="{% url 'index' %}" class="btn btn-square btn-outline-primary" type="button" >Login</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>  
+</div>

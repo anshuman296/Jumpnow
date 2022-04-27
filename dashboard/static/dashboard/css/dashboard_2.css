@@ -1,0 +1,575 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* .icons_card::after{
+    content: " ";
+    display:block ;
+    position: relative;
+    height: 3px;
+    background: black;
+    width: 27px;
+    right: 38%;
+    top: calc(79% + 19px);
+    z-index: -1;
+} */
+
+/* .card_1::after{
+    background: blue;
+}
+
+.card_3::after{
+    background-color: orange;
+}
+
+.card_2::after{
+    background-color: lightblue;
+}
+
+.card_4::after{
+    background-color: red;
+} */
+
+
+.main_static {
+  padding: 15px 20px;
+  display: flex;
+  flex-flow: column;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: inherit;
+}
+
+.btn_close button {
+  font-size: 19px;
+  color: red;
+  position: fixed;
+  left: 207px;
+  top: 26px;
+  visibility: hidden;
+}
+
+.btn_ham {
+  color: #fd566c;
+  font-size: 18px;
+  align-self: center;
+}
+
+.header_dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.header_main {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.menu_text {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Poppins", sans-serif;
+}
+
+.menu {
+  color: #fd566c;
+  cursor: pointer;
+}
+.profile_name {
+  color: #fd566c;
+  font-weight: 400;
+}
+
+.jn_text {
+  color: #808080b3;
+  margin-top: 10px;
+}
+.text {
+  margin-left: 15px;
+}
+
+.social_icons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon_set_1,
+.icon_set_2 {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Icons */
+
+.icons_card {
+  display: flex;
+  justify-content: space-between;
+  width: 9rem;
+  padding: 15px 12px;
+  align-items: center;
+  box-shadow: 3px 4px 6px #0000002e;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-radius: 12px;
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.img_social {
+  height: 15px;
+  width: 15px;
+}
+
+.plus_icon {
+  height: 10px;
+  width: 10px;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.icon_main {
+  height: 23px;
+  width: 23px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  box-shadow: 2px 2px 10px #00000052;
+  border-radius: 5px;
+  margin-right: 8px;
+}
+
+.icon_desc {
+  margin-left: 3px;
+}
+
+/* END of ICONS */
+.main_content {
+  padding: 20px;
+  background-color: #8080801f;
+  height: 60vh;
+  font-family: "Poppins";
+  font-weight: 300;
+}
+
+.heading span {
+  text-decoration: underline;
+  font-size: 15px;
+}
+
+.main_content_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo_main img {
+  height: 50px;
+  width: 120px;
+}
+
+.logo_main {
+  margin: 100px 0 20px 0;
+}
+
+.content_text span {
+  font-size: 13px;
+  font-family: "Popins";
+  font-weight: 400;
+}
+
+.menu_text {
+  display: flex;
+}
+
+/* ---------- Hamburere Menu -----------*/
+
+.menu__btn {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 20px;
+  height: 15px;
+  z-index: 1;
+}
+
+.menu__box {
+  display: block;
+  position: fixed;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  margin: 0;
+  padding: 40px 0;
+  list-style: none;
+  background-color: white;
+  box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
+  transition-duration: 0.25s;
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+
+.menu__item {
+  display: block;
+  padding: 12px 14px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition-duration: 0.1s;
+  text-decoration: none !important;
+  font-family: "Poppins";
+  font-weight: 300;
+  width: 150px;
+  margin-bottom: 15px;
+  width: 154px;
+  display: flex;
+}
+
+.menu__item:hover {
+  background-color: #fd566c;
+  color: white;
+  border-radius: 3px 6px;
+}
+
+.menu__item i {
+  font-size: 16px;
+  margin-right: 19px;
+  /* 16px,14 */
+}
+
+.icons_camp{
+    margin-right: 16px;
+}
+
+.icons_payment{
+    margin-right: 14px;
+}
+
+.icon_socials{
+    margin-right: 24px;
+}
+
+.icon_plus{
+    width: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+.image_head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* -----------Ham End------------ */
+
+.profile {
+  padding: 10px 30px;
+}
+
+.profile_image {
+  width: 100px;
+  height: 100px;
+  border: 3px solid #fd566c;
+  border-radius: 49% 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile_image img {
+  border-radius: 50%;
+  height: 85px;
+  width: 85px;
+}
+
+.profile_info{
+    display: flex !important; 
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.user_amount_main {
+  color: green;
+  font-size: 13px;
+}
+
+.notification_sidebar {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sign_out {
+  width: 112px;
+  font-size: 14px;
+  border: 2px solid #fd566c;
+  padding: 7px 15px;
+  margin-left: 10px;
+}
+
+/* Big screen side Notifications */
+
+.notification_nav_right {
+  display: none;
+}
+
+/* List */
+
+li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon_sidebar{
+    width: 40px;
+}
+
+
+.icon_set_container{
+    position: relative;
+}
+
+.icon_set_border{
+    width: 23%;
+    bottom: 6%;
+    height: 3px;
+    background-color: #0b1ce8;
+    position: absolute;
+    left: 47%;
+    transform: translate(-50%, -50%);
+}
+
+.set_1{
+    background-color: blue;
+}
+
+.set_2{
+    background-color: lightblue;
+}
+
+.set_3{
+    background-color: orange;
+}
+
+.set_4{
+    background-color: red;
+}
+
+
+/* Notification Icons */
+
+.noti_icon_1,
+.noti_icon_2 {
+  border: 1px solid #fd566c;
+  padding: 4px 7px;
+  border-radius: 9px;
+}
+
+.noti_icons {
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+  }
+
+  .profile_info{
+    display: flex ; 
+    justify-content: space-between;
+    margin: 10px 0px;
+}
+
+
+
+
+
+@media only screen and (min-width: 968px) {
+  .menu__btn,
+  #menu__toggle,
+  .btn_close {
+    display: none;
+  }
+
+  #menu__toggle {
+    opacity: 1;
+  }
+
+  #menu_box {
+    visibility: visible !important;
+    display: block !important;
+    left: 0%;
+  }
+
+  .btn_ham {
+    display: none;
+  }
+
+  .main_static,
+  .dyn_content {
+    margin-left: 200px;
+  }
+
+  .icon_set_1,
+  .icon_set_2 {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 50%;
+  }
+
+  .icon_set_2 {
+    justify-content: space-around;
+  }
+
+  .icons_card {
+    padding: 18px 12px;
+    font-size: 14px;
+    margin-right: 15px;
+    width: 168px;
+  }
+
+  .icon_desc {
+    margin-left: 0px;
+  }
+
+  .profile {
+    display: none;
+  }
+  .image_head {
+    margin-bottom: 14vh;
+  }
+
+  .sign_out {
+    margin-top: 14vh;
+  }
+  .main_content {
+    height: 75vh;
+  }
+
+  .side_dots i {
+    display: none;
+  }
+
+  .side_notification {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .notification_nav_right {
+    display: block;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 26vw;
+  }
+
+  .profile_image_nav img {
+    height: 50px;
+    width: 50px;
+    border-radius: 16px;
+  }
+
+
+
+  .profile_info_right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .right_side_profile_info{
+      display: flex;
+      width: 150px;
+      justify-content: space-between;
+      font-family: 'Poppins';
+      font-weight: 300;
+      font-size: 14px;
+  }
+
+  .user_name_main button{
+      color: #fd566c;
+      font-size: 10px;
+  }
+
+
+
+
+  /* .bottom_line{
+      width: 10px;
+      border: 2px solid black;
+  } */
+
+
+
+  .user_name_main{
+      color: #fd566c;
+  }
+
+  .icons_card::after{
+    content: " ";
+    display:block ;
+    position: relative;
+    height: 3px;
+    width: 27px;
+    right: 38%;
+    top: calc(79% + 27px);
+}
+}
+
+
+
+@media only screen and (min-width: 1200px) and (max-width: 1600px) {
+    .icons_card{
+        padding: 18px 0px 18px 22px;
+        font-size: 14px;
+        margin-right: 15px;
+        width: 200px;
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .icons_card .card_1{
+        margin-right: 10px;
+    }
+}
+
+
+
+
+@media only screen and (min-width: 580px) and (max-width: 860px) {
+  .main_static {
+    padding: 15px 17%;
+  }
+}
+
+@media only screen and (min-width: 460px) and (max-width: 580px) {
+  .main_static {
+    padding: 15px 8%;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .header_subtitle {
+    padding-left: 32px;
+  }
+}

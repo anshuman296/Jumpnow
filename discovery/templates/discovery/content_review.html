@@ -1,0 +1,83 @@
+{% extends 'discovery/search_base.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+
+{% block content_one %}
+    <style>
+        .conformation_url_href{
+            height: auto;
+            width: 450px;
+            overflow-x: scroll;
+        }
+    </style>
+
+
+    <div class="review_header">
+        <i data-feather="chevron-left" ></i> <span>
+            <a href="">Review Content</a>
+        </span>
+    </div>
+
+
+
+<div class="review_mid">
+    <span >
+        Diwali
+    </span>
+    <span>
+        <img src="{% static 'discovery/images/cards/twitter.svg' %}" height="20px" width="30px">
+    </span>
+</div>
+
+<!-- <h2 style="color: blue">Content Review:</h2> -->
+
+
+    <div class="content_review_main">
+        {% if deliverable.review_accepted %}
+        <div class="image_container_content">
+            <img src="/media/{{deliverable.screenshot}}" width="532.06px" height="417.03px"  />
+        </div>
+        <div class="remarks_show">
+            <span >Remarks:</span> 
+            <span class="main_remark" style="color: red">{{ deliverable.remark }}</span>
+        
+        {% if deliverable.completed %}
+            <div class="conformation_url">
+                <span >Confirmation Url:
+                </span>
+                <a class="conformation_url_href" target="_blank" href="{{ deliverable.confirmation_url }}">&nbsp;{{ deliverable.confirmation_url }}</a>
+            </div>
+            <div class="status_of_content">
+                <span style="color:blue">Status:</span><span style="color: green">&nbsp;Delivered..</span>
+            </div>
+        {% endif %}
+    </div>
+    </div>
+    {% elif deliverable.review_sent %}
+    <div class="content_review_main">
+        <div class="image_container_content">
+            <img src="/media/{{deliverable.screenshot}}" width="532.06px" height="417.03px"  />
+        </div>
+        <div class="remarks_form">
+            <form class="form_content_review" method="post" action="{% url 'accept_review' deliverable.id %}">
+                {% csrf_token %}
+                    <div>
+                    <label for="remark">Add remarks:</label>
+                    <input type="text" id="remark" name="remark">
+                    </div>
+                    <div>
+                        <input type="submit" value="Accept" id="accept_content">
+                    </div>
+                </form>
+        </div>
+    {% else %}
+</div>
+ 
+
+        <span style="color: blue">Status:</span><span style="color: red">&nbsp;Waiting for content review..</span>
+    {% endif %}
+
+
+
+{% endblock content_one %}

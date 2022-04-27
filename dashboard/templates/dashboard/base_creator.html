@@ -1,0 +1,298 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'dashboard/css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard/css/active.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard/css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard/css/list.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="{% static 'dashboard/images/Group450@2x.png' %}">
+    <script src="https://kit.fontawesome.com/c92a8baa98.js" crossorigin="anonymous"></script>
+    <script src="{% static " dashboard/js/jquery-3.5.1.min.js "%}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <script src="{% static " dashboard/js/bootstrap/popper.min.js "%}"></script>
+    <script src="{% static " dashboard/js/bootstrap/bootstrap.js "%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js" integrity="sha512-/bOVV1DV1AQXcypckRwsR9ThoCj7FqTV2/0Bm79bL3YSyLkVideFLE3MIZkq1u5t28ke1c0n31WYCOrO01dsUg==" crossorigin="anonymous"></script>
+    <script src="{% static " dashboard/js/functions/csrf-cookie.js " %}"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAz_Kk1s3YrBt1uYF3CQgYKACnR0NQjBuY&libraries=places">
+    </script>
+    <title>Dashboard</title>
+</head>
+
+<style>
+    a {
+        color: black;
+    }
+    
+    a:hover {
+        color: black;
+    }
+    
+    .icon_sidebar {
+        overflow: hidden;
+    }
+    
+    .icons_left {
+        display: none;
+    }
+    
+    .sign_out {
+        margin-top: 100px;
+    }
+</style>
+
+<body>
+
+    <main class="main_static">
+        <div class="btn_close">
+            <button onclick="closeMenu()" class="btn_menu btn_cross" id="btn_close"> <i
+                    class="fas fa-times"></i></button>
+        </div>
+        <header class="header_dashboard">
+            <div class="header_main">
+                <div class="menu_text">
+                    <div class="menu hamburger-menu">
+                        <button class="btn_menu btn_ham" id="btn_ham"><i class="fas fa-bars"
+                                onclick="openMenu()"></i></button>
+                        <ul class="menu__box" id="menu_box">
+                            <div class="image_head">
+                                <img src="{% static 'dashboard/images/logo.png' %}" alt="" height="30px" width="140px">
+                            </div>
+                            <div class="image_container_user">
+                                <div class="profile_image">
+                                    <img src="{% static 'discovery/images/cards/logo_short@2x.png' %}" alt="" height="73px" width="73px">
+
+                                </div>
+                                <div class="user_name_tag">
+                                    <strong style="text-transform: capitalize;">
+                                        <span>{{request.user.first_name}}
+                                            <!-- {{request.user.last_name}} -->
+                                        </span>
+                                    </strong>
+                                    <!-- <span style="display: block;">
+                                        <i data-feather="check-circle"></i>
+                                    </span> -->
+                                </div>
+
+                            </div>
+
+                            <li>
+                                <a class="menu__item tab" href="{% url 'dashboard_new' %}">
+                                    <div class="icon_sidebar"><i data-feather="grid" class="icons_sidebar"></i></div>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li>
+                                <a class="menu__item tab" href="{% url 'accepted_campaigns' %}" data-set-tab="#campaigns">
+                                    <div class="icon_sidebar"><i data-feather="bar-chart-2" class="icons_camp"></i>
+                                    </div>
+                                    Campaigns
+                                </a>
+                            </li>
+                            <li>
+                                <a class="menu__item tab" href="{% url 'socials' %}" data-set-tab="#socials">
+                                    <div class="icon_sidebar"><i data-feather="slack" class="icons_socials"></i></div>
+                                    Socials
+                                </a>
+                            </li>
+                            <li>
+                                <a class="menu__item tab" href="{% url 'bank_details' %}" data-set-tab="#payment">
+                                    <div class="icon_sidebar"><i class="fas fa-money-check-alt icons_payment"></i>
+                                    </div> Payments
+                                </a>
+                            </li>
+                            <li>
+                                <a class="menu__item tab" href="{% url 'userprofile' %}" data-set-tab="#profiles">
+                                    <div class="icon_sidebar"><i data-feather="user" class="icons_profiles"></i></div>
+                                    My Profile
+                                </a>
+                            </li>
+
+                            <div class="icons_left" style="margin-top: 60px;">
+                                <span> <i class="fas fa-cog"></i></span>
+                                <span><i class="far fa-bell"></i></span>
+                                <span><i class="far fa-question-circle"></i></span>
+                            </div>
+
+                            <div class="sign_out">
+                                <a href="{% url 'logout' %}" style="color: black;text-decoration: none;">
+                                    <i data-feather="log-out" class=""></i> <span>Sign Out</span>
+                                </a>
+                            </div>
+
+
+                        </ul>
+                    </div>
+                    <div class="text">
+                        <!-- <span>Hey <strong class="profile_name">{{request.user.first_name}} !</strong> </span> -->
+                        <!-- <div class="jn_text"><span>Welcome to jumpNow</span></div> -->
+                    </div>
+                </div>
+                <div class="side_dots side_notification" style="display: none;">
+                    <div class="notification_nav_right">
+                        <!-- <div class="noti_icons"> -->
+                        <div class="noti_icon_1">
+                            <img src="{% static 'dashboard/images/direct_message.svg' %}" alt="" height="20px" width="20px">
+                        </div>
+                        <div class="noti_icon_2">
+                            <img src="{% static 'dashboard/images/notification.svg' %}" alt="" height="20px" width="20px">
+                        </div>
+                        <!-- </div> -->
+
+                        <div class="right_side_profile_info">
+                            <div class="profile_image_nav">
+                                <img src="{% static 'dashboard/images/Group450@2x.png' %}" alt="">
+                            </div>
+                            <div class="profile_info_right">
+                                <span class="user_name_main">{{request.user.first_name}} {{request.user.last_name}}
+                                </span>
+                                <span class="user_amount_main">$100.00</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <i class="fas fa-ellipsis-v mobile_dots"></i>
+                </div>
+            </div>
+        </header>
+        <!-- END of header -->
+        </div>
+
+
+
+
+        {% block content_creator %} {% endblock content_creator %}
+
+
+    </main>
+
+    <!-- Section Main Content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="{% static 'dashboard/js/dashboard.js' %}">
+    </script>
+    <script src="{% static 'dashboard/js/social_connect/facebook_connect.js' %}"></script>
+    <script src="{% static 'dashboard/js/social_connect/twitter_connect.js' %}"></script>
+    <script src="{% static 'dashboard/js/social_connect/instagram_connect.js' %}"></script>
+    <script src="{% static 'dashboard/js/social_connect/youtube_connect.js' %}"></script>
+
+    <script>
+        feather.replace()
+        $(".chosen-select").chosen({
+            no_results_text: "Oops, nothing found!",
+            max_selected_options: 3
+        })
+    </script>
+
+    <script>
+        function sortTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("customers");
+            switching = true;
+            //Set the sorting direction to ascending:
+            dir = "asc";
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("td")[n];
+                    y = rows[i + 1].getElementsByTagName("td")[n];
+                    /*check if the two rows should switch place,
+                    based on the direction, asc or desc:*/
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    //Each time a switch is done, increase this count by 1:
+                    switchcount++;
+                } else {
+                    /*If no switching has been done AND the direction is "asc",
+                    set the direction to "desc" and run the while loop again.*/
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+
+
+        // Search
+
+        function searchFun() {
+            let filter_list = document.getElementById('myInput').value.toUpperCase()
+            let myTable = document.getElementById('customers')
+            let tr = myTable.getElementsByTagName('tr')
+
+            for (var i = 0; i < tr.length; i++) {
+                let td = tr[i].getElementsByTagName('td')[0]
+                let td_socials = tr[i].getElementsByTagName('td')[1]
+                    // td = td.replace(/(\r\n|\n|\r)/gm, "");
+                    // td = td.replace(/\s+/g, ' ').trim()
+
+                if (td) {
+                    let textValue = td.textContent || td.innerHTML
+                    let textValueTwo = td_socials.textContent || td_socials.innerHTML
+
+                    if (textValue.toUpperCase().indexOf(filter_list) > -1 || textValueTwo.toUpperCase().indexOf(filter_list) > -1) {
+                        tr[i].style.display = ""
+                    } else {
+                        tr[i].style.display = "none"
+                    }
+                }
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

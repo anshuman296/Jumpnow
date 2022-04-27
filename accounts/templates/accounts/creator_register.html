@@ -1,0 +1,127 @@
+{% extends 'accounts/base2.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+ {% block my_css %}
+
+<link rel="stylesheet" href="{% static "accounts/css/creator_register.css" %}">
+
+{% endblock my_css %} 
+
+
+{% block content %}
+    <main class="main_register">
+        <section class="register_left">
+            <div class="left_contents_all">
+                <div class="logo">
+                    <img src="{% static 'accounts/images/jn_logo.svg' %}" alt="">
+{#                    <img class="logo" src="{% static "accounts/images/new/jn_logo.svg" %}" >#}
+                </div>
+                <div class="registration_text">
+                    <span class="text_left_im">Your <strong>Influencer Campaigns</strong> are just a click away</span>
+                </div>
+                <div class="sign_in_txt">
+                    Already have an account? <strong>  <a href="{% url 'index' %}" >Log In</a></strong>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="register_right">
+            {% include 'accounts/includes/_messages.html' %}
+
+
+
+
+            <div class="form_register">
+                <form method="post" action="{% url 'register_creator' %}" id="form-register" >
+                    {% csrf_token %}
+
+                    <!-- Heading Elements Form -->
+                    <div class="logo_2">
+                        <img src="{% static 'accounts/images/jn_logo.svg' %}" alt="">
+{#                        <img class="logo" src="{% static "accounts/images/new/jn_logo.svg" %}" >#}
+                    </div>
+
+                    <div class="heading_form">
+                        <span>
+                            Register into <strong style="color: #DA001B;">JumpNow</strong>
+                        </span>
+                    </div>
+
+                    <!-- Main Form -->
+                    <div>
+                        <label for="f_name"></label>
+                        <!-- <input class="form_register_m" required type="text" name="" id="first_name" placeholder="First name"> -->
+                        {% render_field form.first_name class="form_register_m" placeholder="First Name" required="" %}
+                    </div>
+
+                    <div>
+                        <label for="last_name"></label>
+                        <!-- <input class="form_register_m" required type="text" name="" id="last_name" placeholder="First name"> -->
+                        {% render_field form.last_name class="form_register_m" placeholder="Last Name" required="" %}
+                    </div>
+
+                    <div>
+                        <label for="phone_number"></label>
+                        <input type="text" class="form_register_m" name="mobile_number" placeholder="Phone No." required>
+                    </div>
+
+                    <!-- <div>
+                        <label for="company_name"></label>
+                        <input class="form_register_m" required type="date" name="" id="company_name" placeholder="Company Name">
+                    </div> -->
+
+                    <div>
+                        <label for="email"></label>
+                        <!-- <input class="form_register_m" required type="email" name="" id="email_creators" placeholder="Email"> -->
+                        {% render_field form.username class="form_register_m" placeholder="User Email" required="" %}
+                    </div>
+
+                    <div>
+                        <label for="password_creators"></label>
+                        <!-- <input class="form_register_m" required type="password" name="" id="password_creators" placeholder="Password"> -->
+                        {% render_field form.password1 class="form_register_m password" placeholder="Password" required="" %}
+                    </div>
+                    <div>
+                        <label for="password_creators_2"></label>
+                        <!-- <input class="form_register_m" required type="password" name="" id="password_creators" placeholder="Password"> -->
+                        {% render_field form.password2 class="form_register_m password" placeholder="Confirm Password" required="" %}
+                    </div>
+
+
+                    <div class="submit_btn">
+                       <button id="next">
+                        <input class="submit_register" type="submit">
+                       </button>
+                        
+                       
+                    </div>
+                        
+                </form>
+
+                <div class="footer_text">
+                    <p>
+                        By joining I agree to receive emails from JumpNow 
+                    </p>
+                </div>
+
+                <div class="sign_in_txt_2">
+                    Already have account? <strong>  <a href="{% url 'index' %}" style="color: #DA001B;">Log In</a></strong>
+                </div>
+
+            
+            </div>
+        </section>
+
+    </main>
+
+    {% endblock content %}
+
+    {% block my_js %}
+  <script src="{% static 'accounts/js/register_new.js' %}"></script>
+{% endblock my_js %}
+
+    

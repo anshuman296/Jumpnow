@@ -1,0 +1,68 @@
+{% extends 'discovery/search_base.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block content_one %}
+
+
+
+    <div style="display: flex;justify-content: center;">
+        <h2 style="color: green">Deliverables:</span>
+    </div>
+    <div style="width:100%;display:flex;flex-wrap: wrap;margin-top: 3%;height: 85vh;overflow: scroll;padding: 0 0 0 3%;">
+{% if deliverable %}
+
+    {% for deliverable in deliverable %}
+
+    <div class="deliverable_card">
+  
+        <div style="margin-bottom: 5px;">
+            Platform: <br>  
+              <div class="image_platform">
+                <img src="../../static/discovery/images/cards/{{deliverable.platform }}.svg" alt="" height="25px" width="25px">
+            <span style="color: gray;text-transform: capitalize;">{{ deliverable.platform }}</span>
+            </div>
+        </div>
+    
+        <div style="margin-bottom: 25px;">
+            Deliverbale: <br>
+             <span style="color: gray;text-transform: capitalize;">{{ deliverable.deliverable }}</span>
+        </div>
+        <div style="display: flex;justify-content: center;">
+            {% if assigned_creator.payment %}
+            <a href="{% url 'content_review' deliverable.id %}">
+                <button class="enable_review review">
+                    review
+                </button>
+            </a>
+            {% else %}
+            <button class="disable_review review">
+                review
+            </button>
+            {% endif %}
+        </div>
+        
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+      
+        
+ 
+{% else %}
+    <span style="color: red">No deliverables to show</span>>
+{% endif %}
+ 
+
+
+
+
+
+
+
+{% endblock content_one %}
+
+

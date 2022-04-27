@@ -1,0 +1,138 @@
+{% extends 'discovery/base.html' %}
+{% load mathfilters %}
+
+{% load static %}
+
+{% block my_css %}
+<link rel="stylesheet" href="{% static 'discovery/css/main.css' %}">
+{% endblock my_css %}
+
+
+{% block content %}
+    <!-- tap on top starts-->
+    
+    <!-- tap on tap ends-->
+    <!-- page-wrapper Start-->
+    
+      
+      <!-- Page Header Ends                              -->
+      <!-- Page Body Start-->
+      
+        <!-- Page Sidebar Start-->
+        {% include 'discovery/includes/_sidebar.html' %}
+        <!-- Page Sidebar Ends-->
+        <div class="page-body">
+        {% include 'accounts/includes/_messages.html' %}
+          {% comment %} <div class="container-fluid">
+            <div class="page-title">
+              <div class="row">
+                <div class="col-7">
+                </div>
+                <div class="col-5">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-primary" id="search-progress" role="progressbar" style="width: {{progress_width}}%" aria-valuenow="{{progress_width}}" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <div class="search-count">
+                    <span id="done">{{searches_done}}</span>/<span id="total">{{searches_max}}</span> <span id="search-text">Searches</span>
+                    <img src="{% static "accounts/images/loader/loader-contact.gif"%}" id="search-loading" style="width: 20px; height: auto;" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> {% endcomment %}
+          <div class="spacer-small" style="height:15px;"></div>
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-5">
+                <form method="GET" action=".">
+                <div class="input-group">
+                    <input type="search" class="form-control" name="search" id="search_main" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-primary" type="submit" id="search_discovery">Search</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-7 text-right">
+                <a href="#" class="btn btn-outline-primary btn-lg act-btn" id="export-btn">Export <span>
+                  <img src="{% static 'discovery/images/icons/printer.png' %}" alt="" srcset="">
+                </span> </a>
+                <button href="#" class="btn btn-primary btn-lg ml-2 act-btn" id="atl">
+                Add to list
+                  <img src="{% static 'discovery/images/icons/ListDashes.png' %}" alt="" srcset="">
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="spacer-small" style="height:15px;"></div>
+          <div class="container-fluid">
+          <div class="results">
+            <div class="row">
+                {% if influencers %}
+                  {% for influencer in influencers %}
+              <div class="col-6">
+                    {% include 'discovery/includes/_single_influencer_card.html' with a=influencer %}
+              </div>
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+        </div>
+        <!-- footer start-->
+
+<!-- Modal -->
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="atlModal" tabindex="-1" aria-labelledby="atlModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="atlModalLabel">Add to List</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form id="list-form">
+      {% csrf_token %}
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="campaign-select">Campaign</label>
+          </div>
+          <select class="custom-select" name="existing-campaign-select" id="campaign-select">
+            <option value="" disabled selected>Select your option</option>
+            <option value="new3-campaign">Add New Campaign</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" name="campaign-name" id="new-campaign-name" class="form-control" placeholder="Name of new campaign">
+        </div>
+        <div class="input-group mb-3" id="campaign-list-select-div">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="campaign-list-select">List</label>
+          </div>
+          <select class="custom-select" name="existing-campaign-list-select" id="campaign-list-select">
+            <option value="" disabled selected>Select your option</option>
+            <option value="new3-campaign-list">Add New List</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" name="campaign-list-name" id="new-campaign-list-name" class="form-control" placeholder="Name of new campaign list">
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary act-btn" id="atl-submit">Add to list</button>
+      </div>
+    </div>
+  </div>
+</div>
+        
+{% endblock content %}
+
+{% block my_js %}
+<script src="{% static 'discovery/js/discovery/main.js' %}"></script>
+
+{% endblock my_js %}
+    

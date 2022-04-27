@@ -1,0 +1,204 @@
+<title>Profie</title>
+
+{% extends 'dashboard/base_creator.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block content_creator %}
+
+<style>
+    .name_input select{
+        width: 296.75px;
+        height: 45.55px;
+        background: #FAFAFA;
+        border-radius: 5.80563px;
+        outline: none;
+        border: 1px solid rgba(128, 128, 128, 0.137);
+        padding-left: 10px;
+    }
+
+</style>
+
+
+<section class="" id="profiles" >
+    <div class="header_profile">
+        <button>
+                <a href="{% url 'dashboard_new' %}">
+                    <i data-feather="chevron-left"></i>
+                </a>
+                <span>My Profile</span>
+            </button>
+    </div>
+
+
+    <div class="user_profile_form">
+        <form name="profile_form" class="main_user_form" method="post" action="">{% csrf_token %}
+            <div class="main_form_container_1" style="display: flex;width: 100%;padding: 0px 40px;">
+                <div class="left_user_form">
+                    <div class="profile_image_user">
+                        <img src="{% static 'dashboard/images/profile_image.png' %}" alt="" height="73px" width="73px">
+
+                        <div class="edit_btn">
+                            <span>
+                                <input type="file" value="Edit Profile Picture" id="file" style="display: none;">
+                            </span>
+                            <div onclick="document.getElementById('file').click()">
+                                Edit Profile Picture
+                                <i style="height: 16px;" data-feather="edit-2"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="name_input" style="margin-top: -20px;">
+                        <label for="name">Name</label>
+                        <input class="user_input" type="text" name="user_name" id="user_name" value="{{ user_form.first_name }} {{ user_form.last_name }}" placeholder=" Enter your Name" required>
+                    </div>
+
+                    <!-- <div class="name_input input_2">
+                        <label for="name">Bio</label>
+                        <textarea id="bio" name="bio" placeholder="Write your Bio" required>{{ profile_form.bio }}</textarea>
+                    </div> -->
+
+                    <div class="name_input">
+                        <span style="font-size: 18px;margin-bottom: 10px;">
+                            Selelct any three tags
+                        </span>
+                            
+                        <!-- <label for="name">Tag 1</label> -->
+
+                        <select name="tag_1" id="cars">
+                            <option value="Arts">Arts</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Food">Food</option>
+                            <option value="Health">Health</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Others">Others</option>
+                          </select>
+                        <!-- <select data-placeholder="Choose any three" multiple class="chosen-select user_input" name="tags">
+                            <option value="Arts" {% if 'Arts' in profile_form.tags %}selected{% endif %}>Arts</option>
+                            <option value="Entertainment" {% if 'Entertainment' in profile_form.tags %}selected{% endif %}>Entertainment</option>
+                            <option value="Fashion" {% if 'Fashion' in profile_form.tags %}selected{% endif %}>Fashion</option>
+                            <option value="Food" {% if 'Food' in profile_form.tags %}selected{% endif %}>Food</option>
+                            <option value="Health" {% if 'Health' in profile_form.tags %}selected{% endif %}>Health</option>
+                            <option value="Sports" {% if 'Sports' in profile_form.tags %}selected{% endif %}>Sports</option>
+                            <option value="Travel" {% if 'Travel' in profile_form.tags %}selected{% endif %}>Travel</option>
+                            <option value="Others" {% if 'Others' in profile_form.tags %}selected{% endif %}>Others</option>
+                          </select> -->
+                    </div>
+
+
+
+                    <div class="name_input">
+                        <!-- <label for="name">Tag 2</label> -->
+                        <select name="tag_2" id="cars">
+                            <option value="Fashion">Fashion</option>
+                            <option value="Arts">Arts</option>
+                            <option value="Entertainment">Entertainment</option>
+                            
+                            <option value="Food">Food</option>
+                            <option value="Health">Health</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Others">Others</option>
+                          </select>
+                    </div>
+
+
+                    <div class="name_input">
+                        <!-- <label for="name">Tag 3 </label> -->
+                        <select name="tag_3" id="cars">
+                            <option value="Food">Food</option>
+                            <option value="Arts">Arts</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Food">Food</option>
+                            <option value="Health">Health</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Others">Others</option>
+                          </select>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <!-- Left Form -->
+
+
+
+
+                <div class="right_user_form">
+                    <div class="name_input" style="margin-bottom: 35px;">
+                        <label for="name">Date of Birth</label>
+                        <input class="user_input" type="date" name="dob" value="{{ profile_form.dob|date:'Y-m-d' }}" id="dob" placeholder="{{ profile_form.dob|date:'d/m/Y' }}" required>
+                    </div>
+
+                    <div class="name_input">
+                        <label for="name">Gender</label>
+                        <!-- <select class="user_input gender" name="gender"></select> -->
+                        <select class="user_input" name="gender">
+                            <option value="Female" {% if 'Female' in profile_form.gender %}selected{% endif %}>Female</option>
+                            <option value="Male" {% if 'Male' in profile_form.gender %}selected{% endif %}>Male</option>
+                            <option value="Others" {% if 'Others' in profile_form.gender %}selected{% endif %}>Non Binary</option>
+                        </select>
+                    </div>
+                    <div class="name_input">
+                        <label for="Location">Location</label>
+                        <input class="user_input" type="text" name="location" value="{{ profile_form.location }}" id="search_input" placeholder="Enter your Location" required>
+                    </div>
+
+                    <div class="name_input">
+                        <label for="name">Contact</label>
+                        <div class="verification">
+                            <input class="user_input" type="number" name="mobile_no" id="tags" value="{{ contact_form.mobile_number }}" placeholder="Enter your Mobile Number" required disabled>
+
+                            <div class="verify_assets">
+                                Verify
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- <div class="name_input">
+                        <label for="Location">Email</label>
+                        <input class="user_input" type="email" name="location" value="{{ profile_form.location }}" id="search_input" placeholder="Enter your Location" required>
+                    </div> -->
+
+
+                    <div class="name_input">
+                        <label for="email">Email</label>
+                        <div class="verification">
+                            <input class="user_input" type="email" name="email" value="" id="tags" placeholder="Enter your Email ID" required disabled/> {% if profile_form.email_verified == False %}
+                            <div class="verify_assets">
+                                <a href="{% url 'verify_email' %}">Verify</a>
+                            </div>
+                            {% else %}
+                            <div class="verify_assets">
+                                Verified
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form_user_submit">
+                <button type="submit" id="user_form">
+                Save
+            </button>
+            </div>
+
+        </form>
+
+    </div>
+</section>
+
+
+{% endblock content_creator %}

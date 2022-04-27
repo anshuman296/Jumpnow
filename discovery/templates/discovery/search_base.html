@@ -1,0 +1,406 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <link rel="stylesheet" href="./marketer_Dashboard.css"> -->
+
+    <link rel="stylesheet" href="{% static 'discovery/css/marketers_dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'discovery/css/list.css' %}">
+    <link rel="stylesheet" href="{% static 'discovery/css/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'discovery/css/add_campaign.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Creator's Dashboard</title>
+</head>
+
+<style>
+    a {
+        color: black;
+    }
+    
+    a:hover {
+        color: black;
+    }
+</style>
+
+<!-- <<<<<<< HEAD  -->
+
+<body class="content-wrapper">
+    <main class="container_dashboard ">
+
+
+        <div class="side_ham">
+            <button class="ham_menu" id="ham_menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <button class="btn_close" id="btn_close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <section class="left" id="left">
+            <div class="logo_main">
+                <a href="/discovery">
+                    <img src="{% static 'discovery/images/cards/jn_logo.svg' %}" alt="" id="logo_1_jn">
+                </a>
+                <img src="{% static 'discovery/images/cards/logo_short@2x.png' %}" alt="" id="logo_2_jn">
+            </div>
+
+            <div class="menu_left">
+                <button class="dashboard btn_left " data-btn-left="#right_dashboard">
+                    <a  href="/discovery">
+                        <i style="width: 17px;margin-right: 7px;" data-feather="grid"></i> <span
+                        id="left_menu_txt">Dashboard</span>
+                    </a>
+                </button>
+
+                <button class="plans btn_left" data-btn-left="">
+                    <a href="addcampaignlist/">
+                        <i style="width: 17px;margin-right: 7px;" data-feather="bar-chart-2"></i><span
+                        id="left_menu_txt">Plans</span>
+                    </a>
+                </button>
+
+                <button id="b" class="list btn_left" data-btn-left="#right_list">
+                    <a href="{% url 'showcampaignlist' %}">
+                    <i style="width: 17px;margin-right: 7px;" data-feather="bar-chart"></i><span
+                    id="left_menu_txt">List</span>
+                   </a>
+                </button>
+
+                <button class="campaign btn_left" data-btn-left>
+                    <a href="{% url 'showcampaigns' %}">
+                        <i style="width: 17px;margin-right: 7px;" data-feather="slack"></i><span
+                        id="left_menu_txt">Campaign</span>
+                    </a>
+                </button>
+
+                <button class="profile btn_left" data-btn-left>
+                    <i style="width: 17px;margin-right: 7px;" data-feather="user"></i> <span>
+                       <span id="left_menu_txt">Profile</span>
+                </button>
+            </div>
+
+            <div class="icons_left">
+                <span> <i class="fas fa-cog"></i></span>
+                <span><i class="far fa-bell"></i></span>
+                <span><i class="far fa-question-circle"></i></span>
+            </div>
+        </section>
+
+        <!--------------- Section Sort and Filters ------------->
+
+        <section class="middle" id="middle">
+            <div class="sort_filter_side">
+                <button class="filter">
+                    Filter
+                </button>
+
+                <button class="close_filter" id="close_filter" onclick="closeFilter()">
+                    <i id="close_filter_menu"  data-feather="chevrons-right" ></i>
+                   
+                </button>
+            </div>
+
+            <form action="" class="form_filter_options">
+                <div class="filter_options">
+                    <div class="location right_flters">
+                        <label for="select_city" class="border_show label_right">By Location</label>
+                        <div id="geo-search">
+
+                        </div>
+
+                    </div>
+
+                    <div class="location right_flters">
+                        <label for="select_city" class="border_show label_right">Gender</label>
+                        <div id="gender">
+
+                        </div>
+                    </div>
+
+                    <div class="location right_flters">
+                        <label for="select_city" class="border_show label_right">By Tags</label>
+
+                        <div id="tags">
+
+                        </div>
+
+                    </div>
+
+                    <div class="location right_flters">
+                        <label for="select_city" class="border_show label_right">By Followers Count</label>
+                        <div id="followers_count">
+
+                        </div>
+                    </div>
+
+                    <div class="location right_flters">
+                        <label for="select_city" class="border_show label_right">By Age</label>
+                        <div id="age"></div>
+
+                    </div>
+
+                </div>
+                <div id="clear-refinements"></div>
+            </form>
+
+
+        </section>
+
+
+        <!-- Right DashBoard-->
+        <section class="right active">
+
+
+            <!-- section_LIST -->
+
+            {% block content_one %}
+            <!--  -->
+            {% endblock content_one %}
+        </section>
+
+        </section>
+
+
+
+
+        <!-- Modal Window -->
+        <div class='modal-wrapper'>
+            <div class='modal'>
+                <div class="modal_close_container">
+                    <button class='modal-close'>
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+
+                <div>
+                    <form method='post' class="form_add_to_list_create">
+                        <div class="create_list_heading ">
+                            <span class="heading_create_list">
+                                Create List
+                            </span>
+                        </div>
+                        {% csrf_token %}
+                        <!--  -->
+
+                        <div class="list_name">
+                            List Name: <input type="text" name="list_name">
+
+                            <!-- List Name:{{form.list_name}} -->
+                        </div>
+
+                        <!--  -->
+                        <div class="select_platform">
+                            <label for="">Select Platform</label>
+                            <select name="platform" id="">
+                                <option value="Instagram">Instagram</option>
+                                <option value="Facebook">Facebook</option>
+                                <option value="Twitter">Twitter</option>
+                                <option value="Youtube">Youtube</option>
+                              </select>
+                        </div>
+
+                        <!-- profiles:{{form.profiles}} -->
+
+                        <div class="btn_container_create">
+
+                            <button type="submit" class="create_list_btn">
+                            Create
+                        </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+    </main>
+
+
+
+
+    {% block my_js_new %}
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0/dist/cdn/placesInstantsearchWidget.min.js"></script>
+    <!-- <script src="./marketer_Dashboard.js"></script> -->
+    <script src="../../static/discovery/js/app.js"></script>
+    <script src="../../static/discovery/js/marketers_dashboard.js"></script>
+    <!-- <script src="{% static 'discovery/js/marketer_Dashboard.js'%}"></script> -->
+    <!-- <script src="./user_cards.js"></script> -->
+
+
+
+    <script>
+        $('#search_social').on('keyup keypress', function(e) {
+            var keyCode = e.keyCode || e.which;
+            if (keyCode === 13) {
+                e.preventDefault();
+                alert("press search icon")
+                return false;
+            }
+        });
+        // Logic Search
+        // input placeholder
+    </script>
+
+    <script>
+        const contentWrapper = document.querySelector('.content-wrapper');
+        const modalWrapper = document.querySelector('.modal-wrapper');
+        const modalWrapperAdd = document.querySelector('.modal-wrapper-2');
+
+        var tableLength = document.getElementById("customers").rows.length;
+
+        console.log(tableLength - 1);
+
+
+        var conc
+
+
+
+        function modalOpenCreate() {
+            contentWrapper.classList.add('modal--active');
+            modalWrapper.classList.add('modal--active');
+        }
+
+
+        async function modalOpen(name, id) {
+            // if (tableLength - 1 === 0) {
+            //     Swal.fire({
+            //         icon: 'error',
+            //         title: 'You Need to create a list first',
+            //         // text: 'Something went wrong!',
+            //         footer: '<a href="list/">Create a list</a>'
+            //     })
+            // } else {
+            //     conc = modalWrapperAdd
+            // }
+
+
+            if (tableLength - 1 === 0) {
+                conc = modalWrapper
+            } else {
+                conc = modalWrapperAdd
+            }
+
+
+            contentWrapper.classList.add('modal--active');
+            // modalWrapper.classList.add('modal--active');
+            conc.classList.add('modal--active');
+            document.getElementById('name_of_influencer').innerHTML = name
+
+            //document.getElementById("new_link").href = 'addinfluencertolist/'+ id
+
+
+        }
+
+        document.querySelector('.modal-close').addEventListener("click", function() {
+            contentWrapper.classList.remove('modal--active');
+            modalWrapper.classList.remove('modal--active');
+            // modalWrapperAdd.classList.remove('modal--active');
+
+        })
+
+        document.querySelector('.modal-close-2').addEventListener("click", function() {
+            contentWrapper.classList.remove('modal--active');
+            // modalWrapper.classList.remove('modal--active');
+            modalWrapperAdd.classList.remove('modal--active');
+
+        })
+    </script>
+
+    <script>
+        function sortTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("customers");
+            switching = true;
+            //Set the sorting direction to ascending:
+            dir = "asc";
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("td")[n];
+                    y = rows[i + 1].getElementsByTagName("td")[n];
+                    /*check if the two rows should switch place,
+                    based on the direction, asc or desc:*/
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    //Each time a switch is done, increase this count by 1:
+                    switchcount++;
+                } else {
+                    /*If no switching has been done AND the direction is "asc",
+                    set the direction to "desc" and run the while loop again.*/
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+    </script>
+
+    {% endblock my_js_new %}
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-js"></script>
+<script>
+  const { autocomplete } = window['@algolia/autocomplete-js'];
+</script> -->
+
+
+
+
+
+
+
+
+</body>
+
+</html>

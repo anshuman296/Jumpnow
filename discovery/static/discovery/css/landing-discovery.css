@@ -1,0 +1,106 @@
+.header-2 a.nav-link{
+    color: black !important;
+}
+
+h1,h2,h3,h4,h5,h6.lp {
+    font-weight: 800;
+}
+
+p.lp {
+    font-size: 18px;
+line-height: 29px;
+
+color: #000000;
+
+/* text-shadow: 0px 4px 4px rgba(:p0, 0, 0, 0.25); */
+}
+
+a.btn.lp {
+    padding: 1.375rem 2.75rem;
+}
+
+.featured-influencers .featured-image .top img {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(148, 148, 148, 0.25);
+    border-radius: 20px;
+}
+
+.featured-influencers .featured-about p {
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.featured-image {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 185px;
+    background: #FFFFFF;
+    border-radius: 30px;
+}
+
+.overlay img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.subscription .sub-col {
+    background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+}
+
+.subscription p {
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.subscription .sub-cta a {
+    background: #E1507E;
+    border-radius: 50px;
+    width: 180px;
+}
+
+.sub-col {
+    padding: 1rem 2.25rem;
+    
+}
+
+.bg-sub {
+    height: 100%;
+    background: linear-gradient(to bottom, #DFC1D9 50%, white 0%); 
+}
+
+.fbaa p {
+    font-size: 24px;
+line-height: 29px;
+}
+
+.fbaa-img img {
+    width: 100%;
+
+}
+
+footer {
+    background: #E5E5E5; 
+    padding: 3.5rem 0;
+}
+
+footer a.footer-link {
+    color: rgba(70, 70, 64, 0.59);
+}
+
+.copyright {
+    font-size: 13px;
+}
+
+footer .copyright a {
+    color: rgba(70, 70, 64, 0.59);
+}

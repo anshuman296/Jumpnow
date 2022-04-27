@@ -1,0 +1,167 @@
+{% extends 'dashboard/base2.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+{% block my_css %}
+
+{% endblock my_css %}
+
+{% block content %}
+      
+      <div class="sidenav">
+        <div class="sidenav-content">
+          <img src="{% static "accounts/images/new/jn_logo.svg"%}" alt="" width="70%">
+          <br>
+                <div class="btn-container">
+                  <button type="button" id="one" class="btn  btn-lg btn-width dash"> <img class="btn-group" src="{% static "accounts/images/new/Group_184_C.png"%}" alt="">Dashboard</button>
+                  <button type="button" id="two" class="btn  btn-lg btn-width"><img class="btn-group" src="{% static "accounts/images/new/Group_234.png"%}" alt="">Campaigns</button>
+                  <button type="button" id="three" class="btn  btn-lg btn-width "><img class="btn-group" src="{% static "accounts/images/new/Group_175.png"%}" alt="">Socials</button>
+                  <button type="button" id="four" class="btn  btn-lg btn-width"><img class="btn-group" src="{% static "accounts/images/new/Group_176.png"%}" alt="">Payment</button>
+                  <button type="button" id="five" class="btn  btn-lg btn-width"><img class="btn-group" src="{% static "accounts/images/new/Group_177.png"%}" alt="">Profile</button>
+              </div>
+
+              <div style="margin-top: 40%;" class="text-center bg-dark">
+                <a href="{% url 'logout' %}" >
+                  <img src="{% static "accounts/images/new/logout.svg"%}" alt="" width="15%" >
+                  Sign Out</a>
+              </div>
+
+        </div>
+     
+      </div>
+              
+
+
+              <div class="content">
+
+   <!-- ------------------------------------DASHBOARD----------------------------------------------------------------------              -->
+   <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="">
+      <div class="row" style="padding-top: 15%;" >
+     <p style="line-height: 0;">     Hey <span style="color :#FF485E"> Sarah!</span> </p>
+      </div>
+      <div class="row"style="font-size: medium; line-height 0; color:#D1D1D1;">
+        Welcome to JumpNow      
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       <ul class="navbar-nav ml-auto">
+         <li class="nav-item" style="padding-right: 0%; padding-left: 0% ;">
+          <a class="nav-link" href=""><button class="btn-nav"><img src="{% static "accounts/images/new/Group_228.png"%}" alt="" width="60%"></button></a>
+         </li>
+         <ul class="navbar-nav">
+          <li class="nav-item" style="padding-right: 0%; padding-left: 0% ;">
+            <a class="nav-link" href=""><button class="btn-nav"><img src="{% static "accounts/images/new/Group_229.png"%}" alt="" width="60%"></button></a>
+            <!-- <a class="nav-link" href="" style="color: #00C400;"> $100.00</a> -->
+          </li>
+          <ul class="navbar-nav">
+            <li class="nav-item" style="margin-left: 2%;">
+              <!-- <a class="nav-link" href=""><button class="btn-nav"><img src="images/Group 228.png" alt="" width="50%"></button></a> -->
+              <img src="https://ui-avatars.com/api/?name={{request.user.first_name}}+{{request.user.last_name}}" style="border-radius: 10px;" alt="" style="width: 85%;">
+            </li>
+       </ul>
+       <ul class="navbar-nav">
+           <li class="nav-item">
+            <div class="row">
+              <div class="dropdown ">
+                <select class="profile-dropdown" data-placeholder="{{request.user.firstname}} {{request.user.lastname}}">
+                    <option >{{request.user.first_name}} {{request.user.last_name}}</option>
+                    <option >1</option>
+                    <option >2</option>
+                </select>
+          </div>
+            </div>
+            <div class="row">
+              <a class="nav-link" href="" style="color: #00C400; font-size: small;"> </a>
+            </div>
+           </li>
+      </ul>
+     
+    </nav>
+
+            <div class="social-box">
+              <div class="row">
+                  <div class="col-3">
+                      <div class="card  mb-3" >
+                        <div class="card-body ">
+                          <p class="card-text"><img class="card-img" src="{% static "accounts/images/new/Group_178.png"%}" alt="">Facebook <a href="" disabled="disabled" style="padding-left: 20%; color: black;"><i class="fas fa-plus"></i></a></p>
+                            <p class="text-center text-danger">Coming Soon!</p>
+                        </div>
+                      </div>
+
+                      <hr style="border: 2px solid #3E5FB4;  background-color: #3E5FB4; width: 20%;"> 
+
+                  </div>
+
+                  <div class="col-3">
+                    <div class="card  mb-3" >
+                        <div class="card-body ">
+                          <p class="card-text"><img class="card-img" src="{% static "accounts/images/new/Group_182.png"%}" alt="">Instagram <a href="{% url 'instagram_connect' %}" style="padding-left: 20%; color: black;"><i class="fas fa-plus"></i></a></p>
+                            <p class="text-center text-danger">Coming Soon!</p>
+                        </div>
+                      </div>
+
+                    <hr style="border: 2px solid #F6893D; background-color: #F6893D; width: 20%;">
+                </div>
+                <div class="col-3">
+                    <div class="card  mb-3" >
+                        <div class="card-body ">
+                          <p class="card-text"><img class="card-img" src="{% static "accounts/images/new/Group_183.png"%}" alt=""> Twitter <a href="{% provider_login_url 'twitter' process='connect' %}" disabled="disabled" style="padding-left: 20%; color: black;"><i class="fas fa-plus"></i></a> </p>
+                        </div>
+                      </div>
+                    <hr style="border: 2px solid #55ADEE; background-color: #55ADEE; width: 20%;">
+                </div>
+                <div class="col-3">
+                    <div class="card  mb-3" >
+                        <div class="card-body ">
+                          <p class="card-text"><img class="card-img" src="{% static "accounts/images/new/Group_181.png"%}" alt=""> 
+                          Youtube  
+                          {% if 'youtube' in connected_accounts %}
+                            <a href="#" style="padding-left: 20%; color: black;">
+                          <i class="fas fa-check"></i>
+                          {% else %}
+                          <a href="{% url 'youtube_connect' %}" style="padding-left: 20%; color: black;">
+                              <i class="fas fa-plus"></i>
+                          </a>
+                          {% endif %}
+                          </p>
+                         
+                        </div>
+                      </div>
+                    <hr style="border: 2px solid #F1594B; background-color: #F1594B; width: 20%;">
+                </div>
+                  
+              </div>
+            </div>
+           
+
+            <div class="top-items" >
+                <div class="cont1" style="text-align: left; padding: 2% 0 0 2%">
+                    <p >"Active Campaigns"</p>
+                    <hr style="border : 1.2px solid grey; background-color:grey; width: 14%; margin-right: 90%;">
+                </div>
+              <div class="cont2" style="text-align: center;">
+              
+                    <img style="margin-top: 8%;"src="{% static "accounts/images/new/jn_logo.svg"%}" alt="">
+                    <p style="margin: 3% 20% 3% 20%; padding: 0 10% 7% 10%; letter-spacing: 1px;">"Wee are working to bring you the best set of campaigns. Connect your Socials to ensure you receive campaign information. 
+                      Jump Now 😃"</p>
+                </div>
+             
+            </div>
+
+
+
+              </div>    
+
+           
+
+{% endblock content %}
+
+{% block my_js %}
+
+{% endblock my_js %}

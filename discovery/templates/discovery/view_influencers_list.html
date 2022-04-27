@@ -1,0 +1,85 @@
+{% extends 'discovery/search_base.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block content_one %}
+
+    <h1>
+        <a href="{% url 'showcampaignlist' %}">
+            <i data-feather="chevron-left">
+
+            </i> List
+        </a>
+    </h1>
+
+
+
+
+
+    <!--  -->
+    <div id="card_container" class="social_card_container">
+        {% for profile in campaignlists.profiles.all %}
+        <div class="card_row_1 card_row" id="userlist">
+
+            <div id="hits">
+                <div class="image_info">
+                    <img src="{% static 'discovery/images/cards/display_picture.jpeg' %}" alt="" width="58px" height="58px">
+                    <div class="basic_info">
+                        <span>
+                                <span style="margin-right:8px;">  {{ profile }} </span>
+                        <span style="padding-left:8px;border-left: 1px solid grey;color: rgba(128, 128, 128, 0.707);">
+                               id
+                                 </span>
+                        </span>
+                        <div class="location_name">
+                            <i class="fas fa-map-marker-alt" style="margin-right:5px"></i> <span> location</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="subs_info">
+                    <div class="social_acc_2">
+                        <img src="{{location}}" alt="">
+                        <span style="font-size: 16px;">
+                                25K
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="info_card_tags">
+                    <div class="main_tag" style="height: 50px;overflow: scroll;">
+                        <span>
+                               bio
+                            </span>
+                    </div>
+                    <div class="hastag_main" id="hashtags">
+                        #tags
+                    </div>
+                </div>
+
+                <div class="add_to_list">
+
+                    <div class='content'>
+
+
+                        <button class='modal-toggle btn_modal'>
+                      <a  href="{% url 'removeinfluencerfromlist' profile.id campaignlists.id   %}">Remove </a></button>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- -->
+        <!--  -->
+        {% endfor %}
+
+
+
+    </div>
+
+    <script>
+        feather.replace()
+    </script>
+
+{% endblock content_one %}

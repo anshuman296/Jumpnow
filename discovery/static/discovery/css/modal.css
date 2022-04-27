@@ -1,0 +1,209 @@
+.btn_modal {
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 1.5em;
+    background: #fff;
+    cursor: pointer;
+    min-width: 38px;
+    font-size: 1em;
+}
+
+.content {
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+    -webkit-transition: opacity 500ms ease, -webkit-filter 500ms ease;
+    transition: opacity 500ms ease, -webkit-filter 500ms ease;
+    transition: filter 500ms ease, opacity 500ms ease;
+    transition: filter 500ms ease, opacity 500ms ease, -webkit-filter 500ms ease;
+}
+
+.modal--active .content {
+    -webkit-filter: blur(8px);
+    filter: blur(8px);
+    opacity: 1;
+}
+
+.modal-wrapper,
+.modal-wrapper-2 {
+    position: fixed;
+    top: 100vh;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-filter: blur(15px);
+    filter: blur(15px);
+    opacity: .01;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    overflow: hidden;
+    -webkit-transition: opacity 300ms ease 200ms, -webkit-transform 300ms ease 200ms, -webkit-filter 300ms ease 200ms;
+    transition: opacity 300ms ease 200ms, -webkit-transform 300ms ease 200ms, -webkit-filter 300ms ease 200ms;
+    transition: transform 300ms ease 200ms, filter 300ms ease 200ms, opacity 300ms ease 200ms;
+    transition: transform 300ms ease 200ms, filter 300ms ease 200ms, opacity 300ms ease 200ms, -webkit-transform 300ms ease 200ms, -webkit-filter 300ms ease 200ms;
+}
+
+.modal-wrapper.modal--active {
+    top: 00px;
+    margin-top: 120px;
+    -webkit-filter: blur();
+    filter: blur(0);
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.modal-wrapper-2.modal--active {
+    top: 00px;
+    margin-top: 120px;
+    -webkit-filter: blur();
+    filter: blur(0);
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.modal {
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+    height: 402px;
+    width: 452px;
+    border-radius: 10px;
+    box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.4);
+    margin: 0 auto;
+}
+
+.modal-button {
+    background: #e20540;
+    color: #fff;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.modal_close_container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+}
+
+.modal_close_container svg {
+    width: 27.13px;
+    height: 27.13px;
+    cursor: pointer;
+}
+
+.heading_create_list {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 400;
+}
+
+.create_list_heading,
+.list_name,
+.select_platform {
+    margin-bottom: 20px;
+}
+
+.select_platform #select_platform {
+    width: 310.75px;
+    margin: 0;
+}
+
+.list_name input,
+#id_platform {
+    width: 296.75px;
+    height: 45.55px;
+    background: #FAFAFA;
+    border-radius: 5.80563px;
+    padding-left: 13px;
+    border: 1px solid rgba(128, 128, 128, 0.308);
+    outline: none;
+}
+
+.list_name input:focus {
+    border: 1px solid rgba(128, 128, 128, 0.308);
+}
+
+.list_name input:placeholder-shown {
+    font-size: 16px;
+}
+
+.form_add_to_list_create {
+    padding: 20px 70px;
+}
+
+.create_list_btn {
+    width: 96.58px;
+    height: 45.55px;
+    background: #DA001B;
+    border-radius: 5.80563px;
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn_container_create {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+
+/* Adding Influencer */
+
+.add_influencer_container {
+    padding: 10px 30px;
+}
+
+.add_influencer_heading {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+}
+
+.list_in_modal {
+    display: none;
+}
+
+.table_modal {
+    margin-top: 20px;
+    overflow-y: scroll;
+    height: 200px;
+}
+
+.create_list_modal {
+    width: 78.31px;
+    height: 30.22px;
+    background: #FDEEF0;
+    border-radius: 5.80563px;
+    cursor: pointer;
+}
+
+.create_list_modal:hover {
+    color: #DA001B;
+}
+
+.add_to_list_modal button {
+    width: 96.58px;
+    height: 45.55px;
+    background: #DA001B;
+    border-radius: 5.80563px;
+    color: white;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.add_to_list_modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.campaign_header h1 {
+    color: red;
+}

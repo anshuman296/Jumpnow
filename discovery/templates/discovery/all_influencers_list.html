@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Influencers List</h3>
+<!-- <button><a href="{% url 'addcampaignlist' %}">Create List</a></button> -->
+
+<table>
+    {% for influencer in influencers_list %}
+    <tr>
+        <td><a href="{% url 'addinfluencertolist' influencer.id %}">{{ influencer.profile }}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+</body>
+</html>

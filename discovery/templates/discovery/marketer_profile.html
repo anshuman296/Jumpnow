@@ -1,0 +1,152 @@
+{% extends 'discovery/base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block my_css %}
+<link rel="stylesheet" href="{% static 'discovery/css/profile_marketer.css' %}">
+{% endblock my_css %}
+
+
+{% block content %}
+        {% include 'discovery/includes/_sidebar.html' %}
+        <!-- Page Sidebar Ends-->
+        <div class="page-body">
+        {% include 'accounts/includes/_messages.html' %}
+          <!-- Container-fluid starts-->
+          <div class="container-fluid ">
+            <div class="row mt-4">
+                <div class="col-6" >
+                  <div class="profile card" data-mh="profile-cards">
+                    <div class="profile card-header">
+                      User Profile
+                    </div>
+
+                    <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                      <div class="row">
+                        <div class="col-4 text-center">
+                          {% if userimage %}
+                            <img src="{{userimage.url}}" class="img-fluid" alt="" srcset="">
+                          {% else %}
+                            <img src="{% static 'discovery/images/avtar/avatar-placeholder.gif' %}" class="img-fluid" alt="" srcset=""> <br/>
+                          {% endif %}
+                          <div class="profile-input-group mt-2 image">
+                            <label for="id_profile_image" class="profile-image-upload">
+                            Change Image
+                              <input type="file" id="id_profile_image" name="profile_image" accept="image/*">
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="profile-input-group">
+                            {% render_field uform.business_email class="form-custom" placeholder="Business E-mail"%}
+                          </div>
+                          <div class="profile-input-group">
+                            <label class="form-label" for="id_gender">Gender</label>
+                            {% render_field uform.gender class="form-control"%}
+                          </div>
+                          <div class="profile-input-group">
+                            <label class="form-label" for="id_bio">Bio</label> <br>
+                            {% render_field uform.bio class="form-control" rows="5" %}
+                          </div>
+                          <div class="profile-input-group">
+                            <button type="submit" class="btn btn-lg btn-primary" value="profile-form-submitted" name="submit" >Submit</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="profile card" data-mh="profile-cards">
+                    <div class="profile card-header">
+                      Contact
+                    </div>
+
+                    <div class="card-body contact">
+                    <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                      <div class="row">
+                        <div class="col-10">
+                          <div class="profile-input-group">
+                            {% render_field cform.address_line_1 class="form-custom" placeholder="Address Line 1"%}
+                          </div>
+                          <div class="profile-input-group">
+                            {% render_field cform.address_line_2 class="form-custom" placeholder="Address Line 2"%}
+                          </div>
+                          <div class="profile-input-group">
+                            <div class="form-row">
+                              <div class="col-6">
+                                {% render_field cform.country class="form-custom" placeholder="Country" %}
+                              </div>
+                              <div class="col-6">
+                                {% render_field cform.state class="form-custom" placeholder="State" %}
+                              </div>
+                            </div>
+                          </div>
+                          <div class="profile-input-group">
+                            <div class="form-row">
+                              <div class="col-6">
+                                {% render_field cform.city class="form-custom" placeholder="City" %}
+                              </div>
+                              <div class="col-6">
+                                {% render_field cform.postal_code class="form-custom" placeholder="Postal Code" %}
+                              </div>
+                            </div>
+                          </div>
+                            <div class="profile-input-group">
+                              {% render_field cform.mobile_number class="form-custom" placeholder="Mobile Number"%}
+                            </div>
+                          <div class="profile-input-group">
+                            <button type="submit" class="btn btn-lg btn-primary" value="contact-form-submitted" name="submit" >Submit</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="profile card" data-mh="profile-cards">
+                    <div class="profile card-header">
+                      Subscription
+                    </div>
+
+                    <div class="card-body subscription p-5">
+                    <div class="row">
+                      <div class="col-6 my-auto">
+                        <div class="row">
+                          <div class="col-2 my-auto">
+                            <img src="{% static 'discovery/images/dashboard/sub-random.png' %}" style="border: none;" alt="" srcset="">
+                          </div>
+                          <div class="col-10 my-auto">
+                            <h3 class="font-weight-bold">
+                              Jumpnow x Discovery
+                            </h3>
+                            <h6>Cost: Rs. 4999/Month</h6>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6 text-right my-auto">
+                          <h6 class="mb-4">Next Billing: <span class="font-weight-bold"> {{bill_date}} </span> </h6>
+                          <a href="#">Deactivate Subscription</a>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+        </div>
+        <!-- footer start-->
+{% endblock content %}
+
+{% block my_js %}
+{% endblock my_js %}
+    

@@ -1,0 +1,55 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Payments</title>
+</head>
+<body>
+  <style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+    }
+
+    .razorpay-payment-button{
+        text-align: center;
+        width: 120px;
+        height: 39px;
+        background-color: green;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    </style>  
+
+<form action="{% url 'paymenthandler' creator_id %}" method="POST">
+
+
+    <script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        data-key="{{ razorpay_merchant_key }}"
+        data-amount="{{ razorpay_amount }}"
+        data-currency="{{ currency }}"
+        data-order_id="{{ razorpay_order_id }}"
+        data-buttontext="Pay"
+        data-name="JumpNow"
+        data-description=""
+        data-image="https://example.com/your_logo.jpg"
+        data-prefill.name=""
+        data-prefill.email=""
+        data-theme.color="#F37254"
+    ></script>
+<input type="hidden" custom="Hidden Element" name="hidden">
+</form>
+</body>
+</html>
+

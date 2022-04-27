@@ -1,0 +1,14 @@
+.inf-about .about-circle {
+    background-color: #E1507E;
+    width: 15px;
+    height: 15px;
+    border-radius:50%;
+}
+
+.inf-about .col-4 {
+    margin-bottom: 20px;
+}
+
+.about-head {
+    margin-bottom: 25px;
+}

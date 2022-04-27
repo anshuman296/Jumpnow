@@ -1,0 +1,92 @@
+{% extends 'accounts/base2.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+{% block my_css %}
+
+<link rel="stylesheet" href="{% static "accounts/css/creators_login.css" %}">
+
+{% endblock my_css %}
+
+
+{% block content %}
+    <main class="main_register">
+        <section class="register_left">
+            <div class="left_contents_all">
+                <div class="logo">
+                    <img src="{% static 'accounts/images/jn_logo.svg' %}" alt="">
+                </div>
+                <div class="registration_text">
+                    <span class="text_left_im">Your <strong>Influencer Campaigns</strong> are just a click away</span>
+                </div>
+                <div class="sign_in_txt">
+                    Dont have an account? <strong>  <a href="{% url 'register_landing' %}">Sign Up Now</a></strong>
+                </div>
+            </div>
+        </section>
+
+        <section class="register_right">
+
+
+            {% include 'accounts/includes/_messages.html' %}
+
+
+            <div class="form_register">
+                <form method="POST" action="{% url 'index' %}">
+
+
+                    <!-- Heading Elements Form -->
+                    <div class="logo_2">
+                        <img src="{% static 'accounts/images/jn_logo.svg' %}" alt="">
+                    </div>
+
+                    <div class="heading_form">
+                        <span>
+                            Sign In to your <br> <strong style="color: #DA001B;">JumpNow Account</strong>
+                        </span>
+                    </div>
+
+                    {% csrf_token %}
+                    <!-- Main Form -->
+                    <div>
+                        <label for="buisness_email"></label>
+                        <input required type="email" name="username" id="staticEmail" placeholder="Email">
+                    </div>
+
+                    <div>
+                        <label for="password_marketers"></label>
+                        <input required type="password" name="password" id="password-field" placeholder="Password">
+                    </div>
+
+
+                    <div class="submit_btn">
+                        <input class="submit_register" type="submit">
+                    </div>
+                        
+                </input>
+
+                <div class="footer_text">
+                    <p>
+                        <a class="link" href="{% url 'reset_password' %}" style="color: #DA001B;">
+                            Forget password
+                        </a>
+                    </p>
+                </div>
+
+                <div class="sign_in_txt_2">
+                    Dont have an account?  <strong>  <a href="{% url 'register_landing' %}" style="color: #DA001B;">Sign Up Now</a></strong>
+                </div>
+
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    {% endblock content %}
+
+    {% block my_js %}
+  <script src="{% static 'accounts/js/register_new.js' %}"></script>
+    {% endblock my_js %}

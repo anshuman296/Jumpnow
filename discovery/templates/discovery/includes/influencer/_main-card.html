@@ -1,0 +1,107 @@
+{% load static %}
+<div class="single" >
+    <div class="card" data-mh="profile-row-1">
+        <div class="card-body">
+        <div class="form-row">
+            <div class="col-12 single-info">
+                <div class="form-row">
+                    <div class="col-3">
+                    {% if a.profile.profile_image %}
+                    <a href="{% url 'creator-discovery-profile' a.id %}">
+                        <img src="{{a.profile.profile_image.url}}" class="img-fluid rounded-lg" alt="" srcset="">
+                    </a>
+                    {% elif a.instagram.get.profile_image %}
+                    <a href="{% url 'creator-discovery-profile' a.id %}">
+                        <img src="{{a.instagram.get.profile_image.url}}" class="img-fluid rounded-lg" alt="" srcset="">
+                    </a>
+                    {% else %}
+                    <a href="{% url 'creator-discovery-profile' a.id %}">
+                        <img src="https://i.pravatar.cc/300" class="img-fluid rounded-lg" alt="" srcset="">
+                    </a>
+                    {% endif %}
+                    </div>
+                    <div class="col-6">
+                    <div class="influencer-heading">
+                        <h3 class="font-weight-bold">
+                        <a href="{% url 'creator-discovery-profile' a.id %}">
+                            {{a.profile.user.first_name}} {{a.profile.user.last_name}}</h3>
+                        </a>
+                        {% if a.contact_id.country %}
+                        <h6>
+                            <span>
+                                <i class="fa fa-map-marker"></i>
+                            </span>
+                            {{a.contact_id.country}}{% if a.contact_id.city %}, {{a.contact_id.city}}{% endif %}
+                        </h6>
+                        {% endif %}
+                    </div>
+                    <div class="influencer-tags my-auto" data-mh="inf-tags-same">
+                        {% for tg in a.tags.all %}
+                            <span class="single-tag">{{tg.name}}</span>
+                        {% endfor %}
+                    </div>
+                    </div>
+                    <div class="col-3 text-center my-auto">
+                    <div class="jp-score">
+                        <h5 class="font-weight-bold">
+                        JP Score
+                        </h5>
+                        <h6 class="font-weight-bold">
+                        {{a.jumpnow_score}} <span class="jp-icon">
+                            <i class="fa fa-flash"></i>
+                        </span>
+                        </h6>
+                    </div>
+                    </div>
+                </div>
+                <div class="row stats-row mt-3">
+                {% for tg in a.tags.all %}
+                    {% if tg.name == 'instagram' %}
+                        {% include 'discovery/includes/_single-stat.html' with social='instagram' %}
+                    {% endif %}
+                    {% if tg.name == 'facebook' %}
+                        {% include 'discovery/includes/_single-stat.html' with social='facebook' %}
+                    {% endif %}
+                    {% if tg.name == 'twitter' %}
+                        {% include 'discovery/includes/_single-stat.html' with social='twitter' %}
+                    {% endif %}
+                    {% if tg.name == 'youtube' %}
+                        {% include 'discovery/includes/_single-stat.html' with social='youtube' %}
+                    {% endif %}
+                {% endfor %}
+                </div>
+
+                <div class="row mt-4">
+
+                    <div class="col-12">
+                    
+                        <h5>Bio</h5>
+                        <p>
+                            {{a.profile.bio}}
+                            {{ a.instagram.get.bio}}
+                        </p>
+                    </div>
+
+                    <div class="col-12">
+                    
+                        <h5>
+                            Recent Content
+                        </h5>
+
+    
+                    </div>
+
+                    <div class="col-12">
+                    
+                        <h5>
+                            Connections
+                        </h5>
+                    </div>
+                
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

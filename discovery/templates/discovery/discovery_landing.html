@@ -1,0 +1,214 @@
+{% extends 'accounts/base.html' %} {% load static %} {% block my_css %}
+<link rel="stylesheet" href="{% static 'discovery/css/landing-discovery.css' %}">
+<link rel="stylesheet" href="{% static 'accounts/css/login.css' %}"> {% endblock my_css %} {% block content %}
+<div class="main-sec" style="background-image: url({% static 'discovery/images/discovery-landing/bg-1.png' %}); background-repeat: no-repeat;">
+    {% include 'discovery/includes/_header.html' %}
+    <div class="spacer"></div>
+    <div class="main-section">
+        <div class="row">
+            <div class="col-lg-4 col-sm-12 text-left my-auto">
+                <h1 class="lp">Amet minim mollit non deserunt ullamco.</h1>
+                <p class="lp my-4">
+                    Phasellus accumsan imperdiet tempor. Cras tint, arcu nec eleifend porttitor, orci est vehicula velit..
+                </p>
+                <div class="text-center">
+                    <a href="/register" class="btn btn-lg act-btn" style="width: auto;">Get Started</a>
+                </div>
+            </div>
+            <div class="col-8 text-center">
+                <img src="{% static 'discovery/images/discovery-landing/landing-girl.png' %}" alt="" srcset="">
+            </div>
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="featured">
+        <h4 class="lp">
+            Featured
+        </h4>
+
+        <div class="spacer-small"></div>
+        <div class="featured-influencers">
+            <div class="row">
+                {% for inf in influencers %} {% include 'discovery/includes/_influencer-featured-card.html' %} {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+    <div class="subscription">
+        <h4 class="lp">
+            Subscriptions
+        </h4>
+        <div class="spacer-small"></div>
+        <div class="bg-sub">
+            <div class="container">
+                <div class="row py-3">
+                    <div class="col-4 align-items-center mx-auto text-center" data-mh="subs-col">
+                        <div class="sub-col">
+                            <div class="sub-icon my-4">
+                                <img src="{% static 'discovery/images/discovery-landing/sub-icon.png' %}" alt="Subscription ICON" srcset="">
+                            </div>
+                            <div class="sub-head my-3">
+                                <h5>Influencer <br/> Discovery Tool</h5>
+                            </div>
+
+                            <div class="sub-p my-5">
+                                <p>met minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
+                            </div>
+
+                            <div class="sub-cta my-4">
+                                <a href="/" class="btn">Search</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 align-items-center mx-auto text-center" data-mh="subs-col">
+                        <div class="sub-col">
+                            <div class="sub-icon my-4">
+                                <img src="{% static 'discovery/images/discovery-landing/sub-icon.png' %}" alt="Subscription ICON" srcset="">
+                            </div>
+                            <div class="sub-head my-3">
+                                <h5>Influencer <br/> Marketing Platform</h5>
+                            </div>
+
+                            <div class="sub-p my-5">
+                                <p>met minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
+                            </div>
+
+                            <div class="sub-cta my-4">
+                                <a href="/" class="btn">Tour</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 align-items-center mx-auto text-center" data-mh="subs-col">
+                        <div class="sub-col">
+                            <div class="sub-icon my-4">
+                                <img src="{% static 'discovery/images/discovery-landing/sub-icon.png' %}" alt="Subscription ICON" srcset="">
+                            </div>
+                            <div class="sub-head my-3">
+                                <h5>Managed <br/> Influencer Services</h5>
+                            </div>
+
+                            <div class="sub-p my-5">
+                                <p>met minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
+                            </div>
+
+                            <div class="sub-cta my-4">
+                                <a href="/" class="btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+
+    <div class="fbaa">
+        <div class="text-center">
+            <h3>
+                FOR BRANDS AND AGENCIES
+            </h3>
+            <p class="my-4">
+                Scale your influencer programs with our enterprise influencer <br/> marketing platform
+            </p>
+
+            <a href="#" class="text-muted">Take a self guided tour</a>
+        </div>
+        <div class="spacer-small"></div>
+        <div class="fbaa-img mt-4">
+            <img src="{% static 'discovery/images/discovery-landing/fbaa.png' %}" alt="Take a self guided tour" srcset="">
+        </div>
+    </div>
+
+    <div class="testimonials">
+
+    </div>
+
+</div>
+
+<div class="spacer"></div>
+
+<footer>
+    <div class="main-sec">
+        <div class="row">
+            <div class="col-3">
+                <h6>ABOUT</h6>
+                <ul class="mt-3">
+                    <li>
+                        <a href="" class="footer-link">Company</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Company</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Company</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Company</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <h6>HELP</h6>
+                <ul class="mt-3">
+                    <li>
+                        <a href="" class="footer-link">Company</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Company</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Company</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Company</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <h6>INFLUENCER MARKETING SOLUTIONS</h6>
+                <ul class="mt-3">
+                    <li>
+                        <a href="" class="footer-link">Company</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Company</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Company</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Company</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <h6>RESOURCES</h6>
+                <ul class="mt-3">
+                    <li>
+                        <a href="" class="footer-link">Influencer Marketing Solutions</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Influencer Marketing Solutions</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Company</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Company</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 text-center mt-5">
+                <span class="copyright">
+           © 2021 Jumpnow - <a href="#"> Terms of Service </a> | <a href="#">  Privacy Notice </a> | <a href="#"> California Privacy </a>
+        </span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+{% endblock content %} {% block my_js %} {% endblock my_js %}

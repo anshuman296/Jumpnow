@@ -1,0 +1,416 @@
+<title>Bank Details</title>
+
+
+
+{% extends 'dashboard/base_creator.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block content_creator %}
+
+
+<style>
+    input{
+        border: 1px solid #DA001B;
+        box-sizing: border-box;
+        border-radius: 5px;
+        width: 391px;
+        height: 50px;
+        padding-left: 12px;
+       
+    }
+
+    input:focus{
+        outline: none;
+    }
+
+    input::placeholder{
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 21px;
+        color: rgba(49, 49, 49, 0.38);
+    }
+
+
+    .pan_verify input{
+        width: 255px;
+        margin-right: 20px;
+    }
+
+    .pan_verify span{
+        background: #DA001B;
+        border-radius: 5.80563px;
+        color: white;
+        padding: 12px 20px;
+        cursor: pointer;
+        }
+
+    label{
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 21px;
+        /* identical to box height, or 150% */
+
+
+        color: #313131;
+    }
+
+    form{
+        padding: 10px 60px 10px 12%;
+    }
+
+    .upper_details,
+    .routing_swift,
+    .bank_main_details{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .submit_bank_details{
+        display: flex;
+        justify-content: center;
+        width: 85%;
+    }
+
+    .submit_bank_details button{
+    width: 170.41px;
+    height: 44.54px;
+    background: #DA001B;
+    border-radius: 5.80563px;
+    color: white;
+    margin: 10px 20px;
+}
+    
+    .name_business_,
+    .acc_type,
+    .pan_value,
+    .gst_num,
+    .bank_name,
+    .acc_num,
+    .re_enter_acc,
+    .ifsc_code,
+    .swift_code,
+    .routing_code{
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 41%;
+        margin-bottom: 3%;
+    }
+
+    .remittance,
+    .international_influencer span{
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 21px;
+        color: #000000;
+
+    }
+    .payment_back{
+        margin-bottom: 20px;
+        margin-left: -10px;
+        margin-top: -30px;
+        padding-left: 40px;
+    }
+
+    .payment_back a {
+        color: black;
+    }
+
+
+
+
+    @media only screen and (max-width: 1249px){
+        input{
+            width: 317px;
+        }
+
+        label,
+        span{
+            overflow: hidden !important;
+        }
+
+        .pan_verify input{
+            width: 212px;
+        }
+
+        form{
+            padding: 10px;
+        }
+    }
+
+
+    @media only screen and (max-width: 1249px){
+
+        input{
+            width: 337px;
+        }
+
+        .pan_verify input{
+            width: 232px;
+        }
+
+        }
+
+
+    @media only screen and (max-width: 1024px){
+
+
+        form{
+            height: 90vh;
+            overflow: scroll;
+        }
+    }
+
+
+
+    @media only screen and (max-width: 964px){
+ 
+            .payment_back{
+                margin-top: -42
+                
+                px;
+            }
+
+            form{
+                padding: 10px 6px 10px 5% ;
+            }
+}
+
+    @media only screen and (max-width: 858px){
+ 
+
+        form{
+            height: 90vh;
+            overflow-x: scroll;
+        }
+    }
+
+
+    @media only screen and (max-width: 808px){
+ 
+
+            form{
+                padding: 10px;
+            }
+
+            input{
+                width: 250px;
+                font-size: 14px;
+            }
+
+            .pan_verify input{
+                width: 150px;
+            }
+}
+
+    @media only screen and (max-width: 700px){
+
+
+        .main_static{
+            padding: 15px 4%;
+        }
+
+
+    }
+
+
+    @media only screen and (max-width: 590px){
+        input{
+            width: 200px;
+        }
+
+        .pan_verify input{
+            width: 200px;
+        }
+
+        .pan_verify span{
+            padding: 8px 12px;
+        }
+
+        .name_business_,
+    .acc_type,
+    .pan_value,
+    .gst_num,
+    .bank_name,
+    .acc_num,
+    .re_enter_acc,
+    .ifsc_code,
+    .swift_code,
+    .routing_code{
+        margin-bottom: 5%;
+    }
+ 
+    }
+
+
+    @media only screen and (max-width: 500px){
+        .upper_details, .routing_swift, .bank_main_details {
+            flex-direction: column;
+        }
+
+        input{
+            width: 300px;
+        }
+
+        form{
+            padding-left: 7%;
+        }
+
+ 
+    }
+
+
+    @media only screen and (max-width: 380px){
+        .upper_details, .routing_swift, .bank_main_details {
+            flex-direction: column;
+        }
+
+        input{
+            width: 230px;
+        }
+
+        form{
+            padding-left: 12%;
+        }
+
+        .pan_verify input{
+            width: 120px;
+        }
+
+
+
+ 
+    }
+
+
+
+</style>
+
+
+
+<div class="payment_back">
+    <div>
+        <a href="{% url 'dashboard_new' %}"><i data-feather="chevron-left"></i></a> <span>Payments</span>
+    </div>
+</div>
+<div class="outside_form">
+    <form method="post" action="{% url 'bank_details' %}" >
+
+
+        {% csrf_token %}
+        <div class="upper_details">
+            <div class="name_business_">
+                <label for="name">Name/Business Name:</label>
+                <input placeholder="Enter " style="text-transform: capitalize;" required type="text" id="name" name="name" value="{{ data.name }}">
+            </div>
+    
+            <div class="acc_type">
+                <label for="account_type">Account type:</label>
+                <input required type="text" id="account_type" name="account_type" value="{{ data.account_type }}">
+    
+            </div>
+            <div class="pan_value">
+                <label for="pan_no">PAN:</label>
+                <div class="pan_verify">
+                    <input required oninput="this.value = this.value.toUpperCase()" maxlength="10" class="pan" type="text" id="pan" name="pan" value="{{ data.pan_no }}">
+                    <span onclick="alerts()"> verify </button>
+                </div>
+            </div>
+            <div class="gst_num">
+                <label for="gst_no">GST:</label>
+                <input  type="text" id="gst" name="gst" value="{{ data.gst_no }}">
+    
+            </div>
+        </div>
+        <div class="bank_main_">
+            <div style="margin-bottom: 20px;">
+                <span class="remittance">
+                    Remittance Details
+                </span>
+            </div>
+    
+            <div class="bank_main_details">
+                <div class="bank_name">
+                    <label for="bank_name">Bank name:</label>
+                    <input  required type="text" id="bank_name" name="bank_name" value="{{ data.bank_name }}">
+                </div>
+                <div class="acc_num">
+                    <label for="account_no">Account number:</label>
+                    <input required type="number" id="account_no" name="account_no" value="{{ data.account_no }}">
+                </div>
+                <div class="re_enter_acc">
+                    <label for="account_no_ver">Re-enter Account number:</label>
+                    <input required type="number" id="account_no_ver" name="account_no_ver" value="{{ data.account_no_ver }}">
+                </div>
+                <div class="ifsc_code">
+                    <label for="ifsc_code">IFSC:</label>
+                    <input oninput="this.value = this.value.toUpperCase()"  required type="text" id="ifsc" name="ifsc" value="{{ data.ifsc_code }}">
+                </div>
+            </div>
+        </div>
+    <div class="routing_and_swift">
+        <div class="international_influencer" style="margin-bottom: 20px;">
+            <span>
+                For International Influencers only
+            </span>
+        </div>
+    
+        <div class="routing_swift">
+            <div class="swift_code">
+                <label for="swift_code">Swift code:</label>
+                <input type="text" id="swift_code" name="swift_code" value="{{ data.swift_code }}">
+            </div>
+            <div class="routing_code">
+                <label for="routing_code">Routing Code:</label>
+                <input type="text" id="routing_code" name="routing_code" value="{{ data.routing_code }}">
+            </div>
+        </div>
+    
+    </div>
+       <div class="submit_bank_details">
+           <button type="submit">Verify</button>
+        <button type="submit">Save</button>
+       </div>
+    </form>
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>  
+    var txtPANCard = document.getElementById("pan");
+
+
+    function alerts(){
+        var regex = /([A-Z]){5}([0-9]){4}([A-Z]){1}$/;
+
+        if (regex.test(txtPANCard.value.toUpperCase())) {
+                //If the enter PAN card Number format is correct then the success Message SPAN element is displayed
+                //and error message SPAN Element is hide.
+                Swal.fire(
+                    'Vaid Pan Number',
+                    '',
+                    'success'
+                    )
+            }
+            else {
+                //If the enter PAN card Number format is incorrect then the Error Message
+               //SPAN element is displayed.
+               //and Success message SPAN Element is hide.
+               Swal.fire(
+                    'Invaid Pan Number',
+                    '',
+                    'error'
+                    )
+            }
+
+    }
+ 
+    </script> 
+
+{% endblock content_creator %}

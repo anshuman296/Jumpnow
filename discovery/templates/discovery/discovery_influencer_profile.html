@@ -1,0 +1,61 @@
+{% extends 'discovery/base.html' %}
+
+{% load static %}
+
+{% block my_css %}
+{% endblock my_css %}
+
+
+{% block content %}
+    <!-- tap on top starts-->
+    
+    <!-- tap on tap ends-->
+    <!-- page-wrapper Start-->
+    
+      
+      <!-- Page Header Ends                              -->
+      <!-- Page Body Start-->
+      
+        <!-- Page Sidebar Start-->
+        {% include 'discovery/includes/_sidebar.html' %}
+        <!-- Page Sidebar Ends-->
+        <div class="page-body">
+        {% include 'accounts/includes/_messages.html' %}
+          <div class="container-fluid">
+            <div class="page-title">
+              <div class="row">
+                <div class="col-6">
+                  <h3>{{profile.profile.user.first_name}} {{profile.profile.user.last_name}} </h3>
+                </div>
+                <div class="col-6">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">                                       <i data-feather="home"></i></a></li>
+                    <li class="breadcrumb-item active">Discovery Tool</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h6>Connected Profiles:</h6>
+                    <p>{{profile.connected_profiles}}</p> <br>
+                </div>
+                <div class="col-12">
+                    <h6>Tags</h6>
+                    <p>{{profile.tags}}</p>
+                </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+        </div>
+        <!-- footer start-->
+        
+{% endblock content %}
+
+{% block my_js %}
+
+{% endblock my_js %}
+    

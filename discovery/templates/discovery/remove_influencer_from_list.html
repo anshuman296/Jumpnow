@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div>
+       
+        <!-- <input type="button" name="add_list" value="Add List" onclick="showDiv()" /> -->
+
+        <div id="welcomeDiv" class="answer_list" > 
+            <form method='post' action="">{% csrf_token %}
+                <label for="list">Remove from List:</label><br><br>
+                {% for list in campaignlists %}
+                    <input type='checkbox' name='listassign' value='{{list.id}}' id='{{list.id}}' {% if list.id %}checked{% endif %}/>
+                    <span><label class='list' for='{{list}}'>{{list.list_name}}</label></span><br>
+                {% endfor %}
+                <input type="submit" value="Submit">
+            </form>   
+        </div>
+
+    </div>
+    
+    <!-- <script>
+        function showDiv() {
+            document.getElementById('welcomeDiv').style.display = "block";
+         }
+    </script> -->
+
+</body>
+</html>

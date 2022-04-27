@@ -1,0 +1,267 @@
+<title>Content Creation</title>
+
+{% extends 'dashboard/base_creator.html' %}
+
+
+<!--  -->
+{% load static %}
+<!--  -->
+{% block content_creator %}
+
+
+<style>
+
+
+/* upload file */
+.fileUpload {
+	background: #00bcbe;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	color: #fff;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 1.25em auto;/*20px/16px 0*/
+	overflow: hidden;
+	padding: 0.875em;/*14px/16px*/
+	position: relative;
+	text-align: center;
+	width: 220px;
+   cursor: pointer;
+}
+.fileUpload:hover, .fileUpload:active, .fileUpload:focus {
+	background: #00a2a4;
+  cursor: pointer;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    width: 148px;
+    height: 46px;
+  cursor: pointer;
+}
+
+input[type="file"] {
+    position: fixed;
+    right: 100%;
+    bottom: 100%;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+
+
+/* file upload */
+
+    
+    .content_creation_header{
+        display: flex;
+        align-items: center;
+        text-decoration: none !important;
+        color: black;
+    }
+
+    .content_creation_header:hover{
+        color: black;
+    }
+
+    .content_upload_container{
+        display: flex;
+        justify-content: center;
+    }
+
+    .content_upload{
+        width: 833.12px;
+        height: 576.88px;
+
+        background: #FAF9F9;
+        box-shadow: -1px -2px 4px rgba(0, 0, 0, 0.07), 1px 2px 4px rgba(0, 0, 0, 0.07);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .main_upload_input{
+        width: 70%;
+        height: 70%;
+    }
+
+    .header_1{
+        margin-bottom: 16%;
+    }
+
+    .form_upload{
+        display: flex;
+        justify-content: center;
+    }
+    
+    .submit_btn{
+        margin-top: 100px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .submit_btn input{
+        width: 170.41px;
+        height: 44.54px;
+        background: #DA001B;
+        border-radius: 5.80563px;
+        color: white;
+        border: none;
+    }
+
+    .uploaded{
+        flex-direction: row;
+        width:870px;
+    }
+
+    .url_remarks{
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+
+    .remarks{
+        display: flex;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #confirmation_url{
+        width: 233.83px;
+        height: 49.33px;
+        background: #FFFFFF;
+        box-shadow: -1px -4px 4px rgba(230, 230, 230, 0.25), 1px 2px 4px rgba(169, 169, 169, 0.25);
+        border-radius: 9px;
+        border: none;
+    }
+
+    #submit_btn{
+        width: 170.41px;
+        height: 44.54px;
+        border: none;
+        background: #DA001B;
+        border-radius: 5.80563px;
+        color: white;
+    }
+
+    #submit_btn:active{
+        border: none;
+    }
+
+    #submit_btn:focus{
+        border: none;
+    }
+
+
+
+
+</style>
+
+<div style="margin-bottom: 45px;">
+    <a href="" class="content_creation_header">
+        <i data-feather="chevron-left"></i> <span>Content Review</span>
+    </a>
+</div>
+
+
+<div class="content_upload_container">
+    {% if deliverable.review_accepted %}
+
+        <div class="content_upload uploaded final_step">
+
+        <div class="image_final" style="border: 1px solid rgba(128, 128, 128, 0.171);margin-right: 25px;">
+        <img src="/media/{{deliverable.screenshot}}"  width="451.11px" height="329.4px"  />
+        </div>
+
+
+        <div class="url_remarks">
+
+            <div class="content_accpeted">
+                {% if deliverable.completed %}
+                <span style="color:blue">Status:</span><span style="color: green">&nbsp;Delivered..</span> 
+            {% else %}
+                <div style="display: flex;align-items: center;height: 30px;">
+                    <div style="color:blue;border-right: 2px solid rgba(128, 128, 128, 0.329);padding-right: 10px;">Status</div>
+                    <div style="color: green;display: flex;align-items: center;">&nbsp;Content Accepted <i style="color: green;margin-left: 10px;" data-feather="check"></i></div> 
+                </div>
+            </div>
+
+
+
+            <div class="remarks">
+                <div style="color:black;border-right: 2px solid rgba(128, 128, 128, 0.329);padding-right: 10px;">Remarks</div>
+                <div style="color: #0094FF;padding-left: 5px;">&nbsp;{{ deliverable.remark }}</div> 
+                <!-- <span style="color: blue">Remarks:</span> <span style="color: red">{{ deliverable.remark }}</span> -->
+            </div>
+
+            <div class="url_form">
+                <form method="post" action="{% url 'deliverable_done' deliverable.id %}">
+                    {% csrf_token %}
+                        <span style="color: black;margin-right: 10px;"><label for="confirmation_url">Confirmation Url</label></span>
+                        <input required type="text" id="confirmation_url" name="confirmation_url">
+                        <div style="position: fixed;top: 75%;left: 55%;"> 
+                            <input type="submit" value="Submit" id="submit_btn">
+                        </div>
+                    </form>
+            </div>
+        </div>
+
+    </div>
+        {% endif %}
+    {% elif deliverable.review_sent %}
+
+    <div class="content_upload uploaded">
+    <div style="border: 1px solid rgba(128, 128, 128, 0.171);margin-right: 25px;">
+        <img src="/media/{{deliverable.screenshot}}"  width="451.11px" height="329.4px" />
+    </div>
+    <span style="color: gray;">Status:<span style="color: #0094FF">&nbsp;Content sent, wating to be reviewed</span></span>
+</div>
+
+    {% else %}
+
+
+
+<div class="content_upload">
+        <div class="main_upload_input">
+            <div class="header_1">
+                <h4>Please upload content for review process</h4>
+            </div>
+            <div class="form_upload">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="fileUpload">
+                        <input type="file" required class="upload" name="filename" id="myFile"/>
+                        <span> <i data-feather="file-plus"></i> &nbsp; &nbsp; Choose File</span>
+                    </div>
+
+                    <!-- <div class="input_file">
+                        <input type="file" id="myFile" name="filename">
+                    </div> -->
+                  <div class="submit_btn">
+                    <input type="Submit">
+                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    {% endif %}
+
+{% endblock content_creator %}

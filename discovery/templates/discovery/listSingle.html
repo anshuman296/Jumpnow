@@ -1,0 +1,75 @@
+{% extends 'discovery/base.html' %}
+
+{% load static %}
+
+{% block my_css %}
+{% endblock my_css %}
+
+
+{% block content %}
+    <!-- tap on top starts-->
+    
+    <!-- tap on tap ends-->
+    <!-- page-wrapper Start-->
+    
+      
+      <!-- Page Header Ends                              -->
+      <!-- Page Body Start-->
+      
+        <!-- Page Sidebar Start-->
+        {% include 'discovery/includes/_sidebar.html' %}
+        <!-- Page Sidebar Ends-->
+        <div class="page-body">
+        {% include 'accounts/includes/_messages.html' %}
+          <div class="container-fluid">
+            <div class="page-title">
+              <div class="row">
+                <div class="col-6">
+                  <h3>{{list.name}}</h3>
+                </div>
+                <div class="col-6">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">                                       <i data-feather="home"></i></a></li>
+                    <li class="breadcrumb-item active">{{list.name}}</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="container-fluid">
+            <div class="row">
+                <table id="list_table" class="display">
+                        <thead>
+                            <tr>
+                                <th>email</th>
+                                <th>connected accounts</th>
+                                <th>celebrity</th>
+                                <th>tags</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            {% for p in list.profiles.all %}
+                                <td> {{p.profile}} </td>
+                                <td> {{p.connected_profiles}} </td>
+                                <td> {{p.celebrity}} </td>
+                                <td> {{p.tags}} </td>
+                            {% endfor %}
+                                
+                        </tbody>
+                    </table>
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+        </div>
+        <!-- footer start-->
+        
+{% endblock content %}
+
+{% block my_js %}
+<script>
+    var table = $("#list_table").dataTable();
+</script>
+{% endblock my_js %}
+    

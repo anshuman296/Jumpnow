@@ -1,0 +1,334 @@
+{% extends 'main/base_landing_page.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+
+<style>
+    .about_link {
+        color: #DA100B !important;
+    }
+</style>
+<link rel="stylesheet" href="{% static 'main/css/about_us.css' %}">
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'main/js/multi-animated-counter.js' %}"></script>
+
+
+<!-- Main_content  -->
+
+<main class="about_us">
+    <div class="about_us_back">
+        <a href="{% url 'home' %}"><i data-feather="chevron-left"></i>About us </a>
+    </div>
+    <div class="about_container">
+        <div class="about_content">
+            <div class="heading_about">
+                <span>
+                    We're empowering
+                </span> <br>
+                <span>
+                    <span class="red">Creators </span>
+                    &
+                    <span class="red">Brands</span>
+                    to build <span class="red">better</span>
+                </span>
+            </div>
+            <div class="about_sub_content">
+                <span>
+                    We at JumpNow have created a platform that natively connects the four pillars of influencer
+                    marketing
+                    : <span style="font-weight: 600;" class="red">Creators</span>,
+                    <span style="font-weight: 600;" class="red">Brands</span>,
+                    <span style="font-weight: 600;" class="red">Commerce</span>,
+                    and
+                    <span style="font-weight: 600;" class="red">Content </span>. We combine technology with human
+                    expertise to help creators and
+                    brands
+                    launch more effective marketing campaigns. Our platform is designed
+                    to save time and increase productivity, ensuring that your campaigns have the best chance of
+                    succeeding.
+                </span>
+            </div>
+            <div class="form_about">
+                <form class="form_get_started" action="">
+                    <input required type="text" placeholder="your work email" name="get_started">
+                    <button class="button_get_started btn_connect_" >
+                        Connect
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="about_cards">
+            <div class="cards_div">
+                <div class="card_1">
+                    <span class="head_card">Launched in</span>
+                    <span class="body_card">
+                       
+                        2021
+                    
+                    </span>
+                </div>
+                <div class="card_2">
+                    <span class="head_card">
+                        Community Of
+                    </span>
+                    <span class="body_card">
+                        <div id="counters_2">
+                            <span class="counter" data-TargetNum="20000" data-Speed="3000"></span>  +
+                        </div>
+                        
+                      
+                    </span>
+                </div>
+                <div class="card_3">
+                    <span class="head_card">
+                        Audience Size
+                    </span>
+                    <span class="body_card">
+                        <div id="counters_3">
+                            <span class="counter" data-TargetNum="50" data-Speed="3000"></span> Million+
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="team_container">
+        <div class="heading_team heading_about">
+            <span class="">
+                Our creative <span class="red">Approach</span>
+            </span>
+        </div>
+        <div class="cards_customers">
+            <!-- Basundhara Raj -->
+            <div class="card_1_cc">
+                <div class="img_card">
+                    <img class="img_girl" src="https://cdn141.picsart.com/310221780428211.png?to=crop&type=webp&r=-1x-1&q=95&width=1920" alt="" >
+                    <!-- <img class="img_girl" src="{% static 'main/images/girl3.png' %}" alt="" > -->
+                    <!-- <img src="https://assets.website-files.com/5beab1239ac88487c3a6608f/618a33872651d329e7d0e042_Team%20Tom.PNG" width="120px" height="120px" alt=""> -->
+                </div>
+                <div class="info_card">
+                    <span class="name_img_card">
+                        Basundhara Raj
+                    </span>
+                    <span class="designation_card">
+                        Influencer Marketing Manager
+                    </span>
+                </div>
+                <div class="icons_card">
+                    <i data-feather="mail"></i>
+                    <i data-feather="message-square"></i>
+                </div>
+            </div>
+            <!-- Sujith Ilamurugu  -->
+            <div class="card_3_cc">
+                <div class="img_card">
+                    <img src="https://assets.website-files.com/5beab1239ac88487c3a6608f/6181be1e24863f2d5b401b68_Ersad.png" width="120px" height="120px" alt="">
+                </div>
+                <div class="info_card">
+                    <span class="name_img_card">
+                        Sujith Ilamurugu  
+                    </span>
+                    <span class="designation_card">
+                        Co-Founder
+                    </span>
+                </div>
+                <div class="icons_card">
+                    <i data-feather="mail"></i>
+                    <i data-feather="message-square"></i>
+                </div>
+            </div>
+            <!-- Ritosree Ghosh -->
+            <div class="card_2_cc">
+                <div class="img_card">
+                    <img class="img_girl" src="{% static 'main/images/girl3.png' %}" alt="" >
+                </div>
+                <div class="info_card">
+                    <span class="name_img_card">
+                        Ritosree Ghosh
+                    </span>
+                    <span class="designation_card">
+                        Influencer Marketing Manager
+                    </span>
+                </div>
+                <div class="icons_card">
+                    <i data-feather="mail"></i>
+                    <i data-feather="message-square"></i>
+                </div>
+            </div>
+            <!--  Prerona Chatterjee  -->
+            <div class="card_3_cc">
+                <div class="img_card">
+                    <img class="img_girl" src="{% static 'main/images/girl2.png' %}" alt="" >
+
+                </div>
+                <div class="info_card">
+                    <span class="name_img_card">
+                        Prerona Chatterjee                    </span>
+                    <span class="designation_card">
+                        Influencer Marketing Manager 
+                    </span>
+                </div>
+                <div class="icons_card">
+                    <i data-feather="mail"></i>
+                    <i data-feather="message-square"></i>
+                </div>
+            </div>
+            <!-- Anshuman Vyas -->
+            <div class="card_3_cc">
+                <div class="img_card">
+                    <img src="https://assets.website-files.com/5beab1239ac88487c3a6608f/618a33872651d329e7d0e042_Team%20Tom.PNG" width="120px" height="120px" alt="">
+
+                </div>
+                <div class="info_card">
+                    <span class="name_img_card">
+                        Anshuman Vyas 
+                    </span>
+                    <span class="designation_card">
+                        Software Developer
+                    </span>
+                </div>
+                <div class="icons_card">
+                    <i data-feather="mail"></i>
+                    <i data-feather="message-square"></i>
+                </div>
+            </div>
+
+            <!-- Priyanka Sen -->
+            <div class="card_3_cc">
+                <div class="img_card">
+                    <img class="img_girl" src="https://cdn141.picsart.com/310221780428211.png?to=crop&type=webp&r=-1x-1&q=95&width=1920" alt="" >
+
+                </div>
+                <div class="info_card">
+                    <span class="name_img_card">
+                        Priyanka Sen                    </span>
+                    <span class="designation_card">
+                        UI / UX Designer 
+                    </span>
+                </div>
+                <div class="icons_card">
+                    <i data-feather="mail"></i>
+                    <i data-feather="message-square"></i>
+                </div>
+            </div>
+            <!-- Aiswariya Sinha -->
+            <div class="card_3_cc">
+                <div class="img_card">
+                    <img class="img_girl" src="{% static 'main/images/girl4.png' %}" alt="" >
+                </div>
+                <div class="info_card">
+                    <span class="name_img_card">
+                        Aiswariya Sinha 
+                    </span>
+                    <span class="designation_card">
+                        Influencer Marketing Intern
+                    </span>
+                </div>
+                <div class="icons_card">
+                    <i data-feather="mail"></i>
+                    <i data-feather="message-square"></i>
+                </div>
+            </div>
+            <!-- Jyotiraditya Sanyal -->
+            <div class="card_3_cc">
+                <div class="img_card">
+                    <img src="https://assets.website-files.com/5beab1239ac88487c3a6608f/6191b39a94e410637ee97798_Asad.png
+                    " width="120px" height="120px" alt="">
+                </div>
+                <div class="info_card">
+                    <span class="name_img_card">
+                        Jyotiraditya Sanyal 
+                    </span>
+                    <span class="designation_card">
+                        Influencer Marketing Intern
+                    </span>
+                </div>
+                <div class="icons_card">
+                    <i data-feather="mail"></i>
+                    <i data-feather="message-square"></i>
+                </div>
+            </div>
+            <!-- Rajasree Mitra  -->
+            <div class="card_3_cc">
+                <div class="img_card">
+                    <img class="img_girl" src="{% static 'main/images/girl3.png' %}" alt="" >
+                </div>
+                <div class="info_card">
+                    <span class="name_img_card">
+                        Rajasree Mitra  
+                    </span>
+                    <span class="designation_card">
+                        Influencer Marketing Intern
+                    </span>
+                </div>
+                <div class="icons_card">
+                    <i data-feather="mail"></i>
+                    <i data-feather="message-square"></i>
+                </div>
+            </div>
+            <!-- Koushiki Bhattacharjee  -->
+            <div class="card_3_cc">
+                <div class="img_card">
+                    <img class="img_girl" src="{% static 'main/images/girl2.png' %}" alt="" >
+                </div>
+                <div class="info_card">
+                    <span class="name_img_card">
+                        Koushiki Bhattacharjee 
+                    </span>
+                    <span class="designation_card">
+                        Influencer Marketing Intern 
+                    </span>
+                </div>
+                <div class="icons_card">
+                    <i data-feather="mail"></i>
+                    <i data-feather="message-square"></i>
+                </div>
+            </div>
+            <!-- Dharanidharan  -->
+            <div class="card_3_cc">
+                <div class="img_card">
+                    <img src="https://assets.website-files.com/5beab1239ac88487c3a6608f/6191b39e3aa64b641c15a49c_Fadhila.png" width="120px" height="120px" alt="">
+                </div>
+                <div class="info_card">
+                    <span class="name_img_card">
+                        Dharanidharan  
+                    </span>
+                    <span class="designation_card">
+                        Finance Executive
+                    </span>
+                </div>
+                <div class="icons_card">
+                    <i data-feather="mail"></i>
+                    <i data-feather="message-square"></i>
+                </div>
+            </div>
+    
+            <!-- Prateek rana -->
+            <div class="card_3_cc">
+                <div class="img_card">
+                    <img src="https://assets.website-files.com/5beab1239ac88487c3a6608f/6181bd07811cb802f429d064_Oguz%20Team.png" width="120px" height="120px" alt="">
+                </div>
+                <div class="info_card">
+                    <span class="name_img_card">
+                        Prateek Rana 
+                    </span>
+                    <span class="designation_card">
+                        Web Developer
+                    </span>
+                </div>
+                <div class="icons_card">
+                    <i data-feather="mail"></i>
+                    <i data-feather="message-square"></i>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</main>
+{% endblock content %}

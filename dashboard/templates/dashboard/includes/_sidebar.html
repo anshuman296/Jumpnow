@@ -1,0 +1,70 @@
+{% load static %}
+<div class="sidebar-wrapper">
+
+    <div class="logo-icon-wrapper"><a href="/"><img class="img-fluid" src="{% static 'accounts/images/logo/logo-icon.png' %}" alt=""></a></div>
+    <nav class="sidebar-main">
+
+    <div class="sidebar-profile">
+      <div class="profile-main"  style="padding: 0 20px; margin: 20px 0;">
+          <div class="profile-image mb-3">
+            <img src="https://ui-avatars.com/api/?name={{request.user.first_name}}+{{request.user.last_name}}" style="border-radius: 20px; width:80px; height: auto;"  alt="" srcset="">
+          </div>
+          <div class="profile-data">
+            <h6 class="font-weight-bold">{{request.user.first_name}} {{request.user.last_name}}</h6>
+            <h6 class="text-muted">{{request.user.email}}</h6>
+          </div>
+      </div>
+    </div>
+      <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
+      <div id="sidebar-menu" style="margin: 10rem 0;">
+        <ul class="sidebar-links custom-scrollbar">
+          <li class="back-btn"><a href="/"><img class="img-fluid" src="{% static 'accounts/images/logo/logo-icon.png' %}" alt=""></a>
+            <div class="mobile-back text-right"><span>Back</span><i class="fa fa-angle-right pl-2" aria-hidden="true"></i></div>
+          </li>
+          <li class="sidebar-list">
+            <a class="sidebar-link sidebar-title" href="#"> 
+              <span class="mr-4"> 
+                <i class="fa fa-tachometer"></i>
+              </span> 
+              <span>Dashboard</span>
+            </a>
+            <a class="sidebar-link sidebar-title" href="#"> 
+              <span class="mr-4"> 
+                <i class="fa fa-tachometer"></i>
+              </span> 
+              <span>Offers</span>
+            </a>
+            <a class="sidebar-link sidebar-title" href="#"> 
+              <span class="mr-4"> 
+                <i class="fa fa-tachometer"></i>
+              </span> 
+              <span>Payments</span>
+            </a>
+            <a class="sidebar-link sidebar-title" href="#"> 
+              <span class="mr-4"> 
+                <i class="fa fa-tachometer"></i>
+              </span> 
+              <span>Profile</span>
+            </a>
+          </li>
+          <li class="sidebar-list" style="margin-top: 10rem;">
+            <div style="background-color: #F9FAFC; padding: 10px 20px; margin: 20px 0;">
+                <span class="text-success" style="font-size: 1.5rem;">
+                  <i class="fa fa-rocket"></i>
+                </span>
+                <div class="mt-2">
+                  <p class="font-weight-bold text-dark" style="font-size: 1.1rem;">Need some help? <br> <a href="#" class="m-0 p-0 text-info" style="font-size: 1rem;">Contact Us</a></p>
+                </div>
+            </div>
+
+            <div class="mt-5">
+              <span class="text-muted">
+                <a href="{% url 'logout' %}" class="text-muted"><i class="fa fa-power-off"></i> Logout</a>
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
+    </nav>
+  </div>

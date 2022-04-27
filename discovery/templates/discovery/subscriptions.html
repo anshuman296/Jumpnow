@@ -1,0 +1,102 @@
+{% extends 'accounts/base.html' %}
+
+{% load static %}
+
+{% block my_css %}
+<link rel="stylesheet" type="text/css" href="{% static "accounts/css/subs.css"%}">
+<style>
+  .sub-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  text-align: left;
+}
+
+.sub-list li {
+  background: url({% static "accounts/images/subs/ulli.png"%}) no-repeat left top;
+  padding-left: 25px;
+  margin-bottom: 10px;
+}
+</style>
+{% endblock my_css %}
+
+
+{% block content %}
+  <div class="container-fluid" style="height: 100vh; background-image: url({% static 'discovery/images/discovery-landing/bg-1.png' %}); background-repeat: no-repeat;">
+    <nav class="navbar navbar-light bg-transparent">
+      <a class="navbar-brand" href="/">
+        <img class="img-fluid for-light" src="{% static "accounts/images/JN_1.png"%}" style="width: 200px; height: auto;" alt="looginpage"><img class="img-fluid for-dark" src="{% static "accounts/images/JN_1.png"%}" alt="looginpage">
+      </a>
+    </nav>
+
+    <div class="spacer"></div>
+
+    <div class="container">
+      <div class="text-center">
+        <h3>Influencer Discovery </h3>
+      </div>
+      <div class="spacer-small"></div>
+      <div class="row align-items-center justify-content-center">
+        <div class="col-5" data-mh="sub-card-col">
+            <h4>
+              Payment Details
+            </h4>
+            {% include 'accounts/includes/_messages.html' %}
+            <div class="spacer-small"></div>
+            <div class="card">
+              <div class="media p-20">
+                <div class="media-body pb-1">
+                  <h6 class="mt-0 mega-title-badge">Billed Yearly</h6>
+                  <h4> <span class="font-weight-bold"> &#8377; 4249</span> or <span class="font-weight-bold"> $58.04</span> /month</h4>
+                  <span style="background-color: white !important; border: 1px solid #E1507E;" class="badge rounded-pill badge-primary bg-transparent text-primary vertical-align-bottom">Save 15% per month</span>
+                </div>
+                <div class="form-check radio radio-primary me-3">
+                  <input class="form-check-input" id="radio14" type="radio" name="radio1" value="yearly" data-bs-original-title="" title="">
+                  <label class="form-check-label" for="radio14"></label>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="media p-20">
+                <div class="media-body pb-1">
+                  <h6 class="mt-0 mega-title-badge">Billed Monthly</h6>
+                  <h4> <span class="font-weight-bold"> &#8377; 4999</span> or <span class="font-weight-bold"> $68.29</span> /month</h4>
+                  {% comment %} <span style="background-color: white !important; border: 1px solid #E1507E;" class="badge rounded-pill badge-primary bg-transparent text-primary vertical-align-bottom">Save 33% per month</span> {% endcomment %}
+                </div>
+                <div class="form-check radio radio-primary me-3">
+                  <input class="form-check-input" id="radio15" type="radio" name="radio1" value="monthly" data-bs-original-title="" title="">
+                  <label class="form-check-label" for="radio15"></label>
+                </div>
+              </div>
+            </div>
+            <div class="spacer-small"></div>
+            <button class="btn btn-primary w-100 py-2" id="basic-btn" style="border-radius: 50px;">Buy Now</button>
+        </div>
+
+        <div class="col-5 bg-light text-dark rounded-lg sub-info" data-mh="sub-card-col">
+          <div class="text-center">
+            <h6 class="">Check out: Step 2 of 2</h6>
+            <h4 class="font-weight-bold my-4">Jumpnow x Discovery</h4>
+            <h6>What is included in <span class="font-weight-bold"> Jumpnow x Discovery </span> subscription?</h6>
+            <ul class="sub-list mt-4">
+              <li>10.1 M+ Influencers</li>
+              <li>Unlimited Searches</li>
+              <li>Unlimited Lists</li>
+              <li>Unlimited Campaigns</li>
+              <li>25 Exports/Months</li>
+              <li>10.1 M+ Influencers</li>
+              <li>Unlimited Searches</li>
+              <li>Unlimited Lists</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block my_js %}
+<script src = "https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="{% static 'discovery/js/subs.js' %}"></script>
+{% endblock my_js %}
+    

@@ -1,0 +1,463 @@
+<title>User Form</title>
+{% extends 'dashboard/base_creator.html' %}
+<!--  -->
+{% load static %}
+{% load widget_tweaks %}
+<!--  -->
+{% block content_creator %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Google Maps JavaScript library -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDesq_8wy00h50RYX1a0XCuPcuvnRmFFW4&types=(cities)&language=en-AU"></script>
+ 
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    .user_form {
+        width: 100%;
+        display: flex;
+    }
+
+    input {
+        width: 326.75px;
+        height: 55.55px;
+        left: 261.51px;
+        background: #FAFAFA;
+        border-radius: 5.80563px;
+        border: none;
+        margin: 10px 0px;
+        border: 1px solid rgba(128, 128, 128, 0.151);
+        padding-left: 10px;
+        outline: none;
+    }
+
+    
+
+    .form_main_profile {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 12%;
+        margin-top: 3%;
+    }
+
+    .left_form,
+    .right_form {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .right_form {
+        margin-left: 100px;
+    }
+
+    .upper_form {
+        display: flex;
+        align-items: center;
+    }
+
+    a {
+        color: black;
+    }
+
+    a:hover {
+        color: black;
+    }
+
+    .dp_pic {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .dp_pic div img {
+        border-radius: 50%;
+    }
+
+    .pp_edit {
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    .mt-10 {
+        margin-top: 10px;
+    }
+
+
+
+    #id_gender {
+        width: 326.75px;
+        height: 55.55px;
+        background: #FAFAFA;
+        border-radius: 5.80563px;
+        border: 1px solid rgba(128, 128, 128, 0.151);
+        margin: 10px 0px;
+    }
+
+    .margin_bottom_18 {
+        margin-bottom: 18px;
+    }
+
+
+    .form_input {
+        margin-top: -10px;
+    }
+
+    .btn_update {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .btn_update input {
+        width: 170.41px;
+        height: 44.54px;
+        background: #DA001B;
+        border-radius: 5.80563px;
+        color: white;
+        border: none;
+    }
+
+
+    .custom_font {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 20px;
+        color: #313131;
+    }
+
+    input required[type=checkbox] {
+        height: 10px;
+    }
+
+    .rad_input {
+        display: flex;
+        align-items: center;
+    }
+
+    .input_rad {
+        width: 326.75px;
+        height: 155.55px;
+        margin-top: 6px;
+        background: #FAFAFA;
+        border-radius: 5.80563px;
+        border: 1px solid rgba(128, 128, 128, 0.151);
+    }
+
+
+    @media screen and (max-width:1254px) {
+        .form_main_profile {
+            padding-left: 8%;
+        }
+    }
+
+    @media screen and (max-width:1100px) {
+        .form_main_profile {
+            padding-left: 6%;
+        }
+    }
+
+    @media screen and (max-width:1033px) {
+        .form_main_profile {
+            padding-left: 2%;
+        }
+    }
+
+
+    @media screen and (max-width:964px) {
+        .form_main_profile {
+            padding-left: 1%;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+    }
+
+
+    @media screen and (max-width:884px) {
+
+
+        form {
+            align-items: flex-start;
+            padding-left: 20px;
+        }
+
+
+    }
+
+
+    @media screen and (max-width:884px) {
+
+
+        form {
+            padding-left: 20px;
+        }
+
+
+    }
+
+
+    @media screen and (max-width:884px) {
+
+
+        form {
+            padding-left: 0px;
+            align-items: center;
+        }
+
+
+        input,
+        #id_gender {
+            width: 250px;
+        }
+    }
+
+    @media screen and (max-width:784px) {
+
+
+        form {
+            padding-left: 20px;
+            align-items: flex-start;
+        }
+
+
+
+    }
+
+    @media screen and (max-width: 745px) {
+        .form_main_profile {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form {
+            padding-left: 20px;
+            align-items: center;
+        }
+
+        .right_form {
+            margin-left: 0px;
+        }
+
+        input,
+        #id_gender {
+            width: 350px;
+        }
+    }
+
+    @media screen and (max-width: 505px) {
+        input,
+        #id_gender {
+            width: 300px;
+        }
+
+        .form_main_profile{
+            width: 100%;
+        }
+
+        form{
+            padding-left: 0px;
+        }
+
+    }
+
+
+    @media screen and (max-width: 475px) {
+        input,
+        #id_gender {
+            width: 300px;
+
+        }
+
+
+
+    }
+
+    @media screen and (max-width: 405px) {
+        input,
+        #id_gender {
+            width: 250px;
+
+        }
+
+
+
+    }
+
+
+</style>
+
+
+<!-- {{ obj.age }} -->
+
+<div class="upper_form">
+    <a href="{% url 'dashboard_new' %}"><i data-feather="chevron-left"></i></a> <span>User Profile</span>
+</div>
+
+
+<form action="" method="post">
+    {% csrf_token %}
+    <!-- {% include 'accounts/includes/_messages.html' %} -->
+
+    {% if obj.email_verified == False %}
+    <!-- <p>Please verify your email address, Click here for <a href="{% url 'resendmail' %}"> Resend mail</a> !!</p> -->
+    {% endif %}
+
+
+
+    <div class="form_main_profile">
+        <div class="left_form">
+
+            <div class="f_names margin_bottom_18 mt-10">
+                <span class="custom_font"> First Name </span>
+                <div class="form_input">
+                    <input  type="text" id="fname" name="fname" value="{{ user.first_name }}">
+                    <!-- {% render_field user_form.first_name placeholder="FirstName" required="" %} -->
+                </div>
+            </div>
+            <div class="l_name margin_bottom_18">
+                <span class="custom_font">Last Name</span>
+                <div class="form_input">
+                    <input  type="text" id="lname" name="lname" value="{{ user.last_name }}">
+                    <!-- {% render_field user_form.last_name placeholder="Lastname" required="" %} -->
+                </div>
+            </div>
+
+            <div class="l_name margin_bottom_18" style="display: none;">
+                <span class="custom_font">Select Tags</span>
+                <div class="form_input input_rad">
+
+                    <!-- <div class="rad_input">
+                            <input required type="checkbox" id="html" name="fav_language" value="HTML">
+                            <label for="html">HTML</label>
+                        </div>
+                        <div class="rad_input">
+                            <input required type="checkbox" id="css" name="fav_language" value="CSS">
+                            <label for="css">CSS</label>
+                        </div>
+                            <div class="rad_input">
+                                <input required type="checkbox" id="javascript" name="fav_language" value="JavaScript">
+                                <label for="javascript">JavaScript</label> 
+                            </div> -->
+                    <!-- {% render_field profile_form.tags placeholder="tags" required="" %} -->
+                </div>
+            </div>
+
+
+            <div class="l_name margin_bottom_18">
+                <span class="custom_font">Gender</span>
+                <div class="form_input">
+                    <select  name="gender" id="id_gender" >
+                        <option value="{{ userprofile.gender }}" >{{ userprofile.gender }}</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Non Binary">Non Binary</option>
+                    </select>
+                    <!-- {% render_field profile_form.gender placeholder="Gender" required="" %} -->
+                </div>
+            </div>
+
+
+            <div class="l_name margin_bottom_18">
+                <span class="custom_font">DOB</span>
+                <div class="form_input">
+                    <input required type="date" id="dob" name="dob" value="{{ userprofile.dob }}">
+                    <!-- {% render_field profile_form.dob placeholder="Date Of Birth" required="" %} -->
+                </div>
+            </div>
+
+
+        </div>
+        <!-- {% render_field profile_form.bio  placeholder="Bio" required="" %} -->
+        <div class="right_form">
+
+            <!-- <div class="l_name margin_bottom_18">
+                    <span class="custom_font">Gender</span>
+                    <div class="form_input">
+                        {% render_field profile_form.gender placeholder="Gender" required="" %}
+                    </div>
+                </div> -->
+
+            <div class="l_name margin_bottom_18">
+                <span class="custom_font">Location</span>
+                <div class="form_input">
+                    <input required type="text" id="search_input" name="location" value="{{ userprofile.location }}">
+                    <!-- {% render_field profile_form.location placeholder="Location" required="" %} -->
+                </div>
+            </div>
+
+
+
+            <div class="l_name margin_bottom_18">
+                <span class="custom_font">Phone No</span>
+                <div class="form_input">
+                    <input required type="text" id="phone" name="phone" value="{{ userprofile.mobile_number }}">
+                    <!-- {% render_field contact_form.mobile_number placeholder="Contact" required="" %} -->
+                </div>
+            </div>
+
+
+            <div class="l_name margin_bottom_18">
+                <span class="custom_font">Email</span>
+                <div class="form_input">
+                    <input readonly type="email" id="email" name="email" value="{{ user.email }}">
+                    <!-- {% render_field user_form.username placeholder="Email" required="" %} -->
+                </div>
+            </div>
+            <!-- {% render_field profile_form.tags placeholder="tags" required="" %} -->
+
+        </div>
+    </div>
+
+    <div class="btn_update">
+        <input onclick="swal()"  type="submit" value="Save">
+    </div>
+
+
+    <!-- {# {% render_field form.first_name class="form-control" placeholder="Name" required="" %}#} -->
+
+
+
+
+</form>
+
+
+<script>
+
+function swal(){
+  alert("Successfully submitted")
+}
+
+</script>
+
+<script>
+    var searchInput = 'search_input';
+     
+    $(document).ready(function () {
+     var autocomplete;
+     autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+      types: ['geocode'],
+      componentRestrictions: {
+       country: "IN"
+      }
+     });
+      
+     google.maps.event.addListener(autocomplete, 'place_changed', function () {
+      var near_place = autocomplete.getPlace();
+     });
+    });
+    </script>
+
+
+
+{% endblock content_creator %}

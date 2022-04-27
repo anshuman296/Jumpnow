@@ -1,0 +1,65 @@
+{% extends 'main/base_landing_page.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/css/contact_us.css' %}">
+
+<!-- main_content -->
+<main class="contact_us">
+    <div class="back_contact">
+        <a href="{% url 'home' %}"> <i data-feather="chevron-left" ></i> Contact Us </a>
+    </div>
+
+    <div class="div_left_right_contact">
+        <div class="left_contact">
+           <div class="left_inner_div">
+            <div class="heading_contact">
+                <span class="top_one">
+                    We're here to <span style="color: #DA001B;">
+                        Help
+                    </span>.
+                </span>
+
+                <!-- <span class="bottom_sub">
+                    Just a click away if you want to reach us.
+                </span> -->
+            </div>
+            <div class="contact_num_add">
+                <div class="contact_number">
+                    <i data-feather="phone" ></i> <span>8003322775</span>
+                </div>
+                <div class="contact_mail">
+                    <i data-feather="mail" ></i><span>info@jumpnow.agency</span>
+                </div>
+                <div class="contact_address">
+                    <i data-feather="map-pin" ></i> <span class="contact_us_add">
+                        JumpNow Technologies Pvt Ltd., 4th Floor, IndiQube Gamma,
+                         Outer Ring Road, Marathahalli, Bangalore - 560103.
+                    </span>
+                </div>
+            </div>
+           </div>
+        </div>
+        <div class="right_contact">
+          <div>
+            <form action="" class="form_contact" name="contact_us_form">
+                <div class="top_heading_form">
+                    <span class="bottom_sub" style="text-align: left;">
+                        Just a click away if you want to reach us.
+                    </span>
+                </div>
+                <input required placeholder="Name" type="text" name="contact_name" id="contact_name" class="contact_name">
+                <input required placeholder="email" type="email" name="contact_email" id="contact_email" class="contact_email" >
+                <textarea required placeholder="message" name="contact_message" id="contact_message" cols="30" rows="10"></textarea>
+                <input class="input_submit" type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock content %}

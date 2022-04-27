@@ -1,0 +1,51 @@
+{% extends 'discovery/base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block my_css %}
+<link rel="stylesheet" href="{% static 'discovery/css/profile_marketer.css' %}">
+<link rel="stylesheet" href="{% static 'discovery/css/profile_creator.css' %}">
+<link rel="stylesheet" href="{% static 'discovery/css/main.css' %}">
+{% endblock my_css %}
+
+
+{% block content %}
+        {% include 'discovery/includes/_sidebar.html' %}
+        <!-- Page Sidebar Ends-->
+        <div class="page-body">
+        {% include 'accounts/includes/_messages.html' %}
+          
+          <div class="container-fluid">
+            <div class="row mt-4">
+              <div class="col-6">
+                {% include 'discovery/includes/influencer/_main-card.html' with a=profile %}
+              </div>
+              <div class="col-6">
+                {% include 'discovery/includes/influencer/_about-card.html' with a=profile %}
+              </div>
+              <div class="col-6 mt-3">
+                {% include 'discovery/includes/influencer/_audience-insights.html' with a=profile %}
+              </div>
+              <div class="col-6 mt-3">
+                {% include 'discovery/includes/influencer/_audience-demographics.html' with a=profile %}
+              </div>
+              <div class="col-6 mt-3">
+                {% include 'discovery/includes/influencer/_audience-insights1.html' with a=profile %}
+              </div>
+              <div class="col-6 mt-3">
+                {% include 'discovery/includes/influencer/_audience-demographics1.html' with a=profile %}
+              </div>
+            </div>
+          </div>
+
+        </div>
+          
+{% endblock content %}
+
+{% block my_js %}
+<script src="{% static "discovery/js/chart/apex-chart/apex-chart.js"%}"></script>
+<script src="{% static "discovery/js/chart/apex-chart/stock-prices.js"%}"></script>
+<script src="{% static "discovery/js/chart/apex-chart/chart-custom.js"%}"></script>
+{% endblock my_js %}
+    

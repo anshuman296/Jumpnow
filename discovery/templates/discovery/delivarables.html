@@ -1,0 +1,414 @@
+{% extends 'discovery/search_base.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+
+{% block content_one %}
+
+<style>
+    /*the container must be positioned relative:*/
+    .custom-select {
+      position: relative;
+      font-family: Arial;
+    }
+    
+    .custom-select select {
+      display: none; /*hide original SELECT element:*/
+    }
+    
+    .select-selected {
+      background-color: transparent;
+      border: 1px solid gray;
+    }
+    
+    /*style the arrow inside the select element:*/
+    .select-selected:after {
+      position: absolute;
+      content: "";
+      top: 14px;
+      right: 10px;
+      width: 0;
+      height: 0;
+      border: 6px solid transparent;
+      border-color: black transparent transparent transparent;
+    }
+    
+    /*point the arrow upwards when the select box is open (active):*/
+    .select-selected.select-arrow-active:after {
+      border-color: transparent transparent black transparent;
+      top: 7px;
+    }
+    
+    /*style the items (options), including the selected item:*/
+    .select-items div,.select-selected {
+      color: black;
+      padding: 8px 16px;
+      /* border: 1px solid transparent; */
+      border:1px solid rgba(128, 128, 128, 0.541);
+      cursor: pointer;
+      user-select: none;
+      border-radius: 9px;
+    }
+    
+    /*style items (options):*/
+    .select-items {
+      position: absolute;
+      background-color: gray;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 99;
+    }
+    
+    /*hide the items when the select box is closed:*/
+    .select-hide {
+      display: none;
+    }
+    
+    .select-items div:hover, .same-as-selected {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    #selectbox1{
+        border: 1px solid rgba(0, 0, 0, 0.26);
+        width: 290px;
+        padding: 10px;
+        padding-right: 20px;
+    }
+
+    #selectbox1 *
+{
+ border-radius: 15px;
+ background-color: red;
+}
+
+    select {
+        background-color: rgba(128, 128, 128, 0.144);
+}
+
+
+    </style>
+
+    <div class="deliverable_header">
+        <h2>
+            Set Deliverables
+        </h2>
+    </div>
+
+    <div>
+        <h3>
+            Step 1 : Choose Platform
+        </h3>
+    </div>
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="choose_deliverable" >
+        <div class="deliverables_option">
+            
+            
+            <input type="radio"  id="platform1" name="platform" value="youtube">
+            <label for="html">  <img src="{% static 'discovery/images/cards/youtube.svg' %}" alt="" height="44px" width="35px">
+                Youtube</label>
+        </div>
+
+            <!--  -->
+        <div class="deliverables_option">
+            <input checked= "checked" type="radio" id="platform2" name="platform" value="instagram">  
+            <label for="html">  <img src="{% static 'discovery/images/cards/instagram.svg' %}" alt="" height="44px" width="35px">
+                Instagram</label>
+        </div>
+
+            <!--  -->
+        <div class="deliverables_option">
+            <input type="radio" id="platform3" name="platform" value="facebook">
+            <label for="html">  <img src="{% static 'discovery/images/cards/facebook.svg' %}" alt="" height="44px" width="35px">
+                facebook</label>
+        </div>
+
+            <!--  -->
+        <div class="deliverables_option">
+            <input type="radio" id="platform4" name="platform" value="twitter">
+             <label for="html">  <img src="{% static 'discovery/images/cards/twitter.svg' %}" alt="" height="44px" width="35px">
+                Twitter</label>
+        </div>
+    </div>
+
+
+    <div class="heading_2_deliverables">
+        <h3>
+            Step 2 : Select Deliverable Type
+        </h3>
+
+        <a href="">
+            Add more +
+        </a>
+    </div>
+
+
+
+ 
+
+
+    
+
+
+
+
+    <!-- <label for="type">Set Delivarables:</label> -->
+    <div class=" custom-selects"  style="width: 429.49px;">
+        <select required name="type" id="selectbox1" >
+
+            <option value="" selected disabled hidden>Choose here</option>
+
+            <div class="select_instagram" id="select_instagram">
+                <option id="reels" class="select_instagram" value="reels">Reels</option>
+                <option id="static_post" value="static_post">Static Post</option>
+                <option id="video_post" value="video_post">Video Post</option>
+                <option id="IGTv" value="IGTv">IGTv Video</option>
+                <option id="swipeUpStory" value="swipeUpStory">Swipe Up Story</option>
+            </div>
+
+            <div class="select_youtube" id="select_youtube">
+                <option id="dedicatedVideo"  value="dedicatedVideo">Dedicated Video</option>
+                <option id="integratedVideo" value="integratedVideo">Integrated Video</option>
+                <option id="youtubeShorts" value="youtubeShorts">Youtube Shorts</option>
+            </div>
+
+            <div class="slect_twitter" id="slect_twitter"> 
+                <option id="tweet" value="tweet">Tweet</option>
+                <option id="tweetVideo" value="tweetVideo">Tweet a Video</option>
+                <option id="hostSpace" value="hostSpace">Host a Space</option>
+            </div>
+
+            <div class="select_facebook" id="select_facebook">
+                <option id="imagePost" value="imagePost">Image Post</option>
+                <option id="videoPost" value="videoPost">Video Post</option>
+            </div>
+
+
+
+            <!-- <option style="display: none;" id="post" value="post" >Post</option>
+            <option id="story" value="story">Story</option>
+            <option id="video" value="video">Video</option>
+            <option value="reels">Reels</option>
+            <option value="Static Post">Static Post</option>
+            <option value="IGTv">IGTv Video</option>
+            <option value="SwipeUp">Swipe Up Story</option>
+            <option value=""></option> -->
+        </select>
+    </div>
+
+    <div style="display: flex;justify-content: center;">
+        <h2 style="color: green">Deliverables:</span>
+    </div>
+    <div style="height: 40vh;overflow-x: scroll;margin-bottom: 30px;">
+
+        <div style="width:100%;display:flex;flex-wrap: wrap;">  
+    {% if deliverable %}
+        
+
+        {% for deliverable in deliverable %}
+        <div class="deliverable_card" style="height: 150px;">
+      
+            <div style="margin-bottom: 5px;">
+                Platform:  <br>
+                
+                <div class="image_platform">
+                    <img src="../../static/discovery/images/cards/{{deliverable.platform }}.svg" alt="" height="25px" width="25px">
+                <span style="color: gray;text-transform: capitalize;">{{ deliverable.platform }}</span>
+                </div>
+            </div>
+        
+    
+            <div style="margin-bottom: 15px;">
+                Deliverbale: <br>
+                 <span style="color: gray;text-transform: capitalize;">{{ deliverable.deliverable }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    
+    
+    
+          
+            
+     
+    {% else %}
+        <span style="color: red">No deliverables to show</span>>
+    {% endif %}
+    </div>
+
+    <div class="deliverable_submit">
+        <input type="submit" value="Set Delivarables">
+    </div>
+
+
+
+</form>
+
+<script>
+   var platform =  document.querySelectorAll("input[name=platform]")
+            document.getElementById("reels").style.display = "block"
+            document.getElementById("static_post").style.display = "block"
+            document.getElementById("video_post").style.display = "block"
+            document.getElementById("IGTv").style.display = "block"
+            document.getElementById("swipeUpStory").style.display = "block"
+        // YT
+            document.getElementById("dedicatedVideo").style.display = "none"
+            document.getElementById("integratedVideo").style.display = "none"
+            document.getElementById("youtubeShorts").style.display = "none"
+        // FB
+            document.getElementById("imagePost").style.display = "none"
+            document.getElementById("videoPost").style.display = "none"
+        //TW 
+            document.getElementById("tweet").style.display = "none"
+            document.getElementById("tweetVideo").style.display = "none"
+            document.getElementById("hostSpace").style.display = "none"
+
+
+   platform.forEach(function(a){
+    a.addEventListener('change',function(){
+        // Insta
+            document.getElementById("reels").style.display = "block"
+            document.getElementById("static_post").style.display = "block"
+            document.getElementById("video_post").style.display = "block"
+            document.getElementById("IGTv").style.display = "block"
+            document.getElementById("swipeUpStory").style.display = "block"
+        // YT
+            document.getElementById("dedicatedVideo").style.display = "block"
+            document.getElementById("integratedVideo").style.display = "block"
+            document.getElementById("youtubeShorts").style.display = "block"
+        // FB
+            document.getElementById("imagePost").style.display = "block"
+            document.getElementById("videoPost").style.display = "block"
+        //TW 
+            document.getElementById("tweet").style.display = "block"
+            document.getElementById("tweetVideo").style.display = "block"
+            document.getElementById("hostSpace").style.display = "block"
+
+
+
+        if(a.value === "twitter"){
+            document.getElementById("reels").style.display = "none"
+            document.getElementById("static_post").style.display = "none"
+            document.getElementById("video_post").style.display = "none"
+            document.getElementById("IGTv").style.display = "none"
+            document.getElementById("swipeUpStory").style.display = "none"
+            document.getElementById("dedicatedVideo").style.display = "none"
+            document.getElementById("integratedVideo").style.display = "none"
+            document.getElementById("youtubeShorts").style.display = "none"
+            document.getElementById("imagePost").style.display = "none"
+            document.getElementById("videoPost").style.display = "none"
+        }
+
+        if(a.value === "facebook"){
+            document.getElementById("tweet").style.display = "none"
+            document.getElementById("tweetVideo").style.display = "none"
+            document.getElementById("hostSpace").style.display = "none"
+            document.getElementById("dedicatedVideo").style.display = "none"
+            document.getElementById("integratedVideo").style.display = "none"
+            document.getElementById("youtubeShorts").style.display = "none"
+            document.getElementById("reels").style.display = "none"
+            document.getElementById("static_post").style.display = "none"
+            document.getElementById("video_post").style.display = "none"
+            document.getElementById("IGTv").style.display = "none"
+            document.getElementById("swipeUpStory").style.display = "none"
+        }
+
+        if(a.value == "youtube"){
+            document.getElementById("imagePost").style.display = "none"
+            document.getElementById("videoPost").style.display = "none"
+            document.getElementById("tweet").style.display = "none"
+            document.getElementById("tweetVideo").style.display = "none"
+            document.getElementById("hostSpace").style.display = "none"
+            document.getElementById("reels").style.display = "none"
+            document.getElementById("static_post").style.display = "none"
+            document.getElementById("video_post").style.display = "none"
+            document.getElementById("IGTv").style.display = "none"
+            document.getElementById("swipeUpStory").style.display = "none"
+        }
+
+        if(a.value == "instagram"){
+            document.getElementById("dedicatedVideo").style.display = "none"
+            document.getElementById("integratedVideo").style.display = "none"
+            document.getElementById("youtubeShorts").style.display = "none"
+            document.getElementById("imagePost").style.display = "none"
+            document.getElementById("videoPost").style.display = "none"
+            document.getElementById("tweet").style.display = "none"
+            document.getElementById("tweetVideo").style.display = "none"
+            document.getElementById("hostSpace").style.display = "none"
+        }
+    })
+   })
+//    Select
+</script>
+
+<script>
+    // Iterate over each select element
+$('select').each(function () {
+
+// Cache the number of options
+var $this = $(this),
+    numberOfOptions = $(this).children('option').length;
+
+// Hides the select element
+$this.addClass('s-hidden');
+
+// Wrap the select element in a div
+$this.wrap('<div class="select"></div>');
+
+// Insert a styled div to sit over the top of the hidden select element
+$this.after('<div class="styledSelect"></div>');
+
+// Cache the styled div
+var $styledSelect = $this.next('div.styledSelect');
+
+// Show the first select option in the styled div
+$styledSelect.text($this.children('option').eq(0).text());
+
+// Insert an unordered list after the styled div and also cache the list
+var $list = $('<ul />', {
+    'class': 'options'
+}).insertAfter($styledSelect);
+
+// Insert a list item into the unordered list for each select option
+for (var i = 0; i < numberOfOptions; i++) {
+    $('<li />', {
+        text: $this.children('option').eq(i).text(),
+        rel: $this.children('option').eq(i).val()
+    }).appendTo($list);
+}
+
+// Cache the list items
+var $listItems = $list.children('li');
+
+// Show the unordered list when the styled div is clicked (also hides it if the div is clicked again)
+$styledSelect.click(function (e) {
+    e.stopPropagation();
+    $('div.styledSelect.active').each(function () {
+        $(this).removeClass('active').next('ul.options').hide();
+    });
+    $(this).toggleClass('active').next('ul.options').toggle();
+});
+
+// Hides the unordered list when a list item is clicked and updates the styled div to show the selected list item
+// Updates the select element to have the value of the equivalent option
+$listItems.click(function (e) {
+    e.stopPropagation();
+    $styledSelect.text($(this).text()).removeClass('active');
+    $this.val($(this).attr('rel'));
+    $list.hide();
+    /* alert($this.val()); Uncomment this for demonstration! */
+});
+
+// Hides the unordered list when clicking outside of it
+$(document).click(function () {
+    $styledSelect.removeClass('active');
+    $list.hide();
+});
+
+});
+</script>
+    
+{% endblock content_one %}

@@ -1,0 +1,426 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'dashboard/css/dashboard.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <script src="https://kit.fontawesome.com/c92a8baa98.js" crossorigin="anonymous"></script>
+
+
+    <script src="{% static "dashboard/js/jquery-3.5.1.min.js"%}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <script src="{% static "dashboard/js/bootstrap/popper.min.js"%}"></script>
+    <script src="{% static "dashboard/js/bootstrap/bootstrap.js"%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js" integrity="sha512-/bOVV1DV1AQXcypckRwsR9ThoCj7FqTV2/0Bm79bL3YSyLkVideFLE3MIZkq1u5t28ke1c0n31WYCOrO01dsUg==" crossorigin="anonymous"></script>
+    <script src="{% static "dashboard/js/functions/csrf-cookie.js" %}"></script>
+
+
+
+
+    <title>Document</title>
+</head>
+
+<body>
+    <main class="main_static">
+        <div class="btn_close">
+            <button onclick="closeMenu()" class="btn_menu btn_cross" id="btn_close"> <i
+                    class="fas fa-times"></i></button>
+        </div>
+        <header class="header_dashboard">
+            <div class="header_main">
+                <div class="menu_text">
+                    <div class="menu hamburger-menu">
+                        <button class="btn_menu btn_ham" id="btn_ham"><i class="fas fa-bars"
+                                onclick="openMenu()"></i></button>
+                        <!-- <input id="menu__toggle" type="checkbox" />
+                        <label class="menu__btn" for="menu__toggle" > -->
+                        <!-- <span class="ham_span"></span> -->
+                        <!-- </label> -->
+
+                        <ul class="menu__box" id="menu_box">
+                            <div class="image_head">
+                                <a href="/"><img src="{% static 'dashboard/images/logo.png' %}" alt="" height="40px" width="170px"></a>
+                            </div>
+                            <div class="profile">
+                                <div class="profile_image">
+                                    <img src="{%  static 'dashboard/images/profile_image.png' %}" alt="">
+                                </div>
+                                <div class="profile_info">
+                                    <div class="user_name">
+                                        <div class="name">
+                                            <span class="user_name_main">{{request.user.first_name}} {{request.user.last_name}} </span>
+                                        </div>
+                                        <div class="amount">
+                                            <span class="user_amount_main">$100.00</span>
+                                        </div>
+                                    </div>
+                                    <div class="user_menu">
+                                        <i class="fas fa-angle-down"></i>
+                                    </div>
+                                </div>
+                                <!-- <div class="notification_sidebar">
+                                    <img src="./assets/images/notifications/dm.svg" alt="" height="30px" width="30px">
+                                    <img src="./assets/images/notifications/love.svg" alt="" height="30px" width="30px">
+                                </div> -->
+                                <div class="noti_icons">
+                                    <div class="noti_icon_1">
+                                        <img src="{% static 'dashboard/images/direct_message.svg' %}" alt="" height="20px" width="20px">
+                                    </div>
+                                    <div class="noti_icon_2">
+                                        <img src="{% static 'dashboard/images/notification.svg' %}" alt="" height="20px" width="20px">
+                                    </div>
+                                </div>
+                                <!--  -->
+                            </div>
+                            <li><a class="menu__item" href="#dashboard">
+                                    <div class="icon_sidebar"><i class="fas fa-chart-line icons_sidebar"></i></div>
+                                    Dashboards
+                                </a></li>
+                            <li><a class="menu__item" href="#">
+                                    <div class="icon_sidebar"><i class="far fa-folder-open icons_camp"></i> </div>
+                                    Campaigns
+                                </a>
+                            </li>
+                            <li><a class="menu__item" href="#">
+                                    <div class="icon_sidebar"><i class="fas fa-share-alt icons_socials"></i></div>
+                                    Socials
+                                </a></li>
+                            <li><a class="menu__item" href="#">
+                                    <div class="icon_sidebar"><i class="fas fa-money-check-alt icons_payment"></i>
+                                    </div> Payment
+                                </a>
+                            </li>
+                            <li><a class="menu__item" href="#">
+                                    <div class="icon_sidebar"><i class="fas fa-user-circle icons_profiles"></i></div>
+                                    Profiles
+                                </a>
+                            </li>
+
+                            <div class="sign_out">
+                                <a href="{% url 'logout' %}" >
+                                <i class="fas fa-sign-out-alt"></i> <span>Sign Out</span>
+                                </a>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="text">
+                        <span>Hey <strong class="profile_name">{{request.user.first_name}} !</strong> </span>
+                        <div class="jn_text"><span>Welcome to jumpNow</span></div>
+                    </div>
+                </div>
+                <div class="side_dots side_notification">
+                    <div class="notification_nav_right">
+                        <!-- <div class="noti_icons"> -->
+                            <div class="noti_icon_1">
+                                <img src="{% static 'dashboard/images/direct_message.svg' %}" alt="" height="20px" width="20px">
+                            </div>
+                            <div class="noti_icon_2">
+                                <img src="{% static 'dashboard/images/notification.svg' %}" alt="" height="20px" width="20px">
+                            </div>
+                        <!-- </div> -->
+
+                            <div class="right_side_profile_info">
+                                <div class="profile_image_nav">
+                                    <img src="{% static 'dashboard/images/profile_image.png' %}" alt="">
+                                </div>
+                                <div class="profile_info_right">
+                                    <span class="user_name_main">{{request.user.first_name}} {{request.user.last_name}}<button> &#9660; </button> </span>
+                                    <span class="user_amount_main">$100.00</span>
+                                </div>
+                            </div>
+
+                    </div>
+
+                    <i class="fas fa-ellipsis-v mobile_dots"></i>
+                </div>
+            </div>
+        </header>
+        <!-- END of header -->
+
+        <section class="section_dashboard">
+            <div class="social_icons">
+                <div class="icon_set_1">
+                    <!-- Facebook -->
+                    <div class="icon_set_container">
+                        <div class="icons_card card_1">
+                            <div class="icon_main">
+                                <img class="img_social" src="{% static 'dashboard/images/facebook.png' %}" alt="">
+                            </div>
+                            <div class="icon_desc">
+                                Facebook
+                            </div>
+                            <div class="icon_desc twitter">
+                                {% if 'facebook' in connected_accounts %}
+                                    <button class="btn connect-btn success" disabled>
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                {% else %}
+                                    <a class="btn connect-btn"  id="facebook-connect-button">
+                                        <i class="fas fa-plus"></i>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <span class="icon_set_border set_1"></span>
+                    </div>
+                    <!-- Twitter -->
+                    <div class="icon_set_container">
+                        <div class="icons_card card_2">
+                            <div class="icon_main">
+                                <img class="img_social" src="{% static 'dashboard/images/twitter.png' %}" alt="">
+                            </div>
+                            <div class="icon_desc">
+                                Twitter
+                            </div>
+                            <div class="icon_desc twitter">
+                                {% if 'twitter' in connected_accounts %}
+                                    <button class="btn connect-btn success" disabled>
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                {% else %}
+                                    <a class="btn connect-btn"  id="twitter-connect-button">
+                                        <i class="fas fa-plus"></i>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <span class="icon_set_border set_2"></span>
+                    </div>
+                </div>
+
+                <div class="icon_set_2">
+                    <!-- Instagram -->
+                    <div class="icon_set_container">
+                        <div class="icons_card card_3">
+                            <div class="icon_main">
+                                <img class="img_social" src="{% static 'dashboard/images/instagram.png' %}" alt="">
+                            </div>
+                            <div class="icon_desc">
+                                Instagram
+                            </div>
+                            <div class="icon_desc instagram">
+                                {% if 'instagram' in connected_accounts %}
+                                    <button class="btn connect-btn success" disabled>
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                {% else %}
+                                    <a class="btn connect-btn"  id="instagram-connect-button">
+                                        <i class="fas fa-plus"></i>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <span class="icon_set_border set_3"></span>
+                    </div>
+                    <!-- Youtube -->
+                    <div class="icon_set_container">
+                        <div class="icons_card card_4">
+                            <div class="icon_main">
+                                <img class="img_social" src="{% static 'dashboard/images/youtube.png' %}" alt="">
+                            </div>
+                            <div class="icon_desc">
+                                Youtube
+                            </div>
+                            {% if 'youtube' in connected_accounts %}
+                            <i class="fas fa-check"></i>
+                            {% else %}
+                            <a href="{% url 'youtube_connect' %}" style="padding-left: 20%; color: black;">
+                              <i class="fas fa-plus"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                        <span class="icon_set_border set_4"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+    <!-- Section Main Content -->
+
+    <main class="dyn_content" id="dashboard">
+        <section class="main_content">
+            <div class="heading">
+                <span>
+                    "Active campaigns"
+                </span>
+            </div>
+            <div class="main_content_info">
+                <div class="logo_main">
+                    <img src="{% static 'dashboard/images/logo.png' %}" alt="">
+                </div>
+                <div class="content_text">
+                    <span>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Architecto amet tempora exercitationem beatae, iure quaerat. Quae dolorem, ea ex sed
+                        deserunt exercitationem.
+                        Dicta delectus doloremque ad quasi itaque, tempore natus!
+                    </span>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+
+{#-------------Facebook Modal-------------#}
+<div class="modal fade" id="facebook-connect-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Connect your Facebook Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'facebook_connect' %}" id="facebook-connect-form" method="post">
+          {% csrf_token %}
+          <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label class="form-label" for="facebook-username">twitter Username</label>
+                  <input class="form-control" id="facebook-username" name="facebook-username" type="text" placeholder="Username" required="required" data-bs-original-title="" title="">
+                </div>
+                  <button class="btn btn-square btn-light" id="faecbook-connect-btn" type="submit" title="">Connect</button>
+                  <img src="{% static "accounts/images/loader/loader-contact.gif"%}" id="fb-loading" style="width: 20px; height: auto;" alt="">
+                  <span id="fb-warning" class="txt-warning" style="display:none;" ><i class="fa fa-warning"></i></span>
+                  <span id="fb-success" class="txt-success"><p>facebook account connected successfully!</p></span>
+              </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{#-------------Facebook Modal End-------------#}
+
+{#-------------Twitter Modal--------------#}
+<div class="modal fade" id="twitter-connect-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Connect your twitter Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'twitter_connect' %}" id="twitter-connect-form" method="post">
+          {% csrf_token %}
+          <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label class="form-label" for="twitter-username">twitter Username</label>
+                  <input class="form-control" id="twitter-username" name="twitter-username" type="text" placeholder="Username" required="required" data-bs-original-title="" title="">
+                </div>
+                  <button class="btn btn-square btn-light" id="twitter-connect-btn" type="submit" title="">Connect</button>
+                  <img src="{% static "accounts/images/loader/loader-contact.gif"%}" id="it-loading" style="width: 20px; height: auto;" alt="">
+                  <span id="it-warning" class="txt-warning" style="display:none;" ><i class="fa fa-warning"></i></span>
+                  <span id="it-success" class="txt-success"><p>twitter account connected successfully!</p></span>
+              </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="" class="btn btn-primary">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{#-------------Twitter Modal End--------------#}
+
+{#-------------Instagram Modal--------------#}
+<div class="modal fade" id="instagram-connect-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Connect your Instagram Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'instagram_connect' %}" id="instagram-connect-form" method="post">
+          {% csrf_token %}
+          <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label class="form-label" for="instagram-username">Instagram Username</label>
+                  <input class="form-control" id="instagram-username" name="instagram-username" type="text" placeholder="Username" required="required" data-bs-original-title="" title="">
+                </div>
+                  <button class="btn btn-square btn-light" id="instagram-connect-btn" type="submit" title="">Connect</button>
+                  <img src="{% static "accounts/images/loader/loader-contact.gif"%}" id="ic-loading" style="width: 20px; height: auto;" alt="">
+                  <span id="ic-warning" class="txt-warning" style="display:none;" ><i class="fa fa-warning"></i></span>
+                  <span id="ic-success" class="txt-success"><p>Instagram account connected successfully!</p></span>
+              </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{#-------------Twitter Modal End--------------#}
+
+{#-------------Youtube Modal--------------#}
+<div class="modal fade" id="youtube-connect-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Connect your Youtube Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'youtube_connect' %}" id="youtube-connect-form" method="post">
+          {% csrf_token %}
+          <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label class="form-label" for="youtube-username">Youtube Username</label>
+                  <input class="form-control" id="youtube-username" name="youtube-username" type="text" placeholder="Username" required="required" data-bs-original-title="" title="">
+                </div>
+                  <button class="btn btn-square btn-light" id="youtube-connect-btn" type="submit" title="">Connect</button>
+                  <img src="{% static "accounts/images/loader/loader-contact.gif"%}" id="yt-loading" style="width: 20px; height: auto;" alt="">
+                  <span id="yt-warning" class="txt-warning" style="display:none;" ><i class="fa fa-warning"></i></span>
+                  <span id="yt-success" class="txt-success"><p>Youtube account connected successfully!</p></span>
+              </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{#-------------Youtube Modal End--------------#}
+
+
+
+<script src="{% static 'dashboard/js/social_connect/facebook_connect.js' %}"></script>
+<script src="{% static 'dashboard/js/social_connect/twitter_connect.js' %}"></script>
+<script src="{% static 'dashboard/js/social_connect/instagram_connect.js' %}"></script>
+<script src="{% static 'dashboard/js/social_connect/youtube_connect.js' %}"></script>
+
+
+
+</body>
+
+</html>

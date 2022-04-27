@@ -1,0 +1,22 @@
+[data-set-target]{
+    display: none;
+}
+
+
+.active[data-set-target]{
+    display: block;
+    display: flex;
+}
+
+.tab.active{
+    border-bottom: 1px solid red;
+}
+
+.active_social{
+    display: flex !important;
+} 
+
+
+.not_active_social{
+    display: none;
+}

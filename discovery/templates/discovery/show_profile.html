@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for profile in profiles %}
+    {{ profile }}
+    <form  method='post' action="{% url 'addprofiletolist' %}" >
+    {% csrf_token %}
+        <label for="list">List:</label>
+        <select id="list" name="list">
+            {% for list in campaign_list %}
+                <option value="{{ list.id }}">{{ list.list_name }}</option>
+            {% endfor %}
+        </select>
+        <input type="hidden" id="profiles" name="profiles" value="{{ profile.id }}">
+        <input type="submit" value="Submit">
+    </form>
+{% endfor %}
+
+</body>
+</html>

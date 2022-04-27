@@ -1,0 +1,181 @@
+{% extends 'discovery/search_base.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block content_one %}
+
+<style>
+    .settle_amount_container{
+        position: fixed;
+        width: 35%;
+        height: 209px;
+        border: 1px solid rgba(128, 128, 128, 0.342);
+        top: 28%;
+        left: 40%;
+        background: white;
+        display: none;
+        border-radius: 5px;
+    }
+
+    .close_settlement{
+        display: flex;
+        justify-content: flex-end;
+        padding: 1.2%;
+    }
+
+    .close_settlement svg{
+        cursor: pointer;
+    }
+
+    .are_u_sure{
+        padding: 1.3%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .settle_conformation{
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+
+<div class="campaign_status_container_upper">
+    <div class="upper_camp">
+        <i data-feather ="chevron-left"></i> <a href="{% url 'campaign_creators' campaign.id  %}">Campaign Name</a>
+    </div>
+    
+
+</div>
+
+<div class="center_main_details">
+    <div class="main_camps">
+        <div class="campaign_status_upper_">
+            <div class="mid_camps">
+                <div style="text-transform: capitalize;">{{ campaign.campaign_name}}</div>
+                <!-- <div>{{ campaign.campaign_description }}</div> -->
+            </div>
+    
+    
+    
+    
+            <div class="active_camps" style="max-width: 300px;">
+                <span style="border-right: 1px solid black;padding-right:8px ;"> Status</span>
+                <span class="status_camp_">       
+                      {% if creator.accepted %}
+                     <span style="color: forestgreen">Accepted</span><br>
+                {% elif creator.rejected%}
+                     <span style="color: red">Rejected</span><br>
+                {% else %}
+                     <span style="color: blue">Pending</span><br>
+                {% endif %}</span>
+            </div>
+        </div>
+
+
+        {% if creator.settled %}
+
+        <div class="setteled_amount">
+            <span class="amount_setteled_span">Settled Amount: <span style="color: green;">
+                &nbsp;₹  {{ creator.settled_amount }}
+            </span></span>
+        </div>
+        {% if creator.payment %}
+            <div class="payment_status_paid_">
+                <span style="color: blue">Status:</span><span style="color: green">Paid</span>
+            </div>
+        {% endif %}
+        {% if creator.payment == False %}
+           <div class="payment_start">
+            <a class="main_payment" href="{% url 'pay' creator.id  %}">Pay</a>
+           </div>
+        {% endif %}
+<!--  -->
+    {% else %}
+
+
+
+<div class="negotiation_container_">
+    <div class="amounts_left">
+        <div class=" offered_amount_marketer">
+            Your Requested Amount:<span style="color: red">{{  creator.offered_budget }}</span>
+       </div>
+       <div class="req_amnt_marketer">
+           Amount Offered by creator:<span style="color: blue">{{ creator.request_budget }}</span>
+       </div>
+
+      
+          <div class="negotiation_status_">
+           Negotiation Status:  {% if creator.offered_amount %}
+           <span style="color: blue">Pending</span>
+           {% else %}
+           <span style="color: purple;margin-left: 10px;">Enter amount to negotiate</span>
+          </div>
+       </div>
+ 
+       <div class="negotiation_status_button ">
+        <form action="{% url 'negotiate' creator.id %}" method="post" class="negotiation_status_form">
+            {% csrf_token %}
+                <!-- <label for="amount">New Offer Amount: </label> -->
+                <input type="number" required id="amount" type="text" name="amount" value="" placeholder="Negotaite">
+                <input type="submit" value="Ok" class="negotiation_submit">
+            </form>
+       </div>
+</div>
+            
+            
+
+           <!-- <div class="settle_amount">
+            <form action="{% url 'settle_amount' creator.id %}" method="post">
+                {% csrf_token %}
+                    <input type="hidden" id="amount" name="amount" value="{{ creator.request_budget }}">
+                    <input class="settle_amount_btn" type="submit" value="Settle Amount">
+                </form>
+           </div> -->
+
+           <div class="settle_amount">
+            <button id="settle_amount" class="settle_amount_btn">
+                Settle Amount
+               </button>
+           </div>
+
+
+           <div id="settle_amount_container" class="settle_amount_container">
+                <div class="close_settlement">
+                    <i onclick="this.parentNode.parentNode.style.display='none'" data-feather="x"></i>
+                </div>
+                <div class="are_u_sure">
+                    <h3>
+                        Are you sure you want to settle for an amount of <span style="color: green;">{{ creator.request_budget }}</span>
+                    </h3>
+                </div>
+
+                <div class="settle_conformation">
+                    <form action="{% url 'settle_amount' creator.id %}" method="post">
+                        {% csrf_token %}
+                            <input type="hidden" id="amount" name="amount" value="{{ creator.request_budget }}">
+                            <input class="settle_amount_btn" type="submit" value="Settle Amount">
+                        </form>
+                </div>
+           </div>
+        {% endif %}
+    {% endif %}
+    </div>
+</div>
+
+<script>
+    document.getElementById('settle_amount').addEventListener('click',function(){
+        document.getElementById('settle_amount_container').style.display ='block'
+    })
+
+    
+
+
+</script>
+   
+    
+
+{% endblock content_one %}
+

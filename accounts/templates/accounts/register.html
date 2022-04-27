@@ -1,0 +1,103 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+{% block my_css %}
+
+<link rel="stylesheet" href="{% static "accounts/css/login.css" %}">
+
+{% endblock my_css %}
+
+{% block content %}
+
+<div class="accounts" style="background: url({% static 'accounts/images/accounts_bg.png' %}); ">
+  <div class="container">
+    <nav class="navbar navbar-light bg-transparent">
+      <a class="navbar-brand" href="/">
+        <img class="img-fluid for-light" src="{% static "accounts/images/JN_1.png"%}" style="width: 200px; height: auto;" alt="looginpage"><img class="img-fluid for-dark" src="{% static "accounts/images/JN_1.png"%}" alt="looginpage">
+      </a>
+    </nav>
+
+    <div class="row mt-lg-3">
+      <div class="col-12 px-5">
+          <h2>Welcome,</h2>
+      </div>
+      <div class="col-6 px-5">
+                  <p class="welcome">
+            Phasellus accumsan imperdiet tempor. Cras tint, arcu nec eleifend porttitor, orci est vehicula velit.. 
+          </p>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-4">
+        <h3>Create Account</h3>
+        <div class="mt-4">
+          {% include 'accounts/includes/_messages.html' %}
+        </div>
+        <form class="theme-form needs-validation" id="reg-form" novalidate="" method="POST" action="{% url 'register' %}">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-6 mb-3">
+            {% render_field form.first_name class="form-custom" placeholder="First Name" required="" %}
+          </div>
+          <div class="col-6 mb-3">
+            {% render_field form.last_name class="form-custom" placeholder="Last Name" required="" %}
+          </div>
+          <div class="col-12 mb-3">
+            {% render_field form.username class="form-custom" placeholder="Test@gmail.com" required="" %}
+          </div>
+          <div class="col-12 mb-3">
+            <input type="text" class="form-custom" name="mobile_number" placeholder="99999-99999" required>
+          </div>
+          <div class="col-12 mb-3">
+            {% render_field form.password1 class="form-custom password" placeholder="Password" required="" %}
+<div class="show-hide"><span class="show"></span></div>
+          </div>
+          <div class="col-12 mb-3">
+            {% render_field form.password2 class="form-custom password" placeholder="Confirm Password" required="" %}
+            <div class="show-hide"><span class="show"></span></div>
+          </div>
+        </div>
+        
+          <div class="row mt-1">
+            <div class="col-12">
+              <div class="form-group form-check ">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" style="font-size: 12px;" for="exampleCheck1">By creating an account you agree with the terms of service and privacy policy</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-12">
+              <button type="submit" class="btn act-btn btn-lg">Create Account</button>
+            </div>
+          </div>
+
+        </form>
+        <div class="text-center my-3">
+          OR
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <a href="#" class="btn social-btn btn-lg" > Sign Up with </a>
+          </div>
+          <div class="col-6">
+            <a href="#" class="btn social-btn btn-lg" > Sign Up with </a>
+          </div>
+        </div>
+
+         <p class="mt-1 mb-0">Already have an account?<a class="ml-2" href="{% url 'index' %}">Sign in</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block my_js %}
+  <script src="{% static 'accounts/js/register.js' %}"></script>
+{% endblock my_js %}

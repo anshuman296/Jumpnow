@@ -1,0 +1,110 @@
+{% extends 'discovery/search_base.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+
+{% block content_one %}
+
+<div class="campaign_status_container">
+<div class="upper_camp">
+    <i data-feather ="chevron-left"></i> <a href="{% url 'campaign_creators' campaign.id  %}">Campaign Name</a>
+</div>
+
+<div class="mid_camp">
+    <div>{{ campaign.campaign_name}}</div>
+    <!-- <div>{{ campaign.campaign_description }}</div> -->
+</div>
+</div>
+
+<div class="main_camp">
+    <div class="active_camp">
+        <span >Status</span>
+        <span class="status_camp"> Active</span>
+    </div>
+    <div class="camp_brief">
+        <div style="padding: 20px;">
+            <div>
+                <span>Brief</span>
+            </div>
+            <div>
+                {{ campaign.campaign_description }}
+            </div>
+        </div>
+    </div>
+    <div class="active_camp camp_deliverables">
+        <span >Deliverables</span>
+          <a class="view_deliverables" href="{% url 'view_deliverables' creator.id %}">View</a> 
+    </div>
+</div>
+
+<div class="req_amount payment_info">
+    <span class="req_amount_text"> Requested Amount </span>
+
+    <span> <strong>Rs. {{ creator.request_budget }}</strong> </span>
+</div>
+
+<div class="payment_info negotiations">
+    <div>
+        <span class="req_amount_text"> Offered Amount </span>
+
+        <span> <strong>Rs. {{ creator.request_budget }}</strong> </span>
+    </div>
+    <div>
+        <form action="{% url 'negotiate' creator.id %}" method="post">
+            {% csrf_token %}
+            <label for="amount">New Offer Amount: </label>
+            <input id="amount" type="text" name="amount" value="">
+            <input type="submit" value="Ok">
+        </form>
+
+    </div>
+</div>
+<div class="payment_info">
+<span class="req_amount_text">Negotiation Status:  {% if creator.offered_amount %} <span style="color: blue">Pending</span>{% else %} </span>
+</div>
+
+
+
+
+
+
+
+
+<div>
+    <!-- <span >Campaign Details:</span><br><br>  -->
+<div style="display: none;">
+    {% if creator.settled %} Name:{{ campaign.campaign_name}}<br>
+ Brief:{{ campaign.campaign_description }}<br> Deliverables:
+<a href="{% url 'view_deliverables' creator.id %}">Show deliverables</a><br><br>
+<span >Settled Amount: {{ creator.settled_amount }}</span><br> {% if creator.payment %}
+<span >Amount:</span><span style="color: green">Paid</span><br> {% endif %} {% if creator.payment == False %}
+<h1 style="color: green"><a href="{% url 'pay' creator.id  %}">Pay</a></h1>
+{% endif %} {% else %} {% if creator.accepted %} Campaign Status: <span style="color: forestgreen">Accepted</span><br> {% elif creator.rejected%}
+<!--  -->
+Campaign Status: <span style="color: red">Rejected</span>
+
+<br> {% else %}
+<!--  -->
+Campaign Status: <span >Pending</span><br>
+<!--  -->
+{% endif %}
+</div>
+
+
+<!-- Name:{{ campaign.campaign_name}}<br> Brief:{{ campaign.campaign_description }}<br> Deliverables:
+<a href="{% url 'view_deliverables' creator.id %}">Show deliverables</a><br><br> -->
+
+
+
+
+
+
+
+
+    <form action="{% url 'settle_amount' creator.id %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="amount" name="amount" value="{{ creator.request_budget }}">
+        <input type="submit" value="Settle">
+    </form>
+    {% endif %} {% endif %} {% endblock content_one %}
+</div>

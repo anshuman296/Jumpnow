@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
+    <!-- <img src="{% static 'accounts/images/jn_logo.svg' %}" alt=""> -->
+    <link rel="icon" type="image/x-icon" href="{% static 'accounts/images/logo/Group450@2x.png' %}">
+    <title>Log in</title>
+</head>
+<body>
+    <main class="main_register">
+        <section class="register_left">
+            <div class="left_contents_all">
+                <div class="logo">
+                    <img src="{% static 'accounts/images/jn_logo.svg' %}" alt="">
+                </div>
+                <div class="registration_text">
+                    <span class="text_left_im">Your <strong>Influencer Marketing</strong> process just got easy</span>
+                </div>
+                <div class="sign_in_txt">
+                    Dont have an account?
+                    <div class="sign_up_multiple">
+                        <strong style="border-right: 1px solid red;padding-right: 10px;margin-left: -5px;">  <a href="{% url 'register' %}">Sign Up as Brand</a></strong>
+                        <strong>  <a href="{% url 'register_creator' %}">Sign Up as Creator</a></strong>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="register_right">
+
+
+
+            <div class="form_register">
+                <form method="POST" action="{% url 'index' %}">
+                    {% csrf_token %}
+
+                    <!-- Heading Elements Form -->
+                    <div class="logo_2">
+                        <img src="{% static 'accounts/images/jn_logo.svg' %}" alt="">
+                    </div>
+
+                    <div class="heading_form">
+                        <span>
+                            Sign In to your <br> <strong style="color: #DA001B;">JumpNow Account</strong>
+                        </span>
+                    </div>
+
+                    <!-- Main Form -->
+                    <div>
+                        <label for="buisness_email"></label>
+                        <input required type="email" name="username" id="buisness_email" placeholder="User Email">
+                    </div>
+
+                    <div>
+                        <label for="password_marketers"></label>
+                        <input required type="password" name="password" id="password_marketers" placeholder="Password">
+                    </div>
+
+
+                    <div class="submit_btn">
+                        <input class="submit_register" type="submit">
+                    </div>
+                        
+                </input>
+
+                <div class="footer_text">
+                    <p>
+                        <span style="color: black;">By joining I agree to receive emails from</span> JumpNow<span style="color: black;">.</span> 
+                    </p>
+                </div>
+
+                <div class="sign_in_txt_2" style="text-align: center;">
+                    Dont have an account?
+                    <div class="sign_up_multiple">
+                        <strong>  <a style="color: #DA001B;" href="{% url 'register' %}">Sign Up as Marketer</a></strong> <br>
+                        <strong>  <a style="color: #DA001B;" href="{% url 'register_creator' %}">Sign Up as Creator</a></strong>
+                    </div>
+                </div>
+
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    
+</body>
+</html>

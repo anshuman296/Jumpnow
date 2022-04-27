@@ -1,0 +1,52 @@
+{% extends 'discovery/search_base.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+
+{% block content_one %}
+<div class="campaign_header">
+    <h3>Create Campaign</h3>
+</div>
+<form class="form_campaign" method='post' action="{% url 'addcampaign' %}">
+    {% csrf_token %}
+    <!--  -->
+    <div class="form_add_campaign_container">
+        <div class="form_campaign_left">
+            <div class="form_addcampaign_content">
+                <label for="Campaign Name:">Campaign Name:</label><br> {{form.campaign_name}} <br>
+            </div>
+            <!-- {{form.campaign_name}} <br> <br> -->
+            <!--  -->
+
+
+        
+
+            <div class="form_addcampaign_content">
+                <label for="Campaign Brief:">Campaign Brief:</label> <br> {{form.campaign_description}}
+            </div>
+
+            <div>
+                <!-- <label for="myfile">Attach File:</label> -->
+                <input type="file" id="myfile" name="" style="padding: 12px 20px;">
+
+            </div>
+        </div>
+        <div class="form_campaign_right">
+            <div class="form_addcampaign_content add_to_list_">
+                <label for="Add List">Add List:</label> <br> {{form.campaign_list}}
+            </div>
+            <!-- Bidding:{{form.bidding}} <br> <br> -->
+            <!--  -->
+            <div class="form_addcampaign_content budget">
+                <label for="Offered Budget">Offered Budget:</label> <br> {{ form.offered_amount }}
+            </div>
+        </div>
+    </div>
+    <!--  -->
+
+    <div class="submit_container">
+        <button type='submit'>Set Campaign</button>
+    </div>
+</form>
+
+{% endblock content_one %}

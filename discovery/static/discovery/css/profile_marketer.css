@@ -1,0 +1,135 @@
+.profile.card {
+    border-radius: 0 !important;
+}
+
+.profile.card-header {
+    background-color: #DFC1D9;
+    font-weight: bold;
+    padding: 10px 40px !important;
+    border-radius: 0 !important;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 1.2em;
+}
+
+.profile.card img {
+    border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.accounts {
+    width: 100%;
+    overflow: hidden;
+    height: 100vh;
+}
+.welcome {
+    font-size: 24px;
+line-height: 29px;
+}
+
+.act-btn {
+    background: #E1507E;
+    border-radius: 50px;
+    width: 100%;
+}
+
+.form-check-label {
+    font-size: 14px;
+line-height: 17px;
+
+color: #858584;
+}
+
+.social-btn {
+    border: 1px solid #000000;
+box-sizing: border-box;
+border-radius: 50px;
+color: #000000;
+font-size: 14px;
+width: 100%;
+}
+
+.social-btn:hover {
+    color: #E1507E;
+}
+
+
+.creator {
+    margin-left: -80px;
+    z-index: 11;
+}
+
+.marketer {
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+}
+
+.landing-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background: #FFFFFF;
+
+box-sizing: border-box;
+/* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+border-radius: 50px;
+width: 50%;
+padding: 15px 25px;
+text-align: center;
+transition: 0.2s;
+}
+
+.landing-info:hover {
+    border: 1px solid #808080;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.landing-btn {
+    width: 60%;
+    padding: 10px 15px;
+}
+
+.form-custom {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+
+.profile-input-group {
+    margin-bottom: 0.5rem;
+}
+
+.contact .profile-input-group {
+    margin-bottom: 2rem;
+}
+
+.profile-input-group.image #file-upload-button {
+    background: #E1507E;
+    border-radius: 50px;
+    width: 100%;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.profile-image-upload {
+    border: 1px solid #E1507E;
+    background: #fff;
+    color: #E1507E;
+    padding: 0.75rem 1rem;
+    border-radius: 50px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.profile-image-upload:hover {
+    background: #E1507E ;
+    color: #fff;
+}
+
+.profile-input-group button {
+    border-radius: 50px;
+}
+

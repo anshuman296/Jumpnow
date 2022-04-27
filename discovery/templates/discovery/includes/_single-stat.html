@@ -1,0 +1,41 @@
+{% load static %}
+{% load mathfilters %}
+<div class="col-6 my-auto">
+    <div class="influencer-stats">
+        <div class="social-stat {{social}} vertical-align-middle">
+            <div class="row">
+            <div class="col-5 my-auto">
+                <div class="img-data">
+                    <img src="{% static 'discovery/images/weird-icons/'|add:social|add:'.png' %}" alt="" srcset="">
+                    <span class="followers">
+                    {% if a.instagram.get.followers %}
+                        {% if a.instagram.get.followers > 1000000 %}
+                            {{a.instagram.get.followers|div:1000000|floatformat}}M
+                        {% else %}
+                            {{a.instagram.get.followers|div:1000|floatformat}}K
+                        {% endif %}
+                    {% endif %}
+                    </span>
+                </div>
+            </div>
+            <div class="col-7 my-auto">
+                <div class="progress-stats">
+                    <div class="engagement-stat single-stat">
+                    <span>Engagement Rate</span>
+                        <div class="progress sm-progress-bar">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="followers-stat single-stat">
+                    <span>Followers Rate</span>
+                        <div class="progress sm-progress-bar">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>                                    
+            </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

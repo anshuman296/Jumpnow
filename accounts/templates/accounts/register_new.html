@@ -1,0 +1,143 @@
+{% extends 'accounts/base2.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+{% block my_css %}
+
+<link rel="stylesheet" href="{% static "accounts/css/register.css" %}">
+
+{% endblock my_css %}
+
+{% block content %}
+
+<div class="container-fluid">
+       <div class="row">
+           <div class="col-7">
+            <img  src="{% static "accounts/images/new/register_landing.png"%}" width="100%"  >
+           </div>
+           <div class="col-5">
+               <div class="container-content">
+            <img class="logo" src="{% static "accounts/images/new/jn_logo.svg"%}" >
+
+            <p>Create your</p>
+            <h1><span style="color:#FF485E">JumpNow</span>  Account!</h1>
+            
+            <hr style="border: 1.5px solid #FF485E; background-color: #FF485E; width: 40%; margin-left: 0%;">
+            
+            <div class="container-form" >
+            
+            {% comment %} <button class="social"> <img src="https://img.icons8.com/color/35/000000/facebook-circled--v1.png"/></button>
+            <button class="social"><img src="https://img.icons8.com/color/35/000000/instagram-new--v1.png"/></button>
+            <button class="social"> <img src="https://img.icons8.com/color/35/000000/twitter--v1.png"/></button>
+            <button class="social"> <img src="https://img.icons8.com/color/35/000000/youtube-play.png"/></button> {% endcomment %}
+               <p> <span style="color:#FF485E; font-size: large;">OR </span> </p>
+                <form method="post" id="form-register" style="margin: 0 4rem;">
+                
+                
+               {% comment %} <div class="row g-3" style="margin-top: 4%">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Full name" aria-label="First name">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control"  id="staticEmail" value="Enter your email">
+                </div>
+              </div>
+               
+              <div class="row g-3 form-group" style="margin-top: 4%;">
+                <div class="col">
+            
+                    <input id="password-field" type="password" class="form-control" name="password"  placeholder="Password">
+                    <!-- <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
+                   
+              </div>
+                  <div class="col">
+            
+                        <input id="password-field" type="password" class="form-control" name="password"  placeholder="Confirm Password">
+                        <!-- <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        -->
+                  </div>
+              </div> {% endcomment %}
+              {% csrf_token %}
+        
+        <div class="row" >
+        <div class="col-12 mb-3">
+          {% include 'accounts/includes/_messages.html' %}
+        </div>
+          <div class="col-6 mb-3">
+            {% render_field form.first_name class="form-control" placeholder="First Name" required="" %}
+          </div>
+          <div class="col-6 mb-3">
+            {% render_field form.last_name class="form-control" placeholder="Last Name" required="" %}
+          </div>
+          <div class="col-12 mb-3">
+            {% render_field form.username class="form-control" placeholder="Test@gmail.com" required="" %}
+          </div>
+          <div class="col-12 mb-3">
+            <input type="text" class="form-control" name="mobile_number" placeholder="99999-99999" required>
+          </div>
+          <div class="col-12 mb-3">
+            {% render_field form.password1 class="form-control password" placeholder="Password" required="" %}
+<div class="show-hide"><span class="show"></span></div>
+          </div>
+          <div class="col-12 mb-3">
+            {% render_field form.password2 class="form-control password" placeholder="Confirm Password" required="" %}
+            <div class="show-hide"><span class="show"></span></div>
+          </div>
+        </div>
+            
+
+              <button id="next" type="submit" class="btn btn-lg btn-primary submit" style="font-weight: light; font-size: medium;">Agree & Continue</button>
+
+              <p style="color: #FF485E; font-size: medium; ">By joining I agree to receive emails from JumpNow</p>
+
+              <p style="font-size: medium;">Already have an account? <a href="{% url 'index' %}" style="text-decoration: none;"><span style="color: #FF485E;">Sign in</span></a></p>
+          
+            </form>
+
+
+
+            {% comment %} <form id="form2" onsubmit="process(event)">
+            
+                <div class="container">
+                    
+                      <p style="margin-top: 5%; margin-right: 35%; font-size: 1.3rem; font-weight: normal;
+                      ">Contact Details</p>
+
+                      <input class ="number form-control" id="phone" type="tel" name="phone" placeholder="Phone" />
+
+                <form >
+                      <p style="margin-top: 5%; margin-right: 40%; font-size: 1.3rem; font-weight: normal;">Date of Birth</p>
+                <SELECT class= "dob" id ="year" name = "yyyy" onchange="change_year(this)" >
+                   </SELECT>
+                 <SELECT class= "dob" id ="month" name = "mm" onchange="change_month(this)">
+                 </SELECT>
+                  <SELECT class= "dob" id ="day" name = "dd" >
+                    </SELECT>
+                </form>
+                    <button id="next2" onclick="myclick()"     type="button" class="btn btn-lg btn-primary submit" style="font-weight: light; font-size: medium; width: 50%; display: flex-box; margin-top: 10%;">Sign Up</button>
+                   </div>
+                   <p style="font-size: medium;">Already have an account? <a href="" style="text-decoration: none;"><span style="color: #FF485E;">Sign in</span></a></p>
+           
+        </form> {% endcomment %}
+
+
+     </div>
+
+
+         </div>
+
+
+        
+           </div>
+       </div>
+
+    </div>
+
+{% endblock content %}
+
+{% block my_js %}
+  <script src="{% static 'accounts/js/register_new.js' %}"></script>
+{% endblock my_js %}

@@ -1,0 +1,113 @@
+{% extends 'discovery/search_base.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block content_one %}
+<!--  -->
+
+
+
+<div class="top_list">
+    <div class="back_to_menu">
+        <a href="/discovery/">
+            <i data-feather="chevron-left">
+            </i>
+        </a>
+        <span>
+        Campaign
+    </span>
+    </div>
+    <div class="search_and_create">
+        <input type="text" placeholder="search list name & platform" class="inputSearchList" id="myInput" onkeyup="searchFun()">
+        <span>
+            <i data-feather="search" ></i>
+        </span>
+        <button class="button_create_list">
+
+            <a href="{% url 'addcampaign' %}" style="color: white;cursor:pointer">
+                
+                    <span>
+                        Create Campaign
+                    </span>
+        </a>
+        </button>
+    </div>
+</div>
+
+<div class="sort_by">
+    <!-- <select name="list" id="sort_list">
+    <option value="def">Sort By</option>
+    <option value="name">name</option>
+    <option value="date">date</option>
+</select> -->
+    <button onclick="sortTable(0)" style="cursor: pointer;color: white;background: red;padding: 6px 10px;border-radius: 5px;">
+    sort by name
+</button>
+</div>
+
+<div class="table_campaign_list">
+    <table id="customers" class="campaign_show">
+        <tr>
+            <th class="list_name">List Name</th>
+            <th class="platform">Brief</th>
+            <th class="total_influencers">No. of list</th>
+            <th>No. of creators</th>
+            <th>Publish Window</th>
+            <th>view</th>
+        </tr>
+        {% for campaign in campaigns %}
+        <div>
+            <tr>
+                <td class="td_name">
+                    <!-- <img src="{% static 'discovery/images/cards/logo_short@2x.png' %}" alt="" height="28px" width="28px"> {{ list.list_name }} -->
+                    <div class="table_list_content_left">
+                        <img src="{% static 'discovery/images/cards/logo_short@2x.png' %}" alt="" height="28px" width="28px">
+
+                        <span class="list_shown_name">
+                            {{ campaign.campaign_name }}
+                        </span>
+                    </div>
+                </td>
+                <td>
+                    <div class="table_list_content_mid">
+                        <img src="../../static/discovery/images/instagram.svg" alt="" height="17px" width="30px">
+                        <!-- "../../static/discovery/images/{{ list.platform }}.svg"  -->
+                    </div>
+                </td>
+                <td>
+                    <div class="table_list_content_right">
+                        <span>3</span>
+                    </div>
+
+                </td>
+
+                <td>
+                    <span>
+                        3
+                    </span>
+                </td>
+
+                <td>
+                    <span>
+                        3/7/2021 - 15/7/2021
+                    </span>
+                </td>
+
+                <td>
+                    <button class="view_list_btn">
+                        <a href="{% url 'campaign_creators' campaign.id %}">View</a>
+                    </button>
+                </td>
+            </tr>
+        </div>
+        {% endfor %}
+    </table>
+</div>
+
+<div class="campaign_main" style="margin-bottom: 30px;">
+
+
+</div>
+
+<!--  -->
+{% endblock content_one %}

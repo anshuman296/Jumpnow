@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
+
+*{
+    font-family: 'Poppins';
+}
+
+.top_list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.back_to_menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.back_to_menu span {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.back_to_menu svg {
+    height: 32px;
+    width: 32px;
+}
+
+.search_and_create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search_and_create span svg {
+    height: 24px;
+    width: 24px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.button_create_list {
+    height: 44px;
+    width: 170px;
+    background: #DA001B;
+    border-radius: 5.80563px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.sort_by {
+    padding: 30px 0;
+}
+
+.platform,
+.total_influencers {
+    color: red;
+}
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers th {
+    /* border: 1px solid #ddd; */
+    padding: 8px;
+    font-weight: 400;
+}
+
+#customers td {
+    border-bottom: 1px solid #21212130;
+    padding: 18px 10px;
+}
+
+#customers tr:hover {
+    background-color: rgba(221, 221, 221, 0.158);
+}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+}
+
+.table_list_content_left,
+.table_list_content_right,
+.table_list_content_mid {
+    display: flex;
+    align-items: center;
+}
+
+.table_list_content_left img,
+.table_list_content_mid img {
+    margin-right: 15px;
+}
+
+.table_list_content_left span,
+.table_list_content_mid span {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.table_list_content_right span {
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 30%;
+}
+
+.view_list_btn {
+    height: 32px;
+    width: 101px;
+    border: 1px solid #DA001B;
+    font-size: 14px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.table_list_content_right svg {
+    height: 14px;
+    width: 14px;
+    cursor: pointer;
+}
+
+[data-set-target] {
+    display: none;
+}
+
+[data-set-target].active {
+    display: block;
+    display: flex;
+}
+
+.inputSearchList {
+    width: 170px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #00000066;
+    padding: 10px 12px 5px 12px;
+}
+
+.view_list_btn a {
+    text-decoration: none;
+    color: black;
+}
+
+.view_list_btn a:active {
+    color: black;
+}
+
+.view_list_btn a:hover {
+    color: #DA001B;
+}
+
+.td_name img {
+    margin-right: 12px;
+}
+
+.table_campaign_list {
+    height: 75vh;
+    overflow-y: scroll;
+}
+
+.select_platform {
+    display: flex;
+    flex-direction: column;
+}
+
+.select_platform select {
+    border: 1px solid rgba(128, 128, 128, 0.308);
+    height: 50.5px;
+    background: #FAFAFA;
+    border-radius: 5.80563px;
+    padding: 0 12px;
+    outline: none;
+    width: 265px;
+}
+
+
+/* add to particular list .. add_influencer_to_list.html */
+
+.table_list_content_mid .Youtube {
+    background-image: url(../../discovery/images/cards/youtube.svg);
+    height: 20px;
+    width: 20px;
+    background-size: contain;
+    margin-right: 10px;
+}
+
+.table_list_content_mid .Instagram {
+    background-image: url(../../discovery/images/cards/instagram.svg);
+    height: 20px;
+    width: 20px;
+    background-size: contain;
+    margin-right: 10px;
+}
+
+.table_list_content_mid .Twitter {
+    background-image: url(../../discovery/images/cards/twitter.svg);
+    height: 20px;
+    width: 20px;
+    background-size: contain;
+    margin-right: 10px;
+}
+
+.table_list_content_mid .Facebook {
+    background-image: url(../../discovery/images/cards/facebook.svg);
+    height: 20px;
+    width: 20px;
+    background-size: contain;
+    margin-right: 10px;
+}
+
+.add_to_list_btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.add_to_list_btn input {
+    padding: 10px 40px;
+    border: none;
+    background-color: #DA001B;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.answer_list form {
+    padding: 40px 100px 0 100px;
+}
+
+
+/* Add influencer to list seacrh and sort */
+
+.add_influ_list_search {
+    display: flex;
+    justify-content: space-around;
+}
+
+.table_add_infu_list {
+    height: 68vh;
+    overflow-y: scroll;
+}
+
+.top_list{
+    margin-top: -36px;
+}
+
+
+/*  Content Review  */
+
+.review_header{
+    display: flex;
+    align-items: center;
+    margin: 10px 0 40px 0;
+}
+
+.review_header a{
+    color: black;
+}
+
+.review_mid{
+    display: flex;
+    align-items: center;
+    margin: 0px 0px 50px 10px;
+}
+
+.review_mid span:first-child{
+    display: block;
+    border-right: 1px solid black;
+    padding: 0px 10px;
+}
+
+.content_review_main{
+    display: flex;
+}
+
+.remarks_form,
+.image_container_content,
+.remarks_show{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px 30px;
+}
+
+.remarks_form form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+
+.remarks_form form #remark{
+    border: 1px solid #DA001B;
+    box-sizing: border-box;
+    border-radius: 12px;
+    height: 144px;
+    width: 391px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.remarks_form form #remark:active {
+    border: 1px solid #DA001B !important;
+}
+
+.remarks_form form #remark:focus {
+    border: 1px solid #DA001B !important;
+}
+
+#accept_content{
+    width: 170.41px;
+    height: 44.54px;
+    color: white;
+    background-color: #DA001B;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+.main_remark{
+    border: 1px solid #DA001B;
+    box-sizing: border-box;
+    border-radius: 12px;
+    width: 391px;
+    height: 53.7px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    height: 23%;
+}
+
+
+.conformation_url{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px 0px;
+    border-bottom: 1px solid #da001977;
+    border-top: 1px solid #da001977;
+    height: 47%;
+}
+
+.status_of_content{
+    display: flex;
+    flex-direction: column;
+    height: 23%;
+    justify-content: center;
+}
+
+
+/* END add to particular list .. add_influencer_to_list.html */
+
+@media screen and (max-width:650px) {
+    .top_list {
+        margin-top: 45px;
+    }
+}

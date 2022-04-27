@@ -1,0 +1,38 @@
+.stat {
+    text-align: center;
+}
+
+.stat .sub-heading {
+    color: #6c757d !important;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.stat  .value {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.social .social-stat .value{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.social .social-stat .description{
+    color: #6c757d !important;
+    font-size: 0.95rem;
+}
+
+.money-badge {
+    background-color: #51bb25 !important;
+    color: white;
+    border-radius: 20px;
+    padding: 2px 10px;
+}
+
+.expiry-badge {
+    background-color: #f4f4f4 !important;
+    color: #757575;
+    border-radius: 20px;
+    padding: 2px 10px;
+}

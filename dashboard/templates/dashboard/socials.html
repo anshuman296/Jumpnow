@@ -1,0 +1,175 @@
+<title>Socials</title>
+
+{% extends 'dashboard/base_creator.html' %}
+<!--  -->
+
+{% load static %}
+<!--  -->
+
+{% block content_creator %}
+<style>
+    .social_header{
+        margin: 0px 0 20px 40px ;
+    }
+
+    .social_header div{
+        display: flex;
+        align-items: center;
+    }
+
+    .social_header a {
+        color: black;
+    }
+
+    .social_icons_new{
+        margin: 0 38%;
+        display: block;
+    }
+
+    @media screen and (max-width:800px) {
+        .social_icons_new{
+        margin: 0 0%;
+    }
+    }
+
+    @media screen and (max-width: 745px){
+.icon_set_container {
+    overflow: hidden !important;
+}
+
+    }
+
+
+    @media screen and (max-width: 555px){
+.icon_set_container {
+    margin: 20px !important;
+}
+
+    }
+
+ 
+</style>
+
+
+
+
+<section class="section_dashboard">
+    <div class="social_header">
+        <div>
+            <a href="{% url 'dashboard_new' %}"><i data-feather="chevron-left"></i></a> <span>Socials</span>
+        </div>
+    </div>
+
+    <div class="social_icons_new" id="social_icons_new" >
+
+
+        <div class="icon_set_1">
+            <!-- Icon 1 -->
+            <div class="icon_set_container" style="margin: 20px 80px;">
+                <div class="icons_card card_1">
+                    <!-- <div class="icon_main"> -->
+                    <img class="img_social_fb" src="{% static 'dashboard/images/facebook_1.png' %}" alt="">
+                    <!-- </div> -->
+                    <div class="icon_desc">
+                     <a href="{% url 'social:begin' 'facebook' %}">
+                        Facebook
+                     </a>
+<!-- {#                         <a href="{% provider_login_url 'facebook' method= 'js_sdk' %}">Facebook</a>#} -->
+
+
+                    </div>
+                    <div class=" twitter">
+                        {% if 'facebook' in connected_accounts %}
+                        <button class="btn connect-btn success" disabled>
+                            <i style="color: black;" class="fas fa-check"></i>
+                        </button> {% else %}
+                        <a class="btn connect-btn" id="facebook-connect-button">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <span class="icon_set_border set_1"></span>
+            </div>
+
+
+            <!-- Icon-2 -->
+            <div class="icon_set_container" style="margin: 20px 80px;">
+                <div class="icons_card card_2">
+                    <!-- <div class="icon_main"> -->
+                    <img class="img_social_twt" src="{% static 'dashboard/images/blue_twitter.svg' %}" alt="">
+                    <!-- </div> -->
+                    <div class="icon_desc">
+                        <a href="{% url 'social:begin' 'twitter' %}">
+                        Twitter
+                        </a>
+                    </div>
+                    <div class=" twitter">
+                        {% if 'twitter' in connected_accounts %}
+                        <button class="btn connect-btn success" disabled>
+                            <i style="color: black;" class="fas fa-check"></i>
+                        </button> {% else %}
+                        <a class="btn connect-btn" id="twitter-connect-button">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <span class="icon_set_border set_2"></span>
+            </div>
+        </div>
+
+        <div class="icon_set_2">
+            <!-- Icon-2 -->
+            <div class="icon_set_container" style="margin: 20px 80px;">
+                <div class="icons_card card_3">
+                    <!-- <div class="icon_main"> -->
+                    <img class="img_social_ig" src="{% static 'dashboard/images/instagram.png' %}" alt="">
+                    <!-- </div> -->
+                    <div class="icon_desc">
+                        Instagram
+                    </div>
+                    <div class=" instagram">
+                        {% if 'instagram' in connected_accounts %}
+                        <button class="btn connect-btn success" disabled>
+                            <i style="color: black;" class="fas fa-check"></i>
+                        </button> {% else %}
+                        <a class="btn connect-btn" id="instagram-connect-button">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <span class="icon_set_border set_3"></span>
+            </div>
+            <!-- Icon-4 -->
+            <div class="icon_set_container" style="margin: 20px 80px;">
+                <div class="icons_card card_4">
+                    <!-- <div class="icon_main"> -->
+                    <img class="img_social_yt" src="{% static 'dashboard/images/youtube.png' %}" alt="">
+                    <!-- </div> -->
+                    <div class="icon_desc">
+                        Youtube
+                    </div>
+                    <div class="youtube">
+                        {% if 'youtube' in connected_accounts %}
+                        <button class="btn connect-btn success" disabled>
+                            <i style="color: black;" class="fas fa-check"></i>
+                        </button> {% else %}
+                        <a href="{% url 'youtube_connect' %}" style="color: black;">
+                            <a class="btn connect-btn" id="youtube-connect-button">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <span class="icon_set_border set_4"></span>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+{% endblock content_creator %}

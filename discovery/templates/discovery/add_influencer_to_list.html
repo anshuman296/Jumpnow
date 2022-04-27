@@ -1,0 +1,211 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'discovery/css/marketers_dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'discovery/css/list.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Title</title>
+</head>
+
+<body>
+
+    <div>
+
+
+
+        <!-- <input type="button" name="add_list" value="Add List" onclick="showDiv()" /> -->
+
+        <div id="welcomeDiv" class="answer_list">
+
+
+            <form name="add_to_list" method='post' action="">{% csrf_token %}
+
+
+                <div class="add_influ_list_search">
+                    <div class="sort_by">
+                        <!-- <select name="list" id="sort_list">
+                        <option value="def">Sort By</option>
+                        <option value="name">name</option>
+                        <option value="date">date</option>
+                    </select> -->
+                        <div onclick="sortTable(0)" style="cursor: pointer;color: white;background: red;padding: 6px 10px;border-radius: 5px;">
+                            sort by name
+                        </div>
+                    </div>
+
+                    <div class="search_and_create">
+                        <input type="text" placeholder="search list name & platform" class="inputSearchList" id="myInput" onkeyup="searchFun()">
+                        <span>
+                            <i data-feather="search" ></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="table_add_infu_list">
+                    <table id="customers">
+                        <tr class="list_in_modal">
+                            <th class="list_name">List Name</th>
+                            <th class="platform">Platform</th>
+                            <th class="select">Select</th>
+                        </tr>
+
+                        {% for list in campaignlists %}
+
+                        <tr>
+                            <td class="td_name">
+                                <!-- <img src="{% static 'discovery/images/cards/logo_short@2x.png' %}" alt="" height="28px" width="28px"> {{ list.list_name }} -->
+                                <div class="table_list_content_left">
+                                    <img src="{% static 'discovery/images/cards/logo_short@2x.png' %}" alt="" height="28px" width="28px">
+
+                                    <span class="list_shown_name">
+                                {{ list.list_name }}
+                            </span>
+                                </div>
+                            </td>
+
+
+                            <td>
+                                <div class="table_list_content_mid">
+                                    <div class="{{list.platform}}">
+                                        <!-- <img src="../../static/discovery/images/cards/{{list.platform }}.svg" alt="" height="17px" width="30px"> -->
+                                    </div>
+                                    <!-- "../../static/discovery/images/{{ list.platform }}.svg"  -->
+                                    <span>
+                                {{ list.platform }}
+                            </span>
+                                </div>
+                            </td>
+
+                            <td>
+                                <input class="list_select" type='checkbox' name='list_id' value='{{list.id}}' id='{{list.id}}' />
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                    </table>
+                </div>
+
+                {% include 'discovery/includes/_messages.html' %}
+                <div class="add_to_list_btn">
+                    <input onclick="listSubmitted()" type="submit" value="Submit">
+                </div>
+
+
+
+
+
+            </form>
+        </div>
+    </div>
+    <script>
+        feather.replace()
+
+
+
+        function listSubmitted() {
+
+            alert("yes")
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Added to list',
+                showConfirmButton: false,
+                timer: 500
+            })
+
+
+
+        }
+
+        function searchFun() {
+            let filter_list = document.getElementById('myInput').value.toUpperCase()
+            let myTable = document.getElementById('customers')
+            let tr = myTable.getElementsByTagName('tr')
+
+            for (var i = 0; i < tr.length; i++) {
+                let td = tr[i].getElementsByTagName('td')[0]
+                let td_socials = tr[i].getElementsByTagName('td')[1]
+                    // td = td.replace(/(\r\n|\n|\r)/gm, "");
+                    // td = td.replace(/\s+/g, ' ').trim()
+
+                if (td) {
+                    let textValue = td.textContent || td.innerHTML
+                    let textValueTwo = td_socials.textContent || td_socials.innerHTML
+
+                    if (textValue.toUpperCase().indexOf(filter_list) > -1 || textValueTwo.toUpperCase().indexOf(filter_list) > -1) {
+                        tr[i].style.display = ""
+                    } else {
+                        tr[i].style.display = "none"
+                    }
+                }
+            }
+
+        }
+    </script>
+
+    <script>
+        function sortTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("customers");
+            switching = true;
+            //Set the sorting direction to ascending:
+            dir = "asc";
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("td")[n];
+                    y = rows[i + 1].getElementsByTagName("td")[n];
+                    /*check if the two rows should switch place,
+                    based on the direction, asc or desc:*/
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    //Each time a switch is done, increase this count by 1:
+                    switchcount++;
+                } else {
+                    /*If no switching has been done AND the direction is "asc",
+                    set the direction to "desc" and run the while loop again.*/
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

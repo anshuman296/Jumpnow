@@ -1,0 +1,150 @@
+{%  load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "dashboard/css/index.css" %} ">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <script src="https://kit.fontawesome.com/c92a8baa98.js" crossorigin="anonymous"></script>
+
+    <title>Landing Page</title>
+</head>
+
+<body>
+    <main class="main_container">
+
+        <!-- <div class="side_circle">
+
+        </div> -->
+
+        <!-- Header -->
+        <header class="landing_header menu">
+            <div class="landing_logo">
+                <a href="/"><img src="{% static "dashboard/images/logo.png" %}" alt=""></a>
+            </div>
+            <div class="header_elems">
+                <div class="tag_main_1">
+                    <div class="tags tag_1">
+                        Influencers and Creators
+                    </div>
+                    <div class="tags tag_2">
+                        <select name="B&A" id="brands_agencies">
+                            <option value="Instagram">Brands and Agencies</option>
+                            <option value="Facebook">New Barnding</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="tag_main_2">
+                    <div class="tags get_started tag_4">
+                        <button class="header_start">Get Started</button>
+                    </div>
+                    {% if user.is_authenticated %}
+                        <button class="header_start" onclick="window.location.href='{% url 'logout' %}'" type="button" class="btn btn-primary">Sign out</button>
+                        {% else %}
+                        <button class="header_start" onclick="window.location.href='{% url 'index' %}'" type="button" class="btn btn-primary">Sign In</button>
+                    {% endif %}
+                </div>
+
+                <div class="tags ham_menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- Section-1 -->
+
+        <section class="content_landing">
+            <div class="content_image">
+                <img src="{% static "dashboard/images/left.png" %}" alt="" class="social_images image_left">
+                <img src="{% static "dashboard/images/center.png" %}" alt="" class="social_images image_center">
+                <img src="{% static "dashboard/images/right.png" %}" alt="" class="social_images image_right">
+            </div>
+
+
+            <div class="main_heding">
+                <div class="content_heading">
+                    <div class="hashtags ">
+                        <span>#influencers</span>
+                        <span>#collab</span>
+                        <span>#paid</span>
+                        <span>#brand</span>
+                        <span>#roi</span>
+                    </div>
+
+                    <h1 class="main_heading_content">
+                        <strong><span class="influencer">Influencer</span> Marketing</strong> Software & Service
+                        Solution
+                    </h1>
+                </div>
+
+                <div class="sub_heading">
+                    Building trust and maximizing ROI for brands while enabling
+                    seamless campaign process and instant payouts for creators. (Aws test)
+                </div>
+
+                <div class="search search_socials">
+                    <div class="socials ">
+                        <img style="height: 3vh;" src="https://img.icons8.com/color/48/000000/instagram-new--v1.png" />
+                        <span>
+                            <select name="socials" id="socials">
+                                <option value="Instagram">Instagram</option>
+                                <option value="Facebook">Facebook</option>
+                                <!-- <option value="opel">Opel</option>
+                                <option value="audi">Audi</option> -->
+                            </select>
+                        </span>
+                        </i>
+                    </div>
+                    <div class="search_main">
+                        <i class="fas fa-search"></i>
+                        <input class="search_cc" type="text"
+                            placeholder="search names,topics,categories and anything...">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer_main">
+            <div class="btn_started">
+                <button class="btn_main"> Get Started</button>
+            </div>
+
+            <div class="footer_sub">
+                <span class="footer_text">
+                    info@jumpnow.agency
+                </span>
+                <div class="one_stone">
+                    <span class="footer_text">
+                        Made with <span class="footer_hearts">&hearts;</span>
+                    </span>
+                    <span class="footer_text">
+                        &copy One Stone 2021
+                    </span>
+                </div>
+                <div class="footer_socials_main">
+                    <span class="footer_socials footer_text">
+                        <i class="fab fa-facebook"></i>
+                    </span>
+                    <span class="footer_socials footer_text">
+                        <i class="fab fa-instagram"></i>
+                    </span>
+                    <span class="footer_socials footer_text">
+                        <i class="fab fa-twitter"></i>
+                    </span>
+                    <span class="footer_socials footer_text">
+                        <i class="fab fa-linkedin"></i>
+                    </span>
+                </div>
+            </div>
+
+        </footer>
+    </main>
+    <script src="./js/landing.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{% extends 'engage/base.html' %}
+
+
+{% load static %}
+{% load widget_tweaks %}
+{% block my_css %}
+<link rel="stylesheet" href="{% static 'engage/css/main.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static "accounts/css/vendors/select2.css"%}">
+{% endblock my_css %}
+
+
+{% block content %}
+    <!-- tap on top starts-->
+    
+    <!-- tap on tap ends-->
+    <!-- page-wrapper Start-->
+    
+      
+      <!-- Page Header Ends                              -->
+      <!-- Page Body Start-->
+      
+        <!-- Page Sidebar Start-->
+        {% include 'discovery/includes/_sidebar.html' %}
+        <!-- Page Sidebar Ends-->
+
+          <div class="page-body">
+        {% include 'accounts/includes/_messages.html' %}
+            <div class="spacer-small"></div>
+            <div class="row">
+              <div class="col-7">
+                <div class="card">
+                  <div class="card-header">
+                    <h3>Raise Dispute</h3>
+                  </div>
+                  <div class="card-body">
+                    <form method="post" class="do-form">
+                {% csrf_token %}
+                <div class="form-row">
+                  <div class="col-12">
+                    <label for="gig_select_main">Select Gig</label>
+                    {% render_field form.gig_id id="gig_select_main" class="form-control" placeholder="Select Gig" required="" %}
+                  </div>
+                  <div class="col-12">
+                    <label for="against_id">Against</label>
+                    {% render_field form.against id="against_id" class="form-control" placeholder="Against Whom" required="" %}
+                  </div>
+                  <div class="col-12">
+                    <label for="title_id">Title</label>
+                    {% render_field form.title class="form-control" placeholder="Title" required="" %}
+                  </div>
+                  <div class="col-12">
+                    <label for="description_id">Description</label>
+                    {% render_field form.description class="form-control" placeholder="Description" required="" %}
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Raise Dispute</button>
+                  </div>
+                </div>
+            </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+        
+{% endblock content %}
+
+{% block my_js %}
+<script src="{% static "accounts/js/select2/select2.full.min.js"%}"></script>
+<script src="{% static "accounts/js/touchspin/touchspin.js"%}"></script>
+<script src="{% static "engage/js/create-dispute.js" %}"></script>
+{% endblock my_js %}
+    
